@@ -8,17 +8,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         :root {
-            --primary-color: #007bff; /* Bleu vif/Cyan moderne */
-            --secondary-color: #212529; /* Noir/Gris foncé pour le texte */
-            --bg-light: #f8f9fa; /* Gris très clair pour le fond */
-            --accent-color: #17a2b8; /* Couleur d'accentuation */
+            --primary-color: #007bff;
+            --secondary-color: #212529;
+            --bg-light: #f8f9fa;
+            --accent-color: #17a2b8;
         }
         body {
             background-color: var(--bg-light);
             color: var(--secondary-color);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
-        /* En-tête (Header) */
         .header-custom {
             background: linear-gradient(90deg, #0056b3 0%, var(--primary-color) 100%);
             color: white;
@@ -26,7 +25,6 @@
             margin-bottom: 2rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
         }
-        /* Titres de Section */
         h2 {
             color: var(--primary-color);
             border-bottom: 3px solid var(--accent-color);
@@ -34,7 +32,6 @@
             margin-bottom: 2rem;
             font-weight: 600;
         }
-        /* Carte Jumbotron d'Introduction */
         .jumbotron-intro {
             background-color: white;
             padding: 3rem;
@@ -43,7 +40,6 @@
             margin-bottom: 3rem;
             border-left: 8px solid var(--primary-color);
         }
-        /* Outils de Veille (Cartes améliorées) */
         .outil-card {
             border: 1px solid #e9ecef;
             border-radius: 12px;
@@ -69,7 +65,6 @@
         .outil-card a:hover {
             color: var(--primary-color);
         }
-        /* Article de Veille */
         .article-card {
             background-color: white;
             border-radius: 12px;
@@ -95,20 +90,17 @@
             font-size: 0.9em;
             display: block;
         }
-        .tag-badge {
-            font-size: 0.8em;
-            margin-right: 0.5rem;
-        }
     </style>
 </head>
 <body>
    
     <header class="header-custom">
         <div class="container text-center">
-            <h1 class="display-5 mb-1"><i class="bi bi-robot me-3"></i> Veille Technologique</h1>
+            <h1 class="display-5 mb-1">Veille Technologique</h1>
             <p class="lead mb-0">Les Assistants Vocaux</p>
         </div>
     </header>
+    
     <main class="container my-5">
         <section class="jumbotron-intro">
             <div class="row align-items-center">
@@ -127,7 +119,6 @@
             <p class="mb-4">Une veille efficace repose sur des outils spécialisés qui automatisent la collecte d'informations pertinentes.</p>
            
             <div class="row g-4 outils-list">
-               
                 <div class="col-lg-4 col-md-6">
                     <div class="card p-4 h-100 outil-card">
                         <i class="bi bi-bell-fill outil-card-icon"></i>
@@ -165,10 +156,7 @@
             <div class="row g-4 articles-list">
                 <div class="col-lg-6">
                     <div class="article-card">
-                        <div class="article-card-header">
-                          
-                          
-                        </div>
+                        <div class="article-card-header"></div>
                         <div class="article-card-body">
                             <h3 class="h4">L'Europe renforce la RGPD face aux données vocales des IA</h3>
                             <span class="date-source"><i class="bi bi-calendar-event me-1"></i> Publié le 20/11/2025 | Source: Euractiv</span>
@@ -179,10 +167,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="article-card">
-                        <div class="article-card-header">
-                          
-                        
-                        </div>
+                        <div class="article-card-header"></div>
                         <div class="article-card-body">
                             <h3 class="h4">Apple intègre l'IA générative dans son écosystème Siri</h3>
                             <span class="date-source"><i class="bi bi-calendar-event me-1"></i> Publié le 15/11/2025 | Source: TechCrunch</span>
@@ -201,7 +186,7 @@
             <p class="text-muted small mb-0">Dernière mise à jour de la veille : 25 Novembre 2025.</p>
         </div>
 
-        <!-- Tableau d'historisation ajouté ici -->
+        <!-- Tableau d'historisation -->
         <section class="mb-5">
             <h2><i class="bi bi-clock-history me-2"></i> Historique des mises à jour</h2>
             <div class="table-responsive">
@@ -219,32 +204,30 @@
                             <td>25/11/2025</td>
                             <td>1.3</td>
                             <td>Ajout de deux nouveaux articles (RGPD vocal & Siri IA générative) + mise en page améliorée</td>
-                            <td>[Ton prénom]</td>
+                            <td>Étudiant BTS SIO</td>
                         </tr>
                         <tr>
                             <td>10/11/2025</td>
                             <td>1.2</td>
                             <td>Refonte graphique complète avec Bootstrap 5 + ajout des outils de veille</td>
-                            <td>[Ton prénom]</td>
+                            <td>Étudiant BTS SIO</td>
                         </tr>
                         <tr>
                             <td>02/11/2025</td>
                             <td>1.1</td>
                             <td>Création de la structure initiale et définition des objectifs de veille</td>
-                            <td>[Ton prénom]</td>
+                            <td>Étudiant BTS SIO</td>
                         </tr>
                         <tr>
                             <td>28/10/2025</td>
                             <td>1.0</td>
                             <td>Version initiale du site de veille technologique</td>
-                            <td>[Ton prénom]</td>
+                            <td>Étudiant BTS SIO</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </section>
-        <!-- Fin du tableau d'historisation -->
-
     </main>
    
     <footer class="bg-dark text-white-50 py-4">
