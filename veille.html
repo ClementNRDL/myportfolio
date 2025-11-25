@@ -1,33 +1,141 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Veille technologique</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎙️ Veille Technologique - Assistants Vocaux | BTS SIO</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        /* Styles personnalisés pour la lisibilité et l'aspect professionnel */
+        .header-custom {
+            background-color: #007bff !important; /* Couleur Bootstrap Primary */
+            color: white;
+            padding: 1.5rem 0;
+            margin-bottom: 2rem;
+        }
+        .section-custom {
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            border-left: 5px solid #007bff;
+            background-color: #f8f9fa;
+            border-radius: 0.5rem;
+        }
+        .outils-list .card {
+            border: none;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+        .sujet-veille {
+            background-color: white;
+            border-left: 4px solid #dc3545; /* Couleur Bootstrap Danger */
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 0.3rem;
+        }
+        .sujet-veille ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .sujet-veille ul li {
+            margin-bottom: 8px;
+        }
+        .date-source {
+            font-style: italic;
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+    </style>
 </head>
 <body>
-  <header class="p-3 bg-dark text-white">
-    <div class="container">
-      <h1 class="h3">Veille technologique</h1>
-    </div>
-  </header>
+    
+    <header class="header-custom">
+        <div class="container">
+            <h1 class="h3 mb-0">🎙️ Veille Technologique : Les Assistants Vocaux</h1>
+        </div>
+    </header>
 
-  <main class="container my-5">
-    <h2> Les assistants vocaux</h2>
-    <p>
-      Ma veille technologique porte sur les <strong>assistants vocaux</strong> :
-    </p>
+    <main class="container my-5">
 
-    <p>
-      Cette veille permet de suivre les évolutions des technologies de reconnaissance vocale,
-      du traitement du langage naturel, et leur impact sur notre quotidien.
-    </p>
+        <section class="mb-5">
+            <h2 class="text-primary border-bottom pb-2">Contexte de la Veille</h2>
+            <p class="lead">Dans le cadre de ma formation en **BTS SIO**, cette veille explore l'évolution des **technologies vocales** (Alexa, Google Assistant, Siri) et leurs implications en termes de développement, de sécurité et d'usages professionnels.</p>
+            <p>Ce domaine est choisi pour son potentiel d'innovation et son impact croissant sur l'interaction homme-machine.</p>
+        </section>
 
-    <a href="index.html" class="btn btn-secondary mt-3 ms-2">
-      Retour à l’accueil
-    </a>
-  </main>
+        <section class="section-custom">
+            <h2 class="text-success mb-3">Méthodologie et Outils de Veille</h2>
+            <p>Ma démarche est structurée autour d'outils d'agrégation et de surveillance pour garantir une information pertinente et à jour.</p>
+            
+            <div class="row outils-list mt-4">
+                <div class="col-md-4 mb-3">
+                    <div class="card p-3 h-100">
+                        <h3 class="h5 card-title text-success">Google Alerts</h3>
+                        <p class="card-text">Configurées sur les mots-clés : **"Assistants Vocaux", "Voice AI Security", "Development Alexa Skills", "Google Assistant Actions"**.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card p-3 h-100">
+                        <h3 class="h5 card-title text-success">Flux RSS / Agrégateurs</h3>
+                        <p class="card-text">Sites spécialisés suivis : **VentureBeat AI, TechCrunch, Blogs officiels Amazon et Google Developers**.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card p-3 h-100">
+                        <h3 class="h5 card-title text-success">Réseaux Sociaux</h3>
+                        <p class="card-text">Suivi d'experts en **NLP (Natural Language Processing)** et de communautés de développeurs vocaux (LinkedIn, X).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <h2 class="text-danger border-bottom pb-2">Synthèse et Analyse des Tendances Clés</h2>
+
+            <article class="sujet-veille">
+                <h3 class="text-danger">1. La Convergence des Modèles de Langage et des Assistants</h3>
+                <p class="date-source">**Date d'Observation :** Octobre 2025 | **Source(s) :** Annonces Google I/O et Amazon re:Invent.</p>
+                <p>Les assistants vocaux traditionnels évoluent pour intégrer des **Large Language Models (LLMs)**, passant de l'exécution de commandes simples à des conversations complexes et des tâches créatives (résumer, planifier, coder). Cela transforme la manière dont les utilisateurs interagissent, exigeant des développeurs de **nouvelles compétences en *prompt engineering*** et en gestion de contexte conversationnel.</p>
+                <ul class="list-unstyled">
+                    <li><i class="bi bi-check-circle-fill text-primary me-2"></i> **Impact sur le SIO :** Les développeurs (SLAM) devront maîtriser l'intégration d'APIs de LLMs (comme l'API Google Gemini ou OpenAI) dans les applications vocales.</li>
+                    <li><i class="bi bi-check-circle-fill text-primary me-2"></i> **Mot-clé :** **Multimodalité** (capacités combinant voix, texte et image).</li>
+                </ul>
+                [Image of a diagram illustrating the integration of LLMs into voice assistant architecture]
+            </article>
+
+            <article class="sujet-veille">
+                <h3 class="text-danger">2. Les Enjeux de Sécurité et de Confidentialité</h3>
+                <p class="date-source">**Date d'Observation :** Septembre 2025 | **Source(s) :** Rapports ANSSI et articles spécialisés sur les failles Zero-Day.</p>
+                <p>Avec l'augmentation des données collectées (enregistrements vocaux, habitudes, données biométriques), la sécurité devient critique. Les menaces incluent le **"détournement acoustique"** (commandes inaudibles pour l'humain mais comprises par l'appareil) et la **gestion des permissions** des applications vocales tierces ("Skills" ou "Actions").</p>
+                <ul class="list-unstyled">
+                    <li><i class="bi bi-check-circle-fill text-primary me-2"></i> **Impact sur le SIO :** Les administrateurs (SISR) et développeurs doivent appliquer des protocoles de **cryptage de bout en bout** pour les communications vocales et sensibiliser à la gestion des autorisations.</li>
+                    <li><i class="bi bi-check-circle-fill text-primary me-2"></i> **Mot-clé :** **Protection des données biométriques vocales.**</li>
+                </ul>
+            </article>
+            
+            <article class="sujet-veille">
+                <h3 class="text-danger">3. L'Adoption Professionnelle (Voice for Enterprise)</h3>
+                <p class="date-source">**Date d'Observation :** Novembre 2025 | **Source(s) :** Études de marché sur la transformation numérique, cas d'usage industriels (logistique, santé).</p>
+                <p>Les assistants vocaux quittent la sphère domestique pour les environnements professionnels. Ils sont utilisés dans les entrepôts pour la **gestion des stocks mains-libres**, en milieu hospitalier pour la **saisie de notes médicales**, ou dans le support client via des *chatbots* vocaux avancés. La voix améliore l'efficacité des tâches nécessitant une mobilité ou une attention visuelle constante.</p>
+                <ul class="list-unstyled">
+                    <li><i class="bi bi-check-circle-fill text-primary me-2"></i> **Impact sur le SIO :** Développement d'interfaces vocales pour les ERP/CRM existants et maîtrise des protocoles de communication sécurisés en environnement d'entreprise.</li>
+                    <li><i class="bi bi-check-circle-fill text-primary me-2"></i> **Mot-clé :** **Hands-Free Computing**.</li>
+                </ul>
+            </article>
+
+        </section>
+
+        <hr>
+
+        <div class="d-flex justify-content-between align-items-center">
+            <a href="index.html" class="btn btn-secondary">
+                <i class="bi bi-arrow-left me-2"></i> Retour à l’accueil
+            </a>
+            <p class="text-muted small mb-0">Dernière mise à jour de la veille : **25 Novembre 2025**.</p>
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </body>
 </html>
