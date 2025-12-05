@@ -28,8 +28,7 @@
     }
 
     /* Canvas pour l’animation Matrix */
-    /* MATRIX CANVAS BACKGROUND */
-#matrix-bg {
+    #matrix-bg {
         position: fixed;
         top: 0;
         left: 0;
@@ -40,14 +39,7 @@
     }
 
     /* Filtre futuriste lumineux */
-    .overlay-fx{
-        backdrop-filter:none;
-        background:rgba(0,0,0,0.65);
-    }
-
-    /* couche transparente pour lisibilité */
-    .content-wrapper {
-        position:-custom {
+    .overlay-fx-custom {
         position: fixed;
         top: 0;
         left: 0;
@@ -77,9 +69,10 @@
     }
 
     /* Cartes et sections lisibles par-dessus */
-    .overlay-bg {
+    .overlay-bg-fixed {
         background: rgba(255,255,255,0.92);
-        backdrop-filterder-radius: 15px;
+        backdrop-filter: blur(6px);
+        border-radius: 15px;
         padding: 1rem;
     }
 
@@ -95,6 +88,25 @@
 }
 
 .content-wrapper { position:relative; z-index:10; }
+
+/* Nouvelle version ultra lisible des sections */
+.overlay-bg-fixed {
+    background: rgba(0,0,0,0.65) !important;
+    color: white !important;
+    padding: 2rem !important;
+    border-radius: 15px !important;
+    backdrop-filter: blur(8px) !important;
+    box-shadow: 0 0 25px rgba(0,255,150,0.2);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #00ffbb !important;
+    text-shadow: 0 0 8px rgba(0,255,180,0.6);
+}
+
+p, li, span, a, td, th {
+    color: #e7fff5 !important;
+}
 </style>
 
     <style>
@@ -110,7 +122,7 @@
         }
     </style>
 </head>
-<
+<body>
 <div class="overlay-fx-custom"></div>
 <div class="content-wrapper">
     <header class="header-custom text-center">
@@ -121,7 +133,7 @@
     <main class="container my-5">
 
         <!-- CONTEXTE & OBJECTIFS -->
-        <section class="jumbotron-intro">
+        <section class="jumbotron-intro overlay-bg-fixed"">
             <div class="row align-items-center">
                 <div class="col-md-2 text-center">
                     <i class="bi bi-cpu-fill" style="font-size:4rem;color:var(--primary-color)"></i>
@@ -137,7 +149,7 @@
         <hr />
 
         <!-- OUTILS DE VEILLE -->
-        <section class="mb-5">
+        <section class="mb-5 overlay-bg-fixed">
             <h2><i class="bi bi-tools me-2"></i>Méthodologie et Outils utilisés</h2>
             <p class="mb-4">Voici les outils de veille mis en place avec paramétrage et captures explicatives.</p>
 
@@ -232,7 +244,7 @@
         <hr />
 
         <!-- TABLEAU STRUCTURE VEILLE -->
-        <section class="mb-5">
+        <section class="mb-5 overlay-bg-fixed">
             <h2><i class="bi bi-table me-2"></i>Tableau de veille structuré</h2>
             <div class="table-responsive">
                 <table class="table table-striped">
@@ -273,7 +285,7 @@
 
         <!-- FOOTER -->
         <div class="d-flex justify-content-between align-items-center my-4">
-     <a href="index.html" class="btn btn-primary btn-lg shadow-sm"><i class="bi bi-house-door-fill me-2"></i>Retour</a>
+            <a href="index.html" class="btn btn-primary btn-lg shadow-sm"><i class="bi bi-house-door-fill me-2"></i>Retour</a>
             <p class="text-muted small mb-0">Dernière mise à jour : Octobre 2023</p>
         </div>
     </main>
