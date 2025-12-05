@@ -9,60 +9,36 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
     <style>
-        :root {
-            --primary-color: #0d6efd;
-            --secondary-color: #212529;
-            --bg-light: #f8f9fa;
-            --accent-color: #20c997;
-        }
-        body {
-            background-color: var(--bg-light);
-            color: var(--secondary-color);
-            font-family: "Segoe UI", Roboto, Arial, sans-serif;
-        }
-        .header-custom {
-            background: linear-gradient(90deg, #0a58ca 0%, var(--primary-color) 100%);
-            color: white;
-            padding: 2rem 0;
-            margin-bottom: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 3px solid var(--accent-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
-        .jumbotron-intro {
-            background-color: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            margin-bottom: 3rem;
-            border-left: 8px solid var(--primary-color);
-        }
-        .outil-card,
-        .article-card {
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-            background-color: white;
-        }
-        .outil-card:hover,
-        .article-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-        }
-        .date-source {
-            color: #6c757d;
-            font-size: 0.9em;
-            display: block;
-        }
-        table th {
-            white-space: nowrap;
-        }
-    </style>
+    :root {
+        --primary-color: #0d6efd;
+        --secondary-color: #212529;
+        --bg-light: #f8f9fa;
+        --accent-color: #20c997;
+    }
+
+    /* 🔥 FOND ANIMÉ TYPE MATRIX + OBJETS IOT */
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        background: black;
+        color: var(--secondary-color);
+        font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        position: relative;
+    }
+
+    /* Canvas pour l’animation Matrix */
+    #matrix-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -3;
+        background: black;
+    }
+
+    /* Filtre fu
     <style>
         body {
             background: url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
@@ -150,7 +126,48 @@
     <div class="row g-4">
         <div class="col-lg-6">
             <div class="article-card p-3">
-                <h3 class="h4">Apple prépare un écosystème IoT u
+                <h3 class="h4">Apple prépare un écosystème IoT unifié pour 2024</h3>
+                <span class="date-source">Publié le 20/09/2023 | Source : The Verge</span>
+                <p>Apple travaille sur une plateforme IoT compatible Matter pour rendre tous ses appareils interconnectés.</p>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="article-card p-3">
+                <h3 class="h4">Google annonce de nouveaux protocoles de sécurité IoT</h3>
+                <span class="date-source">Publié le 15/09/2023 | Source : Google AI Blog</span>
+                <p>Google renforce la sécurité des objets connectés via un chiffrement amélioré basé sur des modèles IA.</p>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="article-card p-3">
+                <h3 class="h4">Tesla connecte ses véhicules à un réseau IoT de diagnostic</h3>
+                <span class="date-source">Publié le 01/09/2023 | Source : Bloomberg</span>
+                <p>Les voitures Tesla pourront envoyer en temps réel des données mécaniques vers des centres automatisés.</p>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="article-card p-3">
+                <h3 class="h4">Cisco lance une plateforme IoT pour les smart cities</h3>
+                <span class="date-source">Publié le 27/08/2023 | Source : Cisco Newsroom</span>
+                <p>Cisco veut connecter éclairage, transports et caméras pour optimiser la gestion urbaine.</p>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="article-card p-3">
+                <h3 class="h4">Xiaomi dévoile une nouvelle gamme IoT pour la maison</h3>
+                <span class="date-source">Publié le 12/08/2023 | Source : Android Authority</span>
+                <p>Capteurs, thermostats, caméras… Xiaomi renforce son écosystème IoT abordable.</p>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="article-card p-3">
+                <h3 class="h4">Samsung SmartThings devient compatible avec Matter</h3>
+                <span class="date-source">Publié le 05/08/2023 | Source : Samsung Newsroom</span>
+                <p>SmartThings devient une plateforme centrale pour tous les appareils IoT certifiés Matter.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
         <hr />
 
