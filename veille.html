@@ -1,302 +1,245 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veille Technologique - Objets IoT (Internet des Objets)</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <style>
-        :root {
-            --primary-color: #007bff;
-            --secondary-color: #212529;
-            --bg-light: #f8f9fa;
-            --accent-color: #17a2b8;
-            --iot-color: #28a745; /* Vert pour le thème IoT */
-        }
-        body {
-            background-color: var(--bg-light);
-            color: var(--secondary-color);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            /* Le background-color du body est caché par le canvas, mais important pour le fallback */
-        }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Veille Technologique – Objets Connectés (IoT)</title>
 
-        /* 1. Style pour le Canvas en fond */
-        #matrixCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Place le canvas derrière le contenu */
-            display: block;
-        }
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
-        /* 2. Assurer que le contenu est lisible au-dessus du canvas */
-        main, header, footer {
-            position: relative;
-            z-index: 1; 
-        }
-        .jumbotron-intro, .outil-card, .table, .article-card {
-            background-color: rgba(255, 255, 255, 0.95) !important; /* Fond blanc semi-transparent */
-            backdrop-filter: blur(1px); /* Léger flou pour détacher le contenu du fond */
-        }
+<style>
+/* ========================= */
+/* VARIABLES GLOBALES        */
+/* ========================= */
+:root {
+    --neon: #00ffbb;
+    --bg-dark: rgba(0,0,0,0.25);
+}
 
+/* ========================= */
+/* FOND MATRIX + PAGE        */
+/* ========================= */
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background: black;
+    color: white;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
 
-        .header-custom {
-            background: linear-gradient(90deg, #1e7e34 0%, var(--iot-color) 100%); 
-            color: white;
-            padding: 2rem 0;
-            margin-bottom: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-        }
-        h2 {
-            color: var(--iot-color); 
-            border-bottom: 3px solid var(--accent-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
-        .jumbotron-intro {
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            margin-bottom: 3rem;
-            border-left: 8px solid var(--iot-color); 
-        }
-        .outil-card {
-            border: 1px solid #e9ecef;
-            border-radius: 12px;
-            transition: all 0.3s;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        }
-        .outil-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-        }
-        .outil-card-icon {
-            font-size: 2rem;
-            color: var(--iot-color); 
-            margin-bottom: 1rem;
-            display: inline-block;
-        }
-        .outil-card a {
-            text-decoration: none;
-            color: var(--secondary-color);
-            font-weight: 600;
-        }
-        .outil-card a:hover {
-            color: var(--iot-color);
-        }
-        .table thead.table-primary th {
-            background-color: var(--iot-color) !important;
-            color: white;
-            border-color: #1e7e34;
-        }
-        .table-striped > tbody > tr:nth-of-type(odd) > * {
-            --bs-table-bg-type: rgba(40, 167, 69, 0.05);
-        }
-    </style>
+/* Canvas Matrix */
+#matrix-bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+}
+
+/* Film d’ambiance + grille IoT */
+.overlay-fx-custom {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 255, 150, 0.06);
+    backdrop-filter: blur(3px);
+    z-index: -4;
+}
+
+.iot-grid {
+    position: fixed;
+    inset: 0;
+    background-image: url("https://i.imgur.com/jxS9w8H.png");
+    opacity: 0.15;
+    animation: floatGrid 20s linear infinite;
+    z-index: -3;
+}
+@keyframes floatGrid { from { transform: translateY(0); } to { transform: translateY(-200px);} }
+
+/* ========================= */
+/* TITRES & TEXTES           */
+/* ========================= */
+h1, h2, h3 {
+    color: var(--neon);
+    text-shadow: 0 0 10px var(--neon);
+}
+
+.header-custom h1 {
+    color: rgba(0,255,200,0.45);
+    transition: 0.4s;
+}
+.header-custom h1:hover {
+    color: rgba(0,255,200,1);
+    text-shadow: 0 0 18px var(--neon);
+}
+
+/* ========================= */
+/* BLOCS SEMI-TRANSPARENTS   */
+/* ========================= */
+.overlay-bg-fixed {
+    background: rgba(0,0,0,0.30);
+    backdrop-filter: blur(6px);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 0 25px rgba(0,255,150,0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* ========================= */
+/* VIDEO CONTEXTE & OBJECTIF */
+/* ========================= */
+.iot-video-context-layer {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.iot-video-context-layer video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.35) blur(1.5px);
+}
+
+/* ========================= */
+/* ICONES ANIMÉES            */
+/* ========================= */
+.outil-card i {
+    transition: 0.3s ease;
+}
+.outil-card:hover i {
+    transform: scale(1.35);
+    filter: drop-shadow(0 0 10px var(--neon));
+}
+</style>
 </head>
 <body>
-    
-    <canvas id="matrixCanvas"></canvas>
+<canvas id="matrix-bg"></canvas>
+<div class="overlay-fx-custom"></div>
+<div class="iot-grid"></div>
 
-    <header class="header-custom">
-        <div class="container text-center">
-            <h1 class="display-5 mb-1">Veille Technologique</h1>
-            <p class="lead mb-0">L'Internet des Objets (IoT) : Sécurité et Évolution</p>
-        </div>
-    </header>
-    
-    <main class="container my-5">
-        
-        <section class="jumbotron-intro">
-            <div class="row align-items-center">
-                <div class="col-md-2 text-center">
-                    <i class="bi bi-broadcast-pin" style="font-size: 4rem; color: var(--iot-color);"></i>
-                </div>
-                <div class="col-md-10">
-                    <h2 class="mt-0 pt-0 border-0 mb-3">Contexte & Objectifs</h2>
-                    <p class="text-muted">Cette veille stratégique se concentre sur l'écosystème de l'**Internet des Objets (IoT)** : les avancées technologiques (capteurs, réseaux LoRa/5G), les normes de sécurité (RGPD, failles zero-day) et les tendances du marché (maison intelligente, IoT industriel).</p>
-                    <p class="text-muted small">**Objectif :** Identifier les **ruptures technologiques** et les **enjeux de cybersécurité** liés à la multiplication des objets connectés d'ici fin 2024.</p>
-                </div>
+<div class="content-wrapper">
+
+<header class="header-custom text-center my-4">
+    <h1 class="display-5">Veille Technologique</h1>
+    <p class="lead">Les Objets Connectés (IoT)</p>
+</header>
+
+<main class="container my-5">
+
+<!-- ========================================= -->
+<!-- CONTEXTE & OBJECTIFS AVEC VIDEO DE FOND   -->
+<!-- ========================================= -->
+<section class="overlay-bg-fixed mb-5">
+
+<div class="iot-video-context-layer">
+    <video autoplay muted loop playsinline>
+        <source src="Vidéo_de_fond_pour_section_IoT.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div class="row align-items-center">
+    <div class="col-md-2 text-center">
+        <i class="bi bi-cpu-fill" style="font-size:4rem;color:#0d6efd"></i>
+    </div>
+
+    <div class="col-md-10">
+        <h2>Contexte & Objectifs</h2>
+        <p>Cette veille technologique porte sur les objets connectés (IoT), impactant les secteurs du logement, de la santé, de l’industrie et de la cybersécurité.</p>
+        <p>Objectifs : suivre les innovations, identifier les tendances, analyser la sécurité et anticiper l’évolution du marché.</p>
+    </div>
+</div>
+
+</section>
+
+<hr>
+<!-- =================================================== -->
+<!-- OUTILS UTILISÉS                                     -->
+<!-- =================================================== -->
+<section class="overlay-bg-fixed mb-5">
+    <h2><i class="bi bi-tools me-2"></i>Méthodologie et Outils utilisés</h2>
+    <p>Voici les outils de veille mis en place.</p>
+
+    <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+            <div class="p-4 outil-card">
+                <i class="bi bi-bell-fill fs-2 text-primary"></i>
+                <h3 class="h5 mt-3">Google Alerts</h3>
+                <p class="small">Mots-clés : IoT, cybersécurité IoT.</p>
             </div>
-        </section>
-        
-        <hr>
-        
-        <section class="mb-5">
-            <h2><i class="bi bi-tools me-2"></i> Méthodologie et Outils de Veille</h2>
-            <p class="mb-4">Pour garantir une veille pertinente et exhaustive sur l'IoT, nous utilisons une combinaison d'outils complémentaires : **Alertes** (temps réel), **Agrégation de Flux** (centralisation) et **Social Listening** (veille communautaire).</p>
-            
-            <p class="alert alert-info small">**Détail du Paramétrage (Preuve de mise en œuvre) :** L'efficacité de ces outils dépend de mots-clés précis et d'un ciblage rigoureux des sources. Mots-clés utilisés : `IoT sécurité`, `normes connectées`, `LoRaWAN`, `Thread Protocol`, `faille IoT`.</p>
-
-            <p class="small text-danger">[Ajouter ici les captures d'écran de l'interface Google Alerts et Feedly montrant le paramétrage des mots-clés]</p>
-
-            <div class="row g-4 outils-list mt-3">
-                <div class="col-lg-4 col-md-6">
-                    <div class="card p-4 h-100 outil-card">
-                        <i class="bi bi-bell-fill outil-card-icon"></i>
-                        <h3 class="h5 card-title">
-                            <a href="https://www.google.com/alerts" target="_blank">Google Alerts (Alertes)</a>
-                        </h3>
-                        <p class="card-text small text-muted">Surveillance en temps réel des publications sur des requêtes spécifiques. Fréquence réglée sur **"Au fur et à mesure"** pour ne rater aucune publication majeure.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card p-4 h-100 outil-card">
-                        <i class="bi bi-rss-fill outil-card-icon"></i>
-                        <h3 class="h5 card-title">
-                            <a href="https://feedly.com" target="_blank">Feedly (Agrégateur)</a>
-                        </h3>
-                        <p class="card-text small text-muted">Centralisation des flux RSS de sites spécialisés. Permet de lire, classer et partager les articles **quotidiennement**.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card p-4 h-100 outil-card">
-                        <i class="bi bi-at outil-card-icon"></i>
-                        <h3 class="h5 card-title">
-                            <a href="https://mention.com" target="_blank">Mention (Social Listening)</a>
-                        </h3>
-                        <p class="card-text small text-muted">Outil de veille sociale et communautaire. Surveillance des discussions sur les forums et réseaux sociaux pour évaluer l'**opinion publique** et les **nouveaux usages** de l'IoT.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <hr class="my-5">
-        
-        <section class="mb-5">
-            <h2><i class="bi bi-table me-2"></i> Tableau de Veille (Historisation et Analyse)</h2>
-            <p class="mb-4">Ce tableau suit la structure recommandée pour l'historisation, l'analyse et la vérifiabilité des sources. **Date cohérente (2023).**</p>
-            
-            <div class="table-responsive">
-                <table class="table table-bordered table-striped table-hover align-middle">
-                    <thead class="table-primary">
-                        <tr>
-                            <th scope="col" style="width: 10%;">Date Publi.</th>
-                            <th scope="col" style="width: 20%;">Titre & Lien Direct</th>
-                            <th scope="col" style="width: 15%;">Source & Outil</th>
-                            <th scope="col" style="width: 15%;">Catégorie/Mots-clés</th>
-                            <th scope="col" style="width: 40%;">Résumé & Analyse Personnelle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>**01/12/2023**</td>
-                            <td><a href="https://www.01net.com/actualites/une-nouvelle-faille-de-securite-decouverte-dans-les-ampoules-connectees-philips-hue.html" target="_blank" class="fw-bold">Une nouvelle faille critique découverte dans les ampoules connectées Philips Hue</a></td>
-                            <td><span class="badge bg-success">01Net</span><br><small>Outil : Google Alerts</small></td>
-                            <td>Sécurité IoT / ZBL (ZigBee Ligth Link)</td>
-                            <td>**Résumé :** Des chercheurs ont démontré comment un attaquant peut prendre le contrôle du réseau Zigbee d'une maison en exploitant une faille de déni de service. <br>**Analyse :** Confirme que même les marques établies ont des vulnérabilités. Souligne l'importance des mises à jour régulières du firmware.</td>
-                        </tr>
-                        <tr>
-                            <td>**25/11/2023**</td>
-                            <td><a href="https://www.lesnumeriques.com/vie-du-net/le-protocole-thread-la-nouvelle-norme-de-la-maison-intelligente-p74281.html" target="_blank" class="fw-bold">Le protocole Thread : la nouvelle norme de la maison intelligente</a></td>
-                            <td><span class="badge bg-primary">Les Numériques</span><br><small>Outil : Feedly (Agrégateur)</small></td>
-                            <td>Normes / Réseaux IoT</td>
-                            <td>**Résumé :** Thread, un protocole de réseau maillé à faible puissance (basé sur IP), est en passe de devenir le standard pour les appareils Matter. <br>**Analyse :** C'est une information clé sur la standardisation. Thread, avec Matter, simplifie l'interopérabilité, mais augmente la dépendance à un écosystème unique.</td>
-                        </tr>
-                        <tr>
-                            <td>**18/11/2023**</td>
-                            <td><a href="https://www.zdnet.fr/actualites/iot-industriel-les-risques-de-cyberattaques-sont-en-hausse-39962234.htm" target="_blank" class="fw-bold">IoT Industriel : les risques de cyberattaques sont en hausse</a></td>
-                            <td><span class="badge bg-dark">ZDNet</span><br><small>Outil : Mention (Social)</small></td>
-                            <td>IoT Industriel / Attaques OT</td>
-                            <td>**Résumé :** Le rapport indique une augmentation de 45% des attaques ciblées sur les systèmes IIoT, souvent via des passerelles non sécurisées. <br>**Analyse :** L'enjeu n'est plus seulement personnel mais industriel. Le focus doit être mis sur la segmentation réseau et la sécurisation des "endpoints".</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <hr class="my-5">
-        <section class="mb-5">
-            <h2><i class="bi bi-journal-check me-2"></i> Instauration d'une Régularité (Plan d'Action)</h2>
-            <p class="mb-4">Comme recommandé, la veille doit être un processus continu. Voici le plan pour instaurer cette régularité :</p>
-            <ul>
-                <li>**Planification :** Sessions de veille dédiées de **30 minutes chaque lundi matin** pour l'analyse des alertes et des flux Feedly.</li>
-                <li>**Objectif de Fréquence :** Assurer la production d'un minimum de **5 fiches d'analyse** pertinentes par mois.</li>
-                <li>**Automatisation :** Maintenir les alertes et l'agrégateur paramétrés pour une collecte **automatisée** maximale.</li>
-            </ul>
-        </section>
-
-
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <a href="#" class="btn btn-success btn-lg shadow-sm">
-                <i class="bi bi-arrow-clockwise me-2"></i> Poursuivre la Veille IoT
-            </a>
-            <p class="text-muted small mb-0">Dernière mise à jour de la veille : **05 Décembre 2023**.</p>
         </div>
-    </main>
-    
-    <footer class="bg-dark text-white-50 py-4">
-        <div class="container text-center">
-            <p class="mb-0 small">© 2023 Veille Technologique BTS SIO | Projet de Culture et Communication | Tous droits réservés.</p>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="p-4 outil-card">
+                <i class="bi bi-rss-fill fs-2 text-primary"></i>
+                <h3 class="h5 mt-3">Feedly</h3>
+                <p class="small">Flux suivis : IoT News, ZDNet IoT.</p>
+            </div>
         </div>
-    </footer>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const canvas = document.getElementById('matrixCanvas');
-            const ctx = canvas.getContext('2d');
 
-            // Symboles IoT (Unicode des Bootstrap Icons : maison, cloud, chip, gear, plug, wifi, satellite)
-            // Note: Le rendu dépend de la police "Bootstrap Icons" chargée.
-            const iotSymbols = ["\uF445", "\uF1CC", "\uF4AD", "\uF2F2", "\uF4D6", "\uF4F7", "\uF446", "\uF42D", "\uF1C0", "\uF3E1"];
+        <div class="col-lg-3 col-md-6">
+            <div class="p-4 outil-card">
+                <i class="bi bi-folder-fill fs-2 text-primary"></i>
+                <h3 class="h5 mt-3">Inoreader</h3>
+                <p class="small">Filtrage automatique & tags.</p>
+            </div>
+        </div>
 
-            let W = window.innerWidth;
-            let H = window.innerHeight;
-            canvas.width = W;
-            canvas.height = H;
+        <div class="col-lg-3 col-md-6">
+            <div class="p-4 outil-card">
+                <i class="bi bi-bar-chart-line-fill fs-2 text-primary"></i>
+                <h3 class="h5 mt-3">Twitter / LinkedIn</h3>
+                <p class="small">Veille d’experts IoT.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-            const fontSize = 16;
-            const columns = Math.floor(W / fontSize);
-            const drops = new Array(columns).fill(0); // Y position for each column
+<hr>
 
-            function draw() {
-                // Rectangle semi-transparent pour créer l'effet de traînée (fondu)
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-                ctx.fillRect(0, 0, W, H);
+<!-- ============================================== -->
+<!-- SCRIPT MATRIX ANIMÉ                            -->
+<!-- ============================================== -->
+<script>
+const canvas = document.getElementById("matrix-bg");
+const ctx = canvas.getContext("2d");
 
-                // Style pour la pluie IoT
-                ctx.fillStyle = '#28a745'; // Couleur Vert IoT
-                // Utilisation de la police Bootstrap Icons pour afficher les symboles
-                ctx.font = `${fontSize}px "Bootstrap Icons", sans-serif`; 
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-                for (let i = 0; i < drops.length; i++) {
-                    const text = iotSymbols[Math.floor(Math.random() * iotSymbols.length)];
-                    const x = i * fontSize;
-                    const y = drops[i] * fontSize;
+const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split("");
+const icons = ["💡","📡","📱","📶","🔐","📷","🏠","⚙️","🔌","🖥️","📊"];
+const matrixChars = chars.concat(icons);
 
-                    // Dessine le symbole
-                    ctx.fillText(text, x, y);
+const fontSize = 20;
+const columns = canvas.width / fontSize;
+const drops = Array.from({length: columns}).map(() => 1);
 
-                    // Fait retomber la goutte (reset) si elle est en bas ou aléatoirement
-                    if (y > H && Math.random() > 0.975) {
-                        drops[i] = 0;
-                    } else {
-                        drops[i]++;
-                    }
-                }
-            }
+function draw() {
+    ctx.fillStyle = "rgba(0,0,0,0.06)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
 
-            // Gère le redimensionnement
-            window.addEventListener('resize', () => {
-                W = window.innerWidth;
-                H = window.innerHeight;
-                canvas.width = W;
-                canvas.height = H;
-                // Recalculer le nombre de colonnes
-                const newColumns = Math.floor(W / fontSize);
-                drops.length = newColumns;
-                drops.fill(0); 
-            });
+    ctx.fillStyle = "#00ff99";
+    ctx.font = fontSize + "px monospace";
 
-            // Démarre l'animation
-            setInterval(draw, 50);
-        });
-    </script>
+    drops.forEach((y, i) => {
+        const text = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+        ctx.fillText(text, i * fontSize, y * fontSize);
+
+        if (y * fontSize > canvas.height && Math.random() > 0.95) drops[i] = 0;
+        drops[i]++;
+    });
+}
+setInterval(draw, 50);
+
+window.onresize = () => {
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+};
+</script>
+
 </body>
 </html>
