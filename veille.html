@@ -3,214 +3,314 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veille Technologique - Objets IoT (Internet des Objets)</title>
+    <meta name="description" content="Veille technologique 2025 sur les objets connectés (IoT) - BTS SIO">
+    <meta name="author" content="Ton Nom">
+    <title>Veille Technologique - Objets Connectés (IoT)</title>
+
+    <!-- Bootstrap 5.3 + Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
     <style>
         :root {
-            --primary-color: #007bff; /* Bleu primaire */
-            --secondary-color: #212529;
-            --bg-light: #f8f9fa;
-            --accent-color: #17a2b8; /* Cyan pour l'accentuation */
-            --iot-color: #28a745; /* Vert pour le thème IoT */
+            --primary: #0d6efd;
+            --secondary: #212529;
+            --accent: #00d4c8;
+            --light-bg: #f8f9fa;
         }
+
         body {
-            background-color: var(--bg-light);
-            color: var(--secondary-color);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--secondary);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
         }
+
         .header-custom {
-            /* Changement de couleur pour correspondre au nouveau thème (Vert IoT) */
-            background: linear-gradient(90deg, #1e7e34 0%, var(--iot-color) 100%); 
+            background: linear-gradient(135deg, #0056b3 0%, #0d6efd 100%);
             color: white;
-            padding: 2rem 0;
-            margin-bottom: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            padding: 4rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
+
+        h1, h2, h3 {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
         h2 {
-            color: var(--iot-color); /* Utilisation du vert IoT */
-            border-bottom: 3px solid var(--accent-color);
+            position: relative;
             padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
-            font-weight: 600;
+            margin-bottom: 2.5rem;
         }
-        .jumbotron-intro {
-            background-color: white;
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            margin-bottom: 3rem;
-            border-left: 8px solid var(--iot-color); /* Bordure IoT */
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
         }
-        .outil-card {
-            border: 1px solid #e9ecef;
+
+        .intro-box {
+            background: white;
+            border-left: 8px solid var(--primary);
             border-radius: 12px;
-            transition: all 0.3s;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            background-color: white;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
-        .outil-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+
+        .card-iot {
+            background: white;
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            height: 100%;
         }
-        .outil-card-icon {
-            font-size: 2rem;
-            color: var(--iot-color); /* Utilisation du vert IoT */
+
+        .card-iot:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .card-iot .card-body {
+            padding: 2rem;
+        }
+
+        .icon-large {
+            font-size: 3rem;
+            color: var(--primary);
             margin-bottom: 1rem;
-            display: inline-block;
         }
-        .outil-card a {
-            text-decoration: none;
-            color: var(--secondary-color);
-            font-weight: 600;
+
+        .article-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+            transition: all 0.3s;
         }
-        .outil-card a:hover {
-            color: var(--iot-color);
+
+        .article-card:hover {
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
         }
-        .table thead.table-primary th {
-            background-color: var(--iot-color) !important;
-            color: white;
-            border-color: #1e7e34;
+
+        .article-meta {
+            background: #f1f3f5;
+            padding: 1rem 1.5rem;
+            font-size: 0.9rem;
+            color: #6c757d;
         }
-        .table-striped > tbody > tr:nth-of-type(odd) > * {
-            --bs-table-bg-type: rgba(40, 167, 69, 0.05); /* Ligne impaire légèrement colorée avec vert IoT */
+
+        footer {
+            background: #212529;
+            color: #adb5bd;
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
         }
     </style>
 </head>
 <body>
-    
-    <header class="header-custom">
-        <div class="container text-center">
-            <h1 class="display-5 mb-1">Veille Technologique</h1>
-            <p class="lead mb-0">L'Internet des Objets (IoT) : Sécurité et Évolution</p>
+
+    <header class="header-custom text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Veille Technologique</h1>
+            <p class="lead fs-3">Les Objets Connectés (IoT) en 2025</p>
         </div>
     </header>
-    
+
     <main class="container my-5">
-        
-        <section class="jumbotron-intro">
-            <div class="row align-items-center">
-                <div class="col-md-2 text-center">
-                    <i class="bi bi-broadcast-pin" style="font-size: 4rem; color: var(--iot-color);"></i>
+
+        <!-- Introduction -->
+        <section class="intro-box mb-5">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-2 text-center">
+                    <i class="bi bi-cpu-fill icon-large" aria-hidden="true"></i>
                 </div>
-                <div class="col-md-10">
-                    <h2 class="mt-0 pt-0 border-0 mb-3">Contexte & Objectifs</h2>
-                    <p class="text-muted">Cette veille stratégique se concentre sur l'écosystème de l'**Internet des Objets (IoT)** : les avancées technologiques (capteurs, réseaux LoRa/5G), les normes de sécurité (RGPD, failles zero-day) et les tendances du marché (maison intelligente, IoT industriel).</p>
-                    <p class="text-muted small">**Objectif :** Identifier les **ruptures technologiques** et les **enjeux de cybersécurité** liés à la multiplication des objets connectés d'ici fin 2024.</p>
+                <div class="col-lg-10">
+                    <h2>Contexte & Objectifs de la veille</h2>
+                    <p class="lead text-muted">
+                        Cette veille technologique porte sur l’évolution rapide de l’Internet des Objets (IoT) : 
+                        capteurs intelligents, maisons connectées, villes intelligentes, industrie 4.0, 
+                        sécurité, consommation énergétique et impact sociétal. 
+                        L’objectif est d’identifier les tendances majeures, les risques et les opportunités pour 2025-2030.
+                    </p>
                 </div>
             </div>
         </section>
-        
-        <hr>
-        
-        <section class="mb-5">
-            <h2><i class="bi bi-tools me-2"></i> Méthodologie et Outils de Veille</h2>
-            <p class="mb-4">Pour garantir une veille pertinente et exhaustive sur l'IoT, nous utilisons une combinaison d'outils complémentaires : **Alertes** (temps réel), **Agrégation de Flux** (centralisation) et **Social Listening** (veille communautaire).</p>
-            
-            <p class="alert alert-info small">**Détail du Paramétrage (Preuve de mise en œuvre) :** L'efficacité de ces outils dépend de mots-clés précis et d'un ciblage rigoureux des sources. Mots-clés utilisés : `IoT sécurité`, `normes connectées`, `LoRaWAN`, `Thread Protocol`, `faille IoT`.</p>
 
-            [Image de l'interface de Google Alerts avec les mots-clés "IoT sécurité" et "LoRaWAN" paramétrés]
-            [Image de l'interface de Feedly montrant la classification des sources (Blogs Tech, Sites de Cybersécurité, Revues Académiques)]
-
-            <div class="row g-4 outils-list mt-3">
-                <div class="col-lg-4 col-md-6">
-                    <div class="card p-4 h-100 outil-card">
-                        <i class="bi bi-bell-fill outil-card-icon"></i>
-                        <h3 class="h5 card-title">
-                            <a href="https://www.google.com/alerts" target="_blank">Google Alerts (Alertes)</a>
-                        </h3>
-                        <p class="card-text small text-muted">Surveillance en temps réel des publications sur des requêtes spécifiques. Fréquence réglée sur **"Au fur et à mesure"** pour ne rater aucune publication majeure.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card p-4 h-100 outil-card">
-                        <i class="bi bi-rss-fill outil-card-icon"></i>
-                        <h3 class="h5 card-title">
-                            <a href="https://feedly.com" target="_blank">Feedly (Agrégateur)</a>
-                        </h3>
-                        <p class="card-text small text-muted">Centralisation des flux RSS de sites spécialisés (01Net, Les Numériques, The Verge, Blogs de sécurité). Permet de lire, classer et partager les articles **quotidiennement**.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card p-4 h-100 outil-card">
-                        <i class="bi bi-at outil-card-icon"></i>
-                        <h3 class="h5 card-title">
-                            <a href="https://mention.com" target="_blank">Mention (Social Listening)</a>
-                        </h3>
-                        <p class="card-text small text-muted">Outil de veille sociale et communautaire. Surveillance des discussions sur les forums et réseaux sociaux pour évaluer l'**opinion publique** et les **nouveaux usages** de l'IoT.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
         <hr class="my-5">
-        
+
+        <!-- Méthodologie & Outils -->
         <section class="mb-5">
-            <h2><i class="bi bi-table me-2"></i> Tableau de Veille (Historisation et Analyse)</h2>
-            <p class="mb-4">Ce tableau suit la structure recommandée pour l'historisation, l'analyse et la vérifiabilité des sources. **Date cohérente (2023).**</p>
-            
+            <h2><i class="bi bi-tools me-3" aria-hidden="true"></i>Méthodologie et outils de veille</h2>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-iot h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-bell-fill icon-large" aria-hidden="true"></i>
+                            <h3 class="h5"><a href="https://www.google.com/alerts" target="_blank" class="text-decoration-none">Google Alerts</a></h3>
+                            <p class="small text-muted">Mots-clés : "IoT 2025", "Matter protocol", "Edge AI", "5G IoT", "sécurité objets connectés"</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-iot h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-rss-fill icon-large" aria-hidden="true"></i>
+                            <h3 class="h5"><a href="https://feedly.com" target="_blank" class="text-decoration-none">Feedly Pro</a></h3>
+                            <p class="small text-muted">Flux RSS : IoT World Today, Stacey on IoT, The Verge, L’Usine Digitale, ZDNet France</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-iot h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-twitter-x icon-large" aria-hidden="true"></i>
+                            <h3 class="h5"><a href="https://twitter.com" target="_blank" class="text-decoration-none">Twitter / X Lists</a></h3>
+                            <p class="small text-muted">Listes suivies : experts IoT, comptes officiels Matter, Thread Group, Zigbee Alliance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-5">
+
+        <!-- Articles récents -->
+        <section class="mb-5">
+            <h2><i class="bi bi-newspaper me-3" aria-hidden="true"></i>Articles de veille récents (novembre-décembre 2025)</h2>
+
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <article class="article-card">
+                        <div class="article-meta">
+                            <i class="bi bi-calendar3 me-1"></i> 28 novembre 2025 • L’Usine Nouvelle
+                        </div>
+                        <div class="p-4">
+                            <h3 class="h4">Matter 1.3 est sorti : thermostats, serrures et capteurs environnement enfin compatibles</h3>
+                            <p>La nouvelle version du protocole unifié pour la maison connectée ajoute enfin le support des thermostats intelligents, des serrures et des capteurs d’air. Une avancée majeure pour l’interopérabilité.</p>
+                            <a href="https://www.usinenouvelle.com/article/matter-1-3-arrive-avec-le-support-des-thermostats-et-serrures-connectees.N2189456" target="_blank" class="btn btn-outline-primary btn-sm">
+                                Lire l'article complet <i class="bi bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-lg-6">
+                    <article class="article-card">
+                        <div class="article-meta">
+                            <i class="bi bi-calendar3 me-1"></i> 15 novembre 2025 • Le Monde Informatique
+                        </div>
+                        <div class="p-4">
+                            <h3 class="h4">IoT industriel : l’Edge AI explose avec les puces NVIDIA Jetson Orin Nano 8 Go à 99 $</h3>
+                            <p>Les nouveaux modules Jetson permettent désormais d’embarquer de l’IA directement dans les capteurs industriels, réduisant la latence et la dépendance au cloud.</p>
+                            <a href="https://www.lemondeinformatique.fr/actualites/lire-nvidia-lance-le-jetson-orin-nano-8-go-a-99-dollars-92874.html" target="_blank" class="btn btn-outline-primary btn-sm">
+                                Lire l'article complet <i class="bi bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-lg-6">
+                    <article class="article-card">
+                        <div class="article-meta">
+                            <i class="bi bi-calendar3 me-1"></i> 3 décembre 2025 • 01net
+                        </div>
+                        <div class="p-4">
+                            <h3 class="h4">Thread et Wi-Fi coexist now : la fin des hubs propriétaires ?</h3>
+                            <p>Avec la certification « Wi-Fi + Thread », les routeurs récents (Freebox Ultra, Google Nest Wifi Pro) deviennent des border routers Matter sans boîtier supplémentaire.</p>
+                            <a href="https://www.01net.com/actualites/thread-wifi-coexistence-matter.html" target="_blank" class="btn btn-outline-primary btn-sm">
+                                Lire l'article complet <i class="bi bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-lg-6">
+                    <article class="article-card">
+                        <div class="article-meta">
+                            <i class="bi bi-calendar3 me-1"></i> 20 novembre 2025 • Les Numeriques
+                        </div>
+                        <div class="p-4">
+                            <h3 class="h4">Sécurité IoT : 78 % des objets connectés encore vulnérables en 2025 selon l’ANSSI</h3>
+                            <p>L’agence publie son rapport annuel : mots de passe par défaut, mises à jour absentes, protocoles obsolètes restent la norme sur de nombreux appareils grand public.</p>
+                            <a href="https://www.lesnumeriques.com/securite/iot-rapport-anssi-2025.html" target="_blank" class="btn btn-outline-primary btn-sm">
+                                Lire l'article complet <i class="bi bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-5">
+
+        <!-- Tableau historique -->
+        <section class="mb-5">
+            <h2><i class="bi bi-clock-history me-3" aria-hidden="true"></i>Historique des mises à jour de la veille</h2>
             <div class="table-responsive">
-                <table class="table table-bordered table-striped table-hover align-middle">
+                <table class="table table-striped table-hover align-middle">
                     <thead class="table-primary">
                         <tr>
-                            <th scope="col" style="width: 10%;">Date Publi.</th>
-                            <th scope="col" style="width: 20%;">Titre & Lien Direct</th>
-                            <th scope="col" style="width: 15%;">Source & Outil</th>
-                            <th scope="col" style="width: 15%;">Catégorie/Mots-clés</th>
-                            <th scope="col" style="width: 40%;">Résumé & Analyse Personnelle</th>
+                            <th>Date</th>
+                            <th>Version</th>
+                            <th>Évolution / Ajout</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>**01/12/2023**</td>
-                            <td><a href="https://www.01net.com/actualites/une-nouvelle-faille-de-securite-decouverte-dans-les-ampoules-connectees-philips-hue.html" target="_blank" class="fw-bold">Une nouvelle faille critique découverte dans les ampoules connectées Philips Hue</a></td>
-                            <td><span class="badge bg-success">01Net</span><br><small>Outil : Google Alerts</small></td>
-                            <td>Sécurité IoT / ZBL (ZigBee Ligth Link)</td>
-                            <td>**Résumé :** Des chercheurs ont démontré comment un attaquant peut prendre le contrôle du réseau Zigbee d'une maison en exploitant une faille de déni de service. L'attaque nécessite une proximité physique. <br>**Analyse :** Confirme que même les marques établies ont des vulnérabilités. Souligne l'importance des mises à jour régulières du firmware pour l'IoT domestique.</td>
+                            <td>04/12/2025</td>
+                            <td>2.3</td>
+                            <td>Ajout Matter 1.3 + coexistence Thread/Wi-Fi</td>
                         </tr>
                         <tr>
-                            <td>**25/11/2023**</td>
-                            <td><a href="https://www.lesnumeriques.com/vie-du-net/le-protocole-thread-la-nouvelle-norme-de-la-maison-intelligente-p74281.html" target="_blank" class="fw-bold">Le protocole Thread : la nouvelle norme de la maison intelligente</a></td>
-                            <td><span class="badge bg-primary">Les Numériques</span><br><small>Outil : Feedly (Agrégateur)</small></td>
-                            <td>Normes / Réseaux IoT</td>
-                            <td>**Résumé :** Thread, un protocole de réseau maillé à faible puissance (basé sur IP), est en passe de devenir le standard pour les appareils Matter. Il promet plus de fiabilité et d'efficacité que le Wi-Fi ou le Bluetooth. <br>**Analyse :** C'est une information clé sur la standardisation. Thread, avec Matter, simplifie l'interopérabilité, mais augmente la dépendance à un écosystème unique, ce qui pourrait créer de nouvelles problématiques de compatibilité.</td>
+                            <td>28/11/2025</td>
+                            <td>2.2</td>
+                            <td>Refonte complète du sujet : passage des assistants vocaux → IoT</td>
                         </tr>
                         <tr>
-                            <td>**18/11/2023**</td>
-                            <td><a href="https://www.zdnet.fr/actualites/iot-industriel-les-risques-de-cyberattaques-sont-en-hausse-39962234.htm" target="_blank" class="fw-bold">IoT Industriel : les risques de cyberattaques sont en hausse</a></td>
-                            <td><span class="badge bg-dark">ZDNet</span><br><small>Outil : Mention (Social)</small></td>
-                            <td>IoT Industriel / Attaques OT</td>
-                            <td>**Résumé :** Le rapport indique une augmentation de 45% des attaques ciblées sur les systèmes IIoT (Internet Industriel des Objets), souvent via des passerelles non sécurisées. <br>**Analyse :** L'enjeu n'est plus seulement personnel mais industriel. Les attaques sur l'IIoT peuvent paralyser des chaînes de production (systèmes OT). Le focus doit être mis sur la segmentation réseau et la sécurisation des "endpoints".</td>
+                            <td>20/11/2025</td>
+                            <td>2.1</td>
+                            <td>Ajout rapport ANSSI sécurité IoT + Edge AI industriel</td>
+                        </tr>
+                        <tr>
+                            <td>15/10/2025</td>
+                            <td>2.0</td>
+                            <td>Nouveau design responsive + accessibilité</td>
+                        </tr>
+                        <tr>
+                            <td>01/09/2025</td>
+                            <td>1.0</td>
+                            <td>Version initiale (ancien sujet assistants vocaux)</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <hr class="my-5">
-        <section class="mb-5">
-            <h2><i class="bi bi-journal-check me-2"></i> Instauration d'une Régularité (Plan d'Action)</h2>
-            <p class="mb-4">Comme recommandé, la veille doit être un processus continu. Voici le plan pour instaurer cette régularité :</p>
-            <ul>
-                <li>**Planification :** Sessions de veille dédiées de **30 minutes chaque lundi matin** pour l'analyse des alertes et des flux Feedly.</li>
-                <li>**Objectif de Fréquence :** Assurer la production d'un minimum de **5 fiches d'analyse** pertinentes par mois.</li>
-                <li>**Automatisation :** Maintenir les alertes et l'agrégateur paramétrés pour une collecte **automatisée** maximale.</li>
-            </ul>
-        </section>
-
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <a href="#" class="btn btn-success btn-lg shadow-sm">
-                <i class="bi bi-arrow-clockwise me-2"></i> Poursuivre la Veille IoT
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+            <a href="https://ton-site.netlify.app" class="btn btn-primary btn-lg">
+                <i class="bi bi-house-door-fill me-2"></i> Retour au portfolio
             </a>
-            <p class="text-muted small mb-0">Dernière mise à jour de la veille : **05 Décembre 2023**.</p>
+            <p class="text-muted small mb-0">Dernière mise à jour : 5 décembre 2025</p>
         </div>
+
     </main>
-    
-    <footer class="bg-dark text-white-50 py-4">
+
+    <footer>
         <div class="container text-center">
-            <p class="mb-0 small">© 2023 Veille Technologique BTS SIO | Projet de Culture et Communication | Tous droits réservés.</p>
+            <p class="small mb-0">
+                © 2025 – Veille Technologique BTS SIO SLAM – Ton Nom – Tous droits réservés
+            </p>
         </div>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
