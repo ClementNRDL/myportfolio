@@ -1,309 +1,1063 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio — Clément Casse</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- TAILWIND -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --accent: #22f2b8;
+      --accent-soft: rgba(34, 242, 184, 0.25);
+      --bg-deep: #020617;
+    }
+
     body {
-      font-family: system-ui, Arial, sans-serif;
-      background: #f8f9fa;
-      color: #212529;
+      background: #000;
+      color: #fff;
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      overflow-x: hidden;
     }
-    .hero {
-      padding: 5rem 1rem;
-      background: linear-gradient(90deg, rgba(13,110,253,.1), rgba(13,110,253,.05));
-      text-align: center;
+
+    /* Matrix Background */
+    #matrix-bg {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -50;
+      background: black;
     }
-    .hero h1 { font-size: 2.5rem; font-weight: 700; }
-    .section-title {
-      margin-bottom: 2rem;
-      font-weight: 600;
-      text-align: center;
+
+    .matrix-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -40;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(34, 242, 184, 0.12), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.12), transparent 55%);
+      mix-blend-mode: screen;
     }
-    .project-img {
-      height: 200px;
-      object-fit: cover;
-      border-radius: .5rem;
+
+    /* Header */
+    .app-header {
+      backdrop-filter: blur(20px);
+      background: rgba(0, 0, 0, 0.65);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
     }
-    footer {
-      background: #fff;
-      border-top: 1px solid #dee2e6;
-      text-align: center;
-      padding: 2rem 1rem;
-      margin-top: 3rem;
+
+    .nav-link {
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.8rem;
+      transition: color .3s ease;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #22f2b8, #38bdf8);
+      transition: width .25s ease-out;
+    }
+    .nav-link:hover::after,
+    .nav-link.nav-active::after {
+      width: 100%;
+    }
+
+    /* Panels */
+    .panel-deep {
+      background: radial-gradient(circle at top left, rgba(34, 242, 184, 0.08), transparent 60%),
+                  rgba(10, 15, 25, 0.95);
+      border-radius: 1.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 0.8),
+        0 30px 80px rgba(0, 0, 0, 0.85);
+    }
+
+    .panel-soft {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 1.25rem;
+      border: 1px solid rgba(51, 65, 85, 0.8);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85);
+      transition: transform .35s, box-shadow .35s;
+    }
+    .panel-soft:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 40px rgba(34, 242, 184, 0.3);
+    }
+
+    /* Animated titles */
+    .title-anim {
+      color: var(--accent);
+      text-shadow: 0 0 10px rgba(34, 242, 184, 0.5);
+      transition: .35s ease;
+    }
+    .title-anim:hover {
+      color: #22f2b8;
+      transform: scale(1.03);
+      text-shadow: 0 0 25px rgba(34, 242, 184, 1);
+    }
+
+    /* Reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      filter: blur(2px);
+      transition: opacity .7s, transform .7s, filter .7s;
+    }
+    .reveal-active {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
     }
   </style>
 </head>
-<body>
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="#">Clément Casse</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navmenu">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#accueil">Accueil</a></li>
-        <li class="nav-item"><a class="nav-link" href="#apropos">À propos</a></li>
-        <li class="nav-item"><a class="nav-link" href="#competences">Compétences</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projets">Projets</a></li>
-        <li class="nav-item"><a class="nav-link" href="#experience">Expérience</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        <li class="nav-item"><a class="nav-link" href="#comptes rendus">Comptes rendus</a></li>
-        <li class="nav-item">
-          <a href="cvc2.pdf" download class="btn btn-primary btn-sm ms-lg-3">Télécharger le CV</a>
-          <a href="veille.html" class="btn btn-primary btn-sm ms-lg-3">Veille technologique</a>
-        </li>
+<body class="min-h-screen">
+
+<!-- MATRIX BACKGROUND -->
+<canvas id="matrix-bg"></canvas>
+<div class="matrix-overlay"></div>
+
+<!-- HEADER -->
+<header class="app-header sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="h-10 w-10 rounded-full border border-emerald-400/70 bg-emerald-400/10 flex items-center justify-center shadow-[0_0_20px_rgba(34,242,184,0.6)]">
+        <span class="text-[0.7rem] tracking-[0.25em] uppercase">CC</span>
+      </div>
+      <span class="tracking-[0.25em] text-xs uppercase text-slate-300">
+        Portfolio • BTS SIO
+      </span>
+    </div>
+
+    <nav class="hidden md:flex items-center gap-8 text-slate-300 font-medium">
+      <a href="#accueil" class="nav-link">Accueil</a>
+      <a href="#apropos" class="nav-link">À propos</a>
+      <a href="#competences" class="nav-link">Compétences</a>
+      <a href="#projets" class="nav-link">Projets</a>
+      <a href="#experience" class="nav-link">Expérience</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <a href="#comptes-rendus" class="nav-link">Documents</a>
+
+      <a href="veille.html" class="px-4 py-2 bg-emerald-400 text-slate-900 rounded-full text-xs tracking-[0.2em] uppercase shadow-lg hover:bg-emerald-300 transition">
+        Veille Tech
+      </a>
+    </nav>
+  </div>
+</header>
+<!-- HERO SECTION -->
+<section id="accueil" class="relative mt-10 md:mt-16 mb-20 reveal">
+  <div class="max-w-7xl mx-auto px-6 grid gap-10 lg:grid-cols-[1.4fr,1fr] items-center">
+
+    <!-- LEFT : INTRO + TITRE + CALL TO ACTION -->
+    <div class="space-y-7">
+      <p class="text-[0.7rem] tracking-[0.25em] uppercase text-emerald-300/80">
+        Portfolio • Développement • Cybersécurité
+      </p>
+
+      <h1 class="title-anim text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight">
+        Bienvenue, je suis <span class="text-white block">Clément Casse</span>
+        <span class="block text-slate-300 text-xl sm:text-2xl mt-3">
+          Développeur web & Étudiant BTS SIO
+        </span>
+      </h1>
+
+      <p class="max-w-xl text-slate-300 text-sm sm:text-base">
+        Passionné par les technologies, la cybersécurité, le développement web et
+        l’automatisation. J’aime concevoir des interfaces modernes, élégantes et
+        fonctionnelles — comme ce portfolio entièrement repensé avec un design
+        professionnel.
+      </p>
+
+      <div class="flex flex-wrap gap-4 pt-3">
+        <a href="#projets"
+           class="px-6 py-2.5 rounded-full bg-emerald-400 text-black text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase shadow-[0_0_20px_rgba(34,242,184,0.7)] hover:bg-emerald-300 transition">
+          Voir mes projets
+        </a>
+
+        <a href="cvc2.pdf" download
+           class="px-5 py-2.5 rounded-full border border-emerald-300 text-emerald-200 text-xs sm:text-sm tracking-[0.2em] uppercase hover:bg-emerald-300 hover:text-black transition">
+          Télécharger mon CV
+        </a>
+      </div>
+
+      <!-- KPIs (chiffres animés) -->
+      <div class="grid grid-cols-3 gap-5 max-w-md pt-4 text-center">
+        <div class="panel-soft py-4">
+          <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">Projets</p>
+          <p class="kpi-number text-xl font-semibold" data-kpi-target="15">0</p>
+        </div>
+        <div class="panel-soft py-4">
+          <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">Compétences</p>
+          <p class="kpi-number text-xl font-semibold" data-kpi-target="12">0</p>
+        </div>
+        <div class="panel-soft py-4">
+          <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">Documents</p>
+          <p class="kpi-number text-xl font-semibold" data-kpi-target="24">0</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT : CARD VISUELLE -->
+    <div class="panel-deep relative overflow-hidden p-6 aspect-[4/3] lg:aspect-[5/4]">
+      <div class="absolute inset-0 bg-gradient-to-tr from-emerald-400/20 via-transparent to-sky-500/20 opacity-80"></div>
+      
+      <div class="relative z-10 h-full flex flex-col justify-center text-center lg:text-left space-y-4">
+        <span class="badge-pill border-emerald-400/60 text-emerald-200 w-fit mx-auto lg:mx-0">
+          Portfolio 2025
+        </span>
+
+        <h2 class="text-xl font-semibold text-white">
+          Un design moderne, animé<br>et entièrement personnalisé
+        </h2>
+
+        <p class="text-sm text-slate-300">
+          Inspiré de ta veille technologique, ce portfolio adopte un style « neon deep panel »
+          avec glow, animations, transitions, et composants premium.
+        </p>
+
+        <ul class="text-xs text-slate-400 space-y-1 list-disc list-inside">
+          <li>Effet Matrix dynamique</li>
+          <li>Animations au scroll</li>
+          <li>Interface futuriste</li>
+          <li>Blocs réactifs sur survol</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MAIN WRAPPER -->
+<main class="max-w-7xl mx-auto px-6 pb-24">
+  <!-- À PROPOS -->
+  <section id="apropos" class="mb-16 reveal">
+    <div class="panel-deep px-6 sm:px-10 py-8 sm:py-10">
+      <div class="grid gap-8 lg:grid-cols-[1.4fr,1fr] items-start">
+
+        <!-- Texte principal -->
+        <div class="space-y-5">
+          <div class="flex items-center gap-3 mb-2">
+            <h2 class="title-anim text-2xl sm:text-3xl font-semibold text-emerald-300">
+              À propos de moi
+            </h2>
+            <span class="badge-pill border-emerald-400/70 text-emerald-200 text-[0.65rem]">
+              Profil
+            </span>
+          </div>
+
+          <p class="text-sm sm:text-base text-slate-200">
+            Étudiant en <strong>BTS Services Informatiques aux Organisations</strong>, je suis passionné par
+            le développement web, les systèmes d’information et la cybersécurité. J’aime créer des interfaces
+            modernes, claires et performantes, tout en gardant une approche structurée et professionnelle.
+          </p>
+
+          <p class="text-sm sm:text-base text-slate-200">
+            Curieux et autonome, je m’adapte rapidement à de nouveaux outils et environnements. Ce portfolio
+            présente mes projets, mes compétences techniques, ainsi que différents travaux réalisés durant
+            ma formation.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-4 pt-4 text-sm">
+            <div class="panel-soft px-4 py-3">
+              <p class="text-xs uppercase tracking-[0.2em] text-slate-400 mb-1">Contact</p>
+              <ul class="space-y-1 text-slate-200">
+                <li><span class="text-slate-400">Email :</span>
+                  <a href="mailto:casseclement.8@outlook.fr" class="text-emerald-300 hover:underline">
+                    casseclement.8@outlook.fr
+                  </a>
+                </li>
+                <li><span class="text-slate-400">Téléphone :</span> 06.21.30.23.82</li>
+                <li><span class="text-slate-400">Localisation :</span> 05000, Gap</li>
+              </ul>
+            </div>
+
+            <div class="panel-soft px-4 py-3">
+              <p class="text-xs uppercase tracking-[0.2em] text-slate-400 mb-1">Profil</p>
+              <ul class="space-y-1 text-slate-200 text-sm">
+                <li>🧠 Curieux & autonome</li>
+                <li>💻 Intérêt pour le web & l’IT</li>
+                <li>🔐 Sensibilité cybersécurité</li>
+                <li>🤝 Esprit d’équipe & sérieux</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Encadré photo / identité -->
+        <div class="panel-soft px-5 py-6 flex flex-col items-center text-center gap-4">
+          <div class="relative">
+            <div class="absolute -inset-1 rounded-full bg-emerald-400/30 blur-xl opacity-60"></div>
+            <img
+              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=60"
+              alt="Portrait"
+              class="relative w-32 h-32 rounded-full object-cover border border-emerald-300 shadow-[0_0_30px_rgba(34,242,184,0.7)]"
+            >
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-slate-50">Clément Casse</h3>
+            <p class="text-xs uppercase tracking-[0.2em] text-emerald-300 mt-1">
+              Étudiant BTS SIO & Développeur web
+            </p>
+          </div>
+          <p class="text-xs text-slate-300">
+            “Construire des projets concrets et bien structurés, tout en améliorant en continu mes compétences.”
+          </p>
+          <div class="flex flex-wrap justify-center gap-2 text-[0.7rem] text-slate-200">
+            <span class="badge-pill border-sky-400/70 text-sky-300">Front-end</span>
+            <span class="badge-pill border-emerald-400/70 text-emerald-300">BTS SIO</span>
+            <span class="badge-pill border-fuchsia-400/70 text-fuchsia-300">Projets scolaires</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPÉTENCES -->
+  <section id="competences" class="mb-16 reveal">
+    <div class="flex items-center justify-between gap-4 mb-6">
+      <h2 class="title-anim text-2xl sm:text-3xl font-semibold text-emerald-300">
+        Compétences
+      </h2>
+      <span class="badge-pill border-sky-400/70 text-sky-300 text-[0.65rem]">
+        Technique
+      </span>
+    </div>
+
+    <div class="grid gap-6 lg:grid-cols-2">
+      <!-- Bloc langages / web -->
+      <div class="panel-deep px-5 sm:px-7 py-6 space-y-4">
+        <h3 class="text-lg font-semibold text-slate-50 mb-1">Développement & Web</h3>
+        <p class="text-sm text-slate-300">
+          Compétences techniques acquises en formation et à travers différents projets personnels et scolaires.
+        </p>
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <span class="text-slate-300">HTML / CSS</span>
+              <span class="text-emerald-300">Avancé</span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+              <div class="h-full bg-emerald-400" style="width: 90%;"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <span class="text-slate-300">JavaScript</span>
+              <span class="text-emerald-300">Intermédiaire</span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+              <div class="h-full bg-emerald-400" style="width: 80%;"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <span class="text-slate-300">Bootstrap</span>
+              <span class="text-emerald-300">Confirmé</span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+              <div class="h-full bg-emerald-400" style="width: 75%;"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <span class="text-slate-300">Anglais</span>
+              <span class="text-emerald-300">Niveau B1/B2</span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+              <div class="h-full bg-sky-400" style="width: 70%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bloc soft skills / outils -->
+      <div class="panel-deep px-5 sm:px-7 py-6 space-y-4">
+        <h3 class="text-lg font-semibold text-slate-50 mb-1">Outils & Soft skills</h3>
+        <p class="text-sm text-slate-300">
+          Au-delà des langages, je m’appuie sur des outils et qualités utiles pour travailler en conditions réelles.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+          <div class="panel-soft px-4 py-3">
+            <h4 class="text-xs uppercase tracking-[0.2em] text-slate-400 mb-2">Outils</h4>
+            <ul class="space-y-1 text-slate-200 text-[0.9rem]">
+              <li>• VS Code</li>
+              <li>• Git / GitHub</li>
+              <li>• Navigateur DevTools</li>
+              <li>• Suite Office</li>
+            </ul>
+          </div>
+          <div class="panel-soft px-4 py-3">
+            <h4 class="text-xs uppercase tracking-[0.2em] text-slate-400 mb-2">Soft skills</h4>
+            <ul class="space-y-1 text-slate-200 text-[0.9rem]">
+              <li>• Rigueur & organisation</li>
+              <li>• Sens du détail</li>
+              <li>• Capacité à apprendre vite</li>
+              <li>• Travail en équipe</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- PROJETS -->
+<section id="projets" class="mb-20 reveal">
+  <div class="flex items-center justify-between gap-4 mb-6">
+    <h2 class="title-anim text-2xl sm:text-3xl font-semibold text-emerald-300">
+      Projets réalisés
+    </h2>
+    <span class="badge-pill border-fuchsia-400/70 text-fuchsia-300 text-[0.65rem]">
+      Portfolio
+    </span>
+  </div>
+
+  <p class="text-slate-300 text-sm sm:text-base max-w-2xl mb-8">
+    Voici une sélection de projets conçus durant mon BTS SIO ou développés à titre personnel.
+    Chaque carte inclut une description détaillée, les technologies utilisées et un lien de démonstration
+    lorsqu'il existe.
+  </p>
+
+  <!-- GRID -->
+  <div class="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+
+    <!-- PROJET 1 -->
+    <article class="panel-soft card-hover overflow-hidden">
+      <div class="relative">
+        <img src="siteweb.jpg" alt="Site vitrine"
+             class="w-full h-48 object-cover opacity-90 hover:opacity-100 transition">
+        <div class="absolute inset-0 bg-gradient-to-tr from-emerald-300/20 to-transparent"></div>
+      </div>
+
+      <div class="p-5 space-y-3">
+        <h3 class="text-lg font-semibold text-emerald-300">Site vitrine</h3>
+        <p class="text-sm text-slate-300">
+          Création d’un site vitrine responsive pour une activité locale, mettant en avant simplicité,
+          rapidité et accessibilité.
+        </p>
+
+        <div class="flex flex-wrap gap-2 text-[0.7rem]">
+          <span class="badge-pill border-emerald-400/70 text-emerald-300">HTML/CSS</span>
+          <span class="badge-pill border-sky-400/70 text-sky-300">Responsive</span>
+        </div>
+
+        <button data-modal="#modal-proj1"
+                class="mt-3 px-4 py-1.5 text-xs rounded-full border border-emerald-300 text-emerald-200 hover:bg-emerald-300 hover:text-black transition">
+          Détails
+        </button>
+      </div>
+    </article>
+
+    <!-- PROJET 2 -->
+    <article class="panel-soft card-hover overflow-hidden">
+      <div class="relative">
+        <img src="puzzle.jpg" alt="Application web"
+             class="w-full h-48 object-cover opacity-90 hover:opacity-100 transition">
+        <div class="absolute inset-0 bg-gradient-to-tr from-sky-300/20 to-transparent"></div>
+      </div>
+
+      <div class="p-5 space-y-3">
+        <h3 class="text-lg font-semibold text-emerald-300">Application web</h3>
+        <p class="text-sm text-slate-300">
+          Application prototype de gestion d’inventaire intégrant authentification, CRUD et interface optimisée.
+        </p>
+
+        <div class="flex flex-wrap gap-2 text-[0.7rem]">
+          <span class="badge-pill border-emerald-400/70 text-emerald-300">JavaScript</span>
+          <span class="badge-pill border-sky-400/70 text-sky-300">Gestion</span>
+          <span class="badge-pill border-fuchsia-400/70 text-fuchsia-300">Prototype</span>
+        </div>
+
+        <button data-modal="#modal-proj2"
+                class="mt-3 px-4 py-1.5 text-xs rounded-full border border-emerald-300 text-emerald-200 hover:bg-emerald-300 hover:text-black transition">
+          Détails
+        </button>
+      </div>
+    </article>
+
+    <!-- PROJET 3 -->
+    <article class="panel-soft card-hover overflow-hidden">
+      <div class="relative">
+        <img src="blocnote.jpg" alt="Bloc-notes"
+             class="w-full h-48 object-cover opacity-90 hover:opacity-100 transition">
+        <div class="absolute inset-0 bg-gradient-to-tr from-fuchsia-300/15 to-transparent"></div>
+      </div>
+
+      <div class="p-5 space-y-3">
+        <h3 class="text-lg font-semibold text-emerald-300">Bloc-notes en ligne</h3>
+        <p class="text-sm text-slate-300">
+          Application simple et pratique permettant de sauvegarder des notes personnelles dans
+          l’interface web.
+        </p>
+
+        <div class="flex flex-wrap gap-2 text-[0.7rem]">
+          <span class="badge-pill border-emerald-400/70 text-emerald-300">JavaScript</span>
+          <span class="badge-pill border-sky-400/70 text-sky-300">LocalStorage</span>
+        </div>
+
+        <button data-modal="#modal-proj3"
+                class="mt-3 px-4 py-1.5 text-xs rounded-full border border-emerald-300 text-emerald-200 hover:bg-emerald-300 hover:text-black transition">
+          Détails
+        </button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- ===========================  MODALES PROJETS  ========================== -->
+<!-- ======================================================================= -->
+
+<!-- MODAL 1 -->
+<div id="modal-proj1" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
+  <div class="panel-deep max-w-lg w-full p-6 relative">
+    <button class="absolute top-3 right-3 text-slate-300 hover:text-white text-xl" data-close>&times;</button>
+    <h3 class="text-xl font-semibold text-emerald-300 mb-3">Site vitrine</h3>
+    <p class="text-slate-300 text-sm mb-4">
+      Site responsive réalisé pour une activité locale. Structure claire, design épuré,
+      formulaire de contact, SEO basique.
+    </p>
+    <ul class="text-sm text-slate-400 list-disc list-inside space-y-1">
+      <li>HTML / CSS pur</li>
+      <li>Responsive (mobile-first)</li>
+      <li>Images optimisées</li>
+      <li>Déploiement simple</li>
+    </ul>
+  </div>
+</div>
+
+<!-- MODAL 2 -->
+<div id="modal-proj2" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
+  <div class="panel-deep max-w-lg w-full p-6 relative">
+    <button class="absolute top-3 right-3 text-slate-300 hover:text-white text-xl" data-close>&times;</button>
+    <h3 class="text-xl font-semibold text-emerald-300 mb-3">Application web</h3>
+    <p class="text-slate-300 text-sm mb-4">
+      Gestion complète d'inventaire : création, modification, suppression, authentification
+      utilisateur, interface intuitive.
+    </p>
+    <ul class="text-sm text-slate-400 list-disc list-inside space-y-1">
+      <li>JavaScript + DOM</li>
+      <li>Connexion / Authentification</li>
+      <li>CRUD complet</li>
+      <li>Interface responsive moderne</li>
+    </ul>
+  </div>
+</div>
+
+<!-- MODAL 3 -->
+<div id="modal-proj3" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
+  <div class="panel-deep max-w-lg w-full p-6 relative">
+    <button class="absolute top-3 right-3 text-slate-300 hover:text-white text-xl" data-close>&times;</button>
+    <h3 class="text-xl font-semibold text-emerald-300 mb-3">Bloc-notes en ligne</h3>
+    <p class="text-slate-300 text-sm mb-4">
+      Petit outil de prise de notes utilisant le stockage local du navigateur. Rapide, simple,
+      intuitif.
+    </p>
+    <ul class="text-sm text-slate-400 list-disc list-inside space-y-1">
+      <li>JavaScript</li>
+      <li>LocalStorage</li>
+      <li>Interface minimaliste</li>
+    </ul>
+  </div>
+</div>
+<!-- EXPÉRIENCE PROFESSIONNELLE -->
+<section id="experience" class="mb-20 reveal">
+
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="title-anim text-2xl sm:text-3xl font-semibold text-emerald-300">
+      Expérience professionnelle
+    </h2>
+    <span class="badge-pill border-emerald-400/70 text-emerald-300 text-[0.65rem]">
+      Parcours
+    </span>
+  </div>
+
+  <div class="grid gap-6 lg:grid-cols-2">
+
+    <!-- Expérience 1 -->
+    <div class="panel-deep px-6 py-6 space-y-3 card-hover">
+      <h3 class="text-lg font-semibold text-white">Technicien — Reims (2024-2025)</h3>
+      <p class="text-sm text-slate-300">
+        Maintenance préventive et corrective, montage, réglages techniques et suivi opérationnel.
+      </p>
+      <ul class="text-sm text-slate-400 space-y-1 list-disc list-inside">
+        <li>Diagnostic technique</li>
+        <li>Montage & réglages de machines</li>
+        <li>Rigueur et gestion du temps</li>
+      </ul>
+      <div class="flex flex-wrap gap-2 pt-2">
+        <span class="badge-pill border-emerald-400/70 text-emerald-300 text-xs">Maintenance</span>
+        <span class="badge-pill border-sky-400/70 text-sky-300 text-xs">Technicien</span>
+      </div>
+    </div>
+
+    <!-- Expérience 2 -->
+    <div class="panel-deep px-6 py-6 space-y-3 card-hover">
+      <h3 class="text-lg font-semibold text-white">Livreur — Reims (2023-2024)</h3>
+      <p class="text-sm text-slate-300">
+        Gestion des livraisons, optimisation des itinéraires et relation clientèle.
+      </p>
+      <ul class="text-sm text-slate-400 space-y-1 list-disc list-inside">
+        <li>Organisation et autonomie</li>
+        <li>Gestion de trajets optimisés</li>
+        <li>Service client et communication</li>
+      </ul>
+      <div class="flex flex-wrap gap-2 pt-2">
+        <span class="badge-pill border-fuchsia-400/70 text-fuchsia-300 text-xs">Relation client</span>
+        <span class="badge-pill border-sky-400/70 text-sky-300 text-xs">Logistique</span>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- CONTACT -->
+<section id="contact" class="mb-20 reveal">
+
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="title-anim text-2xl sm:text-3xl font-semibold text-emerald-300">
+      Me contacter
+    </h2>
+    <span class="badge-pill border-sky-400/70 text-sky-300 text-[0.65rem]">
+      Formulaire
+    </span>
+  </div>
+
+  <div class="grid gap-8 lg:grid-cols-[1fr,0.8fr]">
+
+    <!-- Formulaire modernisé -->
+    <form onsubmit="return handleContact(event)"
+          class="panel-deep px-8 py-8 space-y-5">
+
+      <div>
+        <label class="block text-sm text-slate-300 mb-1">Nom</label>
+        <input id="cname" type="text"
+               class="w-full px-4 py-2 bg-slate-900/60 border border-slate-700 rounded-lg text-slate-200 focus:border-emerald-400 outline-none transition"
+               required>
+      </div>
+
+      <div>
+        <label class="block text-sm text-slate-300 mb-1">Email</label>
+        <input id="cemail" type="email"
+               class="w-full px-4 py-2 bg-slate-900/60 border border-slate-700 rounded-lg text-slate-200 focus:border-emerald-400 outline-none transition"
+               required>
+      </div>
+
+      <div>
+        <label class="block text-sm text-slate-300 mb-1">Message</label>
+        <textarea id="cmessage" rows="4"
+                  class="w-full px-4 py-2 bg-slate-900/60 border border-slate-700 rounded-lg text-slate-200 focus:border-emerald-400 outline-none transition"
+                  required></textarea>
+      </div>
+
+      <button class="px-6 py-2.5 rounded-full bg-emerald-400 text-black font-semibold text-xs tracking-[0.2em] uppercase shadow-lg hover:bg-emerald-300 transition">
+        Envoyer
+      </button>
+    </form>
+
+
+    <!-- Carte profil / Infos rapides -->
+    <div class="panel-soft px-6 py-8 flex flex-col items-center text-center space-y-4">
+
+      <div class="relative">
+        <div class="absolute -inset-1 bg-emerald-400/30 rounded-full blur-xl"></div>
+        <img
+          src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=60"
+          class="relative w-28 h-28 rounded-full border border-emerald-300 object-cover shadow-[0_0_20px_rgba(34,242,184,0.7)]"
+          alt="Portrait"
+        >
+      </div>
+
+      <h3 class="text-lg font-semibold text-white">Clément Casse</h3>
+      <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">Développeur Web • BTS SIO</p>
+
+      <div class="space-y-2 text-slate-300 text-sm pt-4">
+        <p><strong>Email :</strong> <a class="text-emerald-300 hover:underline" href="mailto:casseclement.8@outlook.fr">casseclement.8@outlook.fr</a></p>
+        <p><strong>Téléphone :</strong> 06.21.30.23.82</p>
+        <p><strong>Adresse :</strong> 05000, Gap</p>
+      </div>
+
+      <div class="flex gap-3 pt-4">
+        <a href="https://github.com/ClementNRDL" target="_blank"
+           class="px-4 py-1.5 border border-slate-600 rounded-full text-xs text-slate-200 hover:border-emerald-300 hover:text-emerald-300 transition">
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/tonprofil" target="_blank"
+           class="px-4 py-1.5 border border-sky-400 rounded-full text-xs text-sky-300 hover:bg-sky-300 hover:text-black transition">
+          LinkedIn
+        </a>
+        <a href="https://wa.me/33621302382" target="_blank"
+           class="px-4 py-1.5 border border-green-400 rounded-full text-xs text-green-300 hover:bg-green-300 hover:text-black transition">
+          WhatsApp
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- DOCUMENTS / COMPTES RENDUS -->
+<section id="comptes-rendus" class="mb-24 reveal">
+
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="title-anim text-2xl sm:text-3xl font-semibold text-emerald-300">
+      Comptes rendus & Documents
+    </h2>
+    <span class="badge-pill border-fuchsia-400/70 text-fuchsia-300 text-[0.65rem]">
+      Ressources
+    </span>
+  </div>
+
+  <p class="text-slate-300 text-sm sm:text-base max-w-3xl mb-8">
+    Ensemble des documents réalisés durant ma formation : travaux pratiques, comptes rendus, analyses,
+    exercices, ateliers HTML/CSS, Java, cybersécurité, etc.  
+    Cliquez sur un document pour l’ouvrir.
+  </p>
+
+  <!-- GRID DOCUMENTS -->
+  <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+
+    <!-- Exemple 1 -->
+    <a href="compterenduhtml5.pdf" target="_blank"
+       class="panel-soft px-5 py-5 flex gap-4 hover:shadow-[0_0_30px_rgba(34,242,184,0.5)] transition">
+      <div class="text-emerald-300 text-3xl">📄</div>
+      <div>
+        <h3 class="text-sm font-semibold text-white">TD1 HTML — Atelier 02</h3>
+        <p class="text-xs text-slate-400">Compte rendu — bases HTML5</p>
+      </div>
+    </a>
+
+    <a href="logicieldiagnostic8.pdf" target="_blank"
+       class="panel-soft px-5 py-5 flex gap-4 hover:shadow-[0_0_30px_rgba(34,242,184,0.5)] transition">
+      <div class="text-sky-300 text-3xl">🧰</div>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Logiciel de diagnostic</h3>
+        <p class="text-xs text-slate-400">TP02 — Analyse & rapport</p>
+      </div>
+    </a>
+
+    <a href="cartemere5.pdf" target="_blank"
+       class="panel-soft px-5 py-5 flex gap-4 hover:shadow-[0_0_30px_rgba(34,242,184,0.5)] transition">
+      <div class="text-fuchsia-300 text-3xl">🖥️</div>
+      <div>
+        <h3 class="text-sm font-semibold text-white">La carte mère</h3>
+        <p class="text-xs text-slate-400">Bloc 01 — Documentation</p>
+      </div>
+    </a>
+
+    <a href="Cartementale.pdf" target="_blank"
+       class="panel-soft px-5 py-5 flex gap-4 hover:shadow-[0_0_30px_rgba(34,242,184,0.5)] transition">
+      <div class="text-yellow-300 text-3xl">🧠</div>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Carte mentale HTML</h3>
+        <p class="text-xs text-slate-400">Atelier 02 — TD1</p>
+      </div>
+    </a>
+
+    <a href="index.txt" target="_blank"
+       class="panel-soft px-5 py-5 flex gap-4 hover:shadow-[0_0_30px_rgba(34,242,184,0.5)] transition">
+      <div class="text-emerald-300 text-3xl">📄</div>
+      <div>
+        <h3 class="text-sm font-semibold text-white">CV HTML</h3>
+        <p class="text-xs text-slate-400">Structure web du CV</p>
+      </div>
+    </a>
+
+    <a href="captureecran.pdf" target="_blank"
+       class="panel-soft px-5 py-5 flex gap-4 hover:shadow-[0_0_30px_rgba(34,242,184,0.5)] transition">
+      <div class="text-blue-300 text-3xl">📷</div>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Documentation capturée</h3>
+        <p class="text-xs text-slate-400">Rapport complet avec images</p>
+      </div>
+    </a>
+
+    <!-- On continue la liste (tu peux en ajouter autant que nécessaire) -->
+
+    <a href="premierspasjava.pdf" target="_blank"
+       class="panel-soft px-5 py-5 flex gap-4 hover:shadow-[0_0_30px_rgba(34,242,184,0.5)] transition">
+      <div class="text-orange-300 text-3xl">☕</div>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Mes premiers pas en Java</h3>
+        <p class="text-xs text-slate-400">Découverte langage Java</p>
+      </div>
+    </a>
+
+    <a href="tpangrybirds.pdf" target="_blank"
+       class="panel-soft px-5 py-5 flex gap-4 hover:shadow-[0_0_30px_rgba(34,242,184,0.5)] transition">
+      <div class="text-red-300 text-3xl">🎮</div>
+      <div>
+        <h3 class="text-sm font-semibold text-white">TP Angry Birds</h3>
+        <p class="text-xs text-slate-400">Programmation par blocs</p>
+      </div>
+    </a>
+
+    <a href="CSS-3.pdf" target="_blank"
+       class="panel-soft px-5 py-5 flex gap-4 hover:shadow-[0_0_30px_rgba(34,242,184,0.5)] transition">
+      <div class="text-purple-300 text-3xl">🎨</div>
+      <div>
+        <h3 class="text-sm font-semibold text-white">TP CSS — Mise en forme</h3>
+        <p class="text-xs text-slate-400">Styles & feuille CSS</p>
+      </div>
+    </a>
+
+    <a href="tpjava3.pdf" target="_blank"
+       class="panel-soft px-5 py-5 flex gap-4 hover:shadow-[0_0_30px_rgba(34,242,184,0.5)] transition">
+      <div class="text-yellow-300 text-3xl">📘</div>
+      <div>
+        <h3 class="text-sm font-semibold text-white">TP Java — Exercices 3</h3>
+        <p class="text-xs text-slate-400">Object & méthodes</p>
+      </div>
+    </a>
+
+    <a href="CSSavance1.pdf" target="_blank"
+       class="panel-soft px-5 py-5 flex gap-4 hover:shadow-[0_0_30px_rgba(34,242,184,0.5)] transition">
+      <div class="text-indigo-300 text-3xl">✨</div>
+      <div>
+        <h3 class="text-sm font-semibold text-white">CSS avancé — Partie 1</h3>
+        <p class="text-xs text-slate-400">Sélecteurs & animations</p>
+      </div>
+    </a>
+
+    <a href="Cybersecuritetp.pdf" target="_blank"
+       class="panel-soft px-5 py-5 flex gap-4 hover:shadow-[0_0_30px_rgba(34,242,184,0.5)] transition">
+      <div class="text-red-400 text-3xl">🔐</div>
+      <div>
+        <h3 class="text-sm font-semibold text-white">TP Cybersécurité</h3>
+        <p class="text-xs text-slate-400">Analyse & bonnes pratiques</p>
+      </div>
+    </a>
+
+    <!-- Continue la liste comme nécessaire -->
+    
+  </div>
+
+</section>
+<!-- FOOTER PREMIUM -->
+<footer class="mt-24 pt-12 pb-8 border-t border-slate-700/50 bg-black/40 backdrop-blur-sm reveal">
+
+  <div class="max-w-7xl mx-auto px-6 grid gap-10 md:grid-cols-3">
+
+    <!-- COL 1 : Identité -->
+    <div class="space-y-4">
+      <h3 class="text-lg font-semibold text-emerald-300">Clément Casse</h3>
+      <p class="text-sm text-slate-400 leading-relaxed">
+        Étudiant en BTS SIO — Développeur web & passionné par l’informatique, le web design moderne
+        et la cybersécurité.
+      </p>
+      <div class="flex flex-wrap gap-2 pt-2">
+        <span class="badge-pill border-emerald-400/70 text-emerald-300 text-[0.65rem]">Web</span>
+        <span class="badge-pill border-sky-400/70 text-sky-300 text-[0.65rem]">BTS SIO</span>
+        <span class="badge-pill border-purple-400/70 text-purple-300 text-[0.65rem]">Cybersécurité</span>
+      </div>
+    </div>
+
+    <!-- COL 2 : Navigation -->
+    <div class="space-y-4">
+      <h3 class="text-lg font-semibold text-emerald-300">Navigation</h3>
+      <ul class="space-y-2 text-sm text-slate-300">
+        <li><a href="#accueil" class="hover:text-emerald-300 transition">Accueil</a></li>
+        <li><a href="#apropos" class="hover:text-emerald-300 transition">À propos</a></li>
+        <li><a href="#competences" class="hover:text-emerald-300 transition">Compétences</a></li>
+        <li><a href="#projets" class="hover:text-emerald-300 transition">Projets</a></li>
+        <li><a href="#experience" class="hover:text-emerald-300 transition">Expérience</a></li>
+        <li><a href="#contact" class="hover:text-emerald-300 transition">Contact</a></li>
+        <li><a href="#comptes-rendus" class="hover:text-emerald-300 transition">Documents</a></li>
       </ul>
     </div>
+
+    <!-- COL 3 : Réseaux -->
+    <div class="space-y-4">
+      <h3 class="text-lg font-semibold text-emerald-300">Réseaux</h3>
+      <p class="text-sm text-slate-400">
+        Retrouvez-moi sur mes plateformes professionnelles :
+      </p>
+
+      <div class="flex flex-col gap-3">
+        <a href="https://github.com/ClementNRDL"
+           target="_blank"
+           class="flex items-center gap-3 px-4 py-2 rounded-lg border border-slate-700 hover:border-emerald-300 hover:bg-slate-900/40 transition">
+          <span class="text-xl">🐙</span> <span>GitHub</span>
+        </a>
+
+        <a href="https://www.linkedin.com/in/tonprofil"
+           target="_blank"
+           class="flex items-center gap-3 px-4 py-2 rounded-lg border border-sky-500 hover:bg-sky-500/20 transition">
+          <span class="text-xl">🔗</span> <span>LinkedIn</span>
+        </a>
+
+        <a href="veille.html"
+           class="flex items-center gap-3 px-4 py-2 rounded-lg border border-emerald-400 hover:bg-emerald-400/20 transition">
+          <span class="text-xl">📡</span> <span>Veille Technologique</span>
+        </a>
+      </div>
+    </div>
+
   </div>
-</nav>
 
-<!-- Hero -->
-<header class="hero" id="accueil">
-  <h1> <span class="text-primary">Clément Casse</span></h1>
-  <p class="lead">Étudiant en BTS SIO & Développeur web</p>
-  <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=60"
-       alt="Champ de blé"
-       class="rounded-circle mt-3"
-       width="140"
-       height="140">
-</header>
-
-<main class="container py-5">
-
-  <!-- À propos -->
-  <section id="apropos" class="mb-5">
-    <h2 class="section-title">À propos de moi</h2>
-    <p>
-      Étudiant en BTS Services Informatiques aux Organisations, je suis passionné par les technologies et le monde numérique. 
-      Je possède de l'expérience en informatique et en développement. 
-      Je m’adapte rapidement et aime travailler sur des projets variés.
-    </p>
-    <ul class="list-unstyled">
-      <li><strong>Email :</strong> <a href="mailto:casseclement.8@outlook.fr">casseclement.8@outlook.fr</a></li>
-      <li><strong>Téléphone :</strong> 06.21.30.23.82</li>
-      <li><strong>Adresse :</strong> 05000, Gap</li>
-    </ul>
-  </section>
-
-  <!-- Compétences -->
-  <section id="competences" class="mb-5">
-    <h2 class="section-title">Compétences</h2>
-    <div class="mb-3">
-      <label>HTML / CSS</label>
-      <div class="progress"><div class="progress-bar bg-primary" style="width:90%"></div></div>
-    </div>
-    <div class="mb-3">
-      <label>JavaScript</label>
-      <div class="progress"><div class="progress-bar bg-primary" style="width:80%"></div></div>
-    </div>
-    <div class="mb-3">
-      <label>Bootstrap</label>
-      <div class="progress"><div class="progress-bar bg-primary" style="width:75%"></div></div>
-    </div>
-    <div class="mb-3">
-      <label>Anglais</label>
-      <div class="progress"><div class="progress-bar bg-info" style="width:70%"></div></div>
-    </div>
-  </section>
-
-  <!-- Projets -->
-  <section id="projets" class="mb-5">
-    <h2 class="section-title">Projets</h2>
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card">
-          <img src="siteweb.jpg" class="project-img card-img-top" alt="Projet site vitrine">
-          <div class="card-body">
-            <h5 class="card-title">Site vitrine</h5>
-            <p class="card-text">Création d’un site vitrine responsive pour une activité locale.</p>
-            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#proj1">Détails</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <img src="puzzle.jpg" class="project-img card-img-top" alt="Projet application web">
-          <div class="card-body">
-            <h5 class="card-title">Application web</h5>
-            <p class="card-text">Prototype de gestion d’inventaire avec authentification.</p>
-            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#proj2">Détails</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <img src="blocnote.jpg" class="project-img card-img-top" alt="Projet bloc-notes en ligne">
-          <div class="card-body">
-            <h5 class="card-title">Application bloc-notes </h5>
-            <p class="card-text">Application web permettant d'enregistrer des notes personnelles .</p>
-            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#proj3">Détails</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Expérience -->
-  <section id="experience" class="mb-5">
-    <h2 class="section-title">Expérience professionnelle</h2>
-    <ul class="list-group">
-      <li class="list-group-item">
-        <strong>Technicien</strong> — Reims (2024-2025) <br>
-        Maintenance préventive et correctives, montage et réglages.
-      </li>
-      <li class="list-group-item">
-        <strong>Livreur</strong> — Reims (2023-2024) <br>
-        Gestion des livraisons, itinéraires et relation client.
-      </li>
-    </ul>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="mb-5">
-    <h2 class="section-title">Contact</h2>
-    <form onsubmit="return handleContact(event)">
-      <div class="mb-3">
-        <label class="form-label">Nom</label>
-        <input type="text" class="form-control" id="cname" required>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Email</label>
-        <input type="email" class="form-control" id="cemail" required>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Message</label>
-        <textarea class="form-control" id="cmessage" rows="4" required></textarea>
-      </div>
-      <button class="btn btn-primary">Envoyer</button>
-    </form>
-    <div class="mt-4">
-      <a href="https://github.com/ClementNRDL" class="btn btn-dark btn-sm me-2" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/tonprofil" class="btn btn-primary btn-sm" target="_blank">LinkedIn</a>
-      <a href="https://wa.me/33621302382" class="btn btn-success btn-sm" target="_blank">WhatsApp</a>
-    </div>
-  </section>
-
-  <!-- Comptes rendus -->
-  <section id="comptes rendus" class="mb-5">
-    <h2 class="section-title">Comptes rendus</h2>
-    <p>Voici quelques documents et rapports disponibles en téléchargement :</p>
-    <ul class="list-group">
-      <li class="list-group-item">
-        <a href="compterenduhtml5.pdf" target="_blank">Compte rendu  — Atelier 02 : TD1 HTML </a>
-      </li>
-      <li class="list-group-item">
-        <a href="logicieldiagnostic8.pdf" target="_blank">Compte rendu — Bloc TP02 : Logiciel de diagnostic</a>
-      </li>
-      <li class="list-group-item">
-        <a href="cartemere5.pdf" target="_blank">Compte rendu — Bloc 01 : La carte mère</a>
-      </li>
-      <li class="list-group-item">
-        <a href="Cartementale.pdf" target="_blank">Compte rendu — Atelier 02 : TD1 HTML carte mentale</a>
-      </li>
-      <li class="list-group-item">
-        <a href="index.txt" target="_blank">Html — Cv html</a>
-      </li>
-      <li class="list-group-item">
-        <a href="captureecran.pdf" target="_blank">Compte rendu - Création d'une documentation avec captures d'écran</a>
-      </li>
-      <li class="list-group-item">
-        <a href="premierspasjava.pdf" target="_blank">Compte rendu - Mes premiers pas en java</a>
-      </li>
-       <li class="list-group-item">
-        <a href="tpangrybirds.pdf" target="_blank">Compte rendu - Tp Angry Birds programmation par blocs</a>
-      </li>
-      <li class="list-group-item">
-        <a href="CSS-3.pdf" target="_blank">Compte rendu - Compte rendu CSS</a>
-      </li>
-      <li class="list-group-item">
-        <a href="tpjava3.pdf" target="_blank">Compte rendu - TP3 Java</a>
-      </li>
-      <li class="list-group-item">
-        <a href="CSSavance1.pdf" target="_blank">Compte rendu - Css avancé partie 1 </a>
-      </li>
-      <li class="list-group-item">
-        <a href="Cybersecuritetp.pdf" target="_blank">Compte rendu - TD1 cybersecurité </a>
-      </li>
-      <li class="list-group-item">
-        <a href="tpcommande2.pdf" target="_blank">Compte rendu - TD05 Commandes CMD </a>
-      </li>
-       <li class="list-group-item">
-        <a href="tp08.pdf" target="_blank">Compte rendu - TD04 Shifumi </a>
-      </li>
-      <li class="list-group-item">
-        <a href="serveurnas2.pdf" target="_blank">Compte rendu - Le serveur NAS </a>
-      </li>
-      <li class="list-group-item">
-        <a href="css3.pdf" target="_blank">Compte rendu - Html/CSS partie 2/2 </a>
-      </li>
-      <li class="list-group-item">
-        <a href="tp06.pdf" target="_blank">Compte rendu - TP06 : Société TechCorp </a>
-      </li>
-      <li class="list-group-item">
-        <a href="tpjava85.pdf" target="_blank">Compte rendu - TP05 : Java </a>
-      </li>
-        <li class="list-group-item">
-        <a href="Testop1.pdf" target="_blank">Compte rendu - PIA : Testop </a>
-      </li>
-       <li class="list-group-item">
-        <a href="pia3.pdf" target="_blank">Compte rendu - PIA 2 Cyb_TH1_TP2 : CentreCall </a>
-      </li>
-       <li class="list-group-item">
-        <a href="td4.pdf" target="_blank">Compte rendu - Atelier 07 : TD4 : Formulaire </a>
-      </li>
-      <li class="list-group-item">
-        <a href="atelier7.pdf" target="_blank">Compte rendu - Atelier 07 : TD5 Responsive Design  </a>
-      </li>
-      <li class="list-group-item">
-        <a href="tpbataille1.pdf" target="_blank">Compte rendu - Bataille Navale </a>
-      </li>
-      <li class="list-group-item">
-        <a href="chapitre3.pdf" target="_blank">Compte rendu - Chapitre 3 TP1  </a>
-      </li>
-       <li class="list-group-item">
-        <a href="tpclasse.pdf" target="_blank">Compte rendu - Tp Classes livre et compte  </a>
-      </li>
-    </ul>
-  </section>
-</main>
-
-<!-- Footer -->
-<footer>
-  <small>© 2025 Clément Casse — Tous droits réservés</small>
+  <!-- Bottom -->
+  <div class="mt-12 pt-6 border-t border-slate-700/50 text-center text-slate-500 text-sm">
+    © 2025 — <span class="text-emerald-300">Clément Casse</span>. Tous droits réservés.
+  </div>
 </footer>
-
-<!-- Modals -->
-<div class="modal fade" id="proj1"><div class="modal-dialog"><div class="modal-content">
-  <div class="modal-header"><h5>Site vitrine</h5><button class="btn-close" data-bs-dismiss="modal"></button></div>
-  <div class="modal-body">Site responsive avec formulaire de contact et SEO basique.</div>
-</div></div></div>
-
-<div class="modal fade" id="proj2"><div class="modal-dialog"><div class="modal-content">
-  <div class="modal-header"><h5>Application web</h5><button class="btn-close" data-bs-dismiss="modal"></button></div>
-  <div class="modal-body">Application prototype pour gestion d’inventaire (CRUD, API, authentification).</div>
-</div></div></div>
-
-<div class="modal fade" id="proj3"><div class="modal-dialog"><div class="modal-content">
-  <div class="modal-header"><h5>Outil de diagnostic</h5><button class="btn-close" data-bs-dismiss="modal"></button></div>
-  <div class="modal-body">Site pour écrire des notes comme des idées ou des listes.</div>
-</div></div></div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-function handleContact(e){
-  e.preventDefault();
+/* ===============================
+   SCROLL SMOOTH
+================================ */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function(e) {
+    const target = document.querySelector(this.getAttribute("href"));
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+});
+
+/* ===============================
+   REVEAL ANIMATION ON SCROLL
+================================ */
+const revealElements = document.querySelectorAll(".reveal");
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("reveal-active");
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+revealElements.forEach(el => revealObserver.observe(el));
+
+/* ===============================
+   ACTIVE NAVIGATION (highlight)
+================================ */
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute("id");
+      navLinks.forEach(link => {
+        link.classList.toggle("text-emerald-300", link.getAttribute("href") === "#" + id);
+      });
+    }
+  });
+}, { threshold: 0.4 });
+
+sections.forEach(section => navObserver.observe(section));
+
+/* ===============================
+   GLOW ON HOVER (cards / blocs)
+================================ */
+document.querySelectorAll(".card, .panel, .panel-soft, .panel-deep").forEach(box => {
+  box.addEventListener("mousemove", (e) => {
+    const rect = box.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    box.style.setProperty("--mouse-x", `${x}px`);
+    box.style.setProperty("--mouse-y", `${y}px`);
+  });
+});
+
+/* ===============================
+   HEADER SHRINK ON SCROLL
+================================ */
+const header = document.querySelector("nav.navbar");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 50) {
+    header.classList.add("navbar-scrolled");
+  } else {
+    header.classList.remove("navbar-scrolled");
+  }
+});
+
+/* ===============================
+   CONTACT FORM (same logic but safer)
+================================ */
+function handleContact(event) {
+  event.preventDefault();
   const name = document.getElementById("cname").value;
   const email = document.getElementById("cemail").value;
   const message = document.getElementById("cmessage").value;
-  window.location.href = `mailto:casseclement.8@outlook.fr?subject=Message de ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0D%0A%0D%0AContact: ${email}`;
-  return false;
+
+  const mailto = 
+    `mailto:casseclement.8@outlook.fr?subject=Message de ${encodeURIComponent(name)}`
+    + `&body=${encodeURIComponent(message)}%0D%0A%0D%0AContact: ${email}`;
+
+  window.location.href = mailto;
+}
+
+/* ===============================
+   3D HOVER EFFECTS FOR CARDS
+================================ */
+document.querySelectorAll(".card").forEach(card => {
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+
+    const rotateX = (y - 0.5) * 8;
+    const rotateY = (x - 0.5) * -8;
+
+    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "perspective(800px) rotateX(0) rotateY(0) scale(1)";
+    card.style.transition = "0.3s ease";
+  });
+});
+
+/* ===============================
+   TITRE ANIMATION (hover pulse)
+================================ */
+document.querySelectorAll("h1, h2, h3, .section-title").forEach(title => {
+  title.style.transition = "0.35s ease";
+  title.addEventListener("mouseenter", () => {
+    title.style.textShadow = "0 0 18px rgba(34, 242, 184, 0.7)";
+    title.style.transform = "scale(1.03)";
+    title.style.color = "#22f2b8";
+  });
+  title.addEventListener("mouseleave", () => {
+    title.style.textShadow = "none";
+    title.style.transform = "scale(1)";
+    title.style.color = "";
+  });
+});
+
+/* ===============================
+   SOFT PARALLAX HERO IMAGE
+================================ */
+const heroImg = document.querySelector(".hero img");
+if (heroImg) {
+  window.addEventListener("scroll", () => {
+    const offset = window.scrollY * 0.15;
+    heroImg.style.transform = `translateY(${offset}px)`;
+  });
 }
 </script>
-</body>
-</html>
