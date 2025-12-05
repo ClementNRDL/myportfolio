@@ -118,7 +118,7 @@ p, li, span, a, td, th {
 }
 
 /* === AMÉLIORATION DU TABLEAU DE VEILLE === */
-.table-custom {
+.table-custom-dark {
     background: rgba(0, 0, 0, 0.55) !important;
     backdrop-filter: blur(8px);
     color: #eafff4 !important;
@@ -137,6 +137,32 @@ p, li, span, a, td, th {
 }
 .table-custom tr:hover {
     background: rgba(0, 255, 150, 0.12) !important;
+}
+
+/* Tableau noir futuriste */
+.table-custom-dark {
+    background: rgba(0, 0, 0, 0.78) !important;
+    color: #eafff4 !important;
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0,255,180,0.25);
+}
+.table-custom-dark thead {
+    background: rgba(0, 255, 150, 0.18) !important;
+    color: #00ffcc !important;
+}
+.table-custom-dark tr:hover {
+    background: rgba(0,255,150,0.10) !important;
+}
+
+/* Animation du titre principal */
+.header-custom h1 {
+    color: rgba(0,255,200,0.55);
+    transition: 0.4s ease;
+}
+.header-custom h1:hover {
+    color: rgba(0,255,200,1);
+    text-shadow: 0 0 15px #00ffcc;
 }
 </style>
 
@@ -278,7 +304,7 @@ p, li, span, a, td, th {
         <section class="mb-5 overlay-bg-fixed">
             <h2><i class="bi bi-table me-2"></i>Tableau de veille structuré</h2>
             <div class="table-responsive">
-                <table class="table table-striped table-custom"">
+                <table class="table table-striped table-custom-dark""">
                     <thead class="table-primary">
                         <tr>
                             <th>Date</th>
