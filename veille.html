@@ -1,667 +1,634 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Veille Technologique – Objets Connectés (IoT)</title>
+  <meta charset="UTF-8" />
+  <title>Veille Technologique – Objets Connectés (IoT)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Bootstrap & Icons (pour la grille et les icônes) -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <style>
-        :root {
-            --bg-main: #020814;
-            --accent: #00f6b8;
-            --accent-soft: rgba(0, 246, 184, 0.18);
-            --accent-strong: rgba(0, 246, 184, 0.95);
-            --text-main: #e5f9ff;
-            --text-muted: #9bb3c9;
-            --card-bg: rgba(6, 15, 33, 0.94);
-            --border-soft: rgba(0, 246, 184, 0.35);
-        }
+  <!-- Police un peu "Bugatti-like" -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-        * {
-            box-sizing: border-box;
-        }
+  <style>
+    :root {
+      --accent: #22f2b8;
+      --accent-soft: rgba(34, 242, 184, 0.25);
+      --bg-deep: #020617;
+    }
 
-        body {
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            background: var(--bg-main);
-            color: var(--text-main);
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-            position: relative;
-        }
+    * {
+      scroll-behavior: smooth;
+    }
 
-        /* ==== MATRIX BACKGROUND ==== */
-        #matrix-bg {
-            position: fixed;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -3;
-            background: #000;
-        }
+    body {
+      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: black;
+      color: white;
+    }
 
-        /* Voile sombre au-dessus de la Matrix */
-        .global-overlay {
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(circle at top, rgba(0, 246, 184, 0.08), transparent 60%),
-                        radial-gradient(circle at bottom, rgba(0, 0, 0, 0.9), #000);
-            backdrop-filter: blur(4px);
-            z-index: -2;
-        }
+    /* ====== FOND MATRIX GLOBAL ====== */
+    #matrix-bg {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -50;
+      background: black;
+    }
 
-        .content-wrapper {
-            position: relative;
-            z-index: 10;
-            padding-bottom: 4rem;
-        }
+    .matrix-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -40;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(34, 242, 184, 0.15), transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(34, 242, 184, 0.1), transparent 55%),
+        radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.15), transparent 50%);
+      mix-blend-mode: screen;
+    }
 
-        /* ==== HEADER STYLE (inspiration Bugatti) ==== */
-        header.site-header {
-            padding: 2.5rem 0 1.5rem;
-            text-align: center;
-        }
+    /* ====== TITRE PRINCIPAL ANIMÉ ====== */
+    .title-main {
+      text-shadow: 0 0 18px rgba(34, 242, 184, 0.5);
+      transition: color 0.35s ease, text-shadow 0.35s ease, transform 0.35s ease;
+      color: rgba(34, 242, 184, 0.7);
+    }
 
-        header.site-header h1 {
-            font-size: clamp(2.7rem, 4vw, 3.4rem);
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            font-weight: 500;
-            color: rgba(0, 246, 184, 0.55);
-            text-shadow: 0 0 10px rgba(0, 246, 184, 0.4);
-            transition: color 0.35s ease, text-shadow 0.35s ease, transform 0.35s ease;
-        }
+    .title-main:hover {
+      color: rgb(34, 242, 184);
+      text-shadow: 0 0 28px rgba(34, 242, 184, 0.9);
+      transform: scale(1.02);
+    }
 
-        header.site-header h1:hover {
-            color: var(--accent-strong);
-            text-shadow: 0 0 18px rgba(0, 246, 184, 0.9), 0 0 30px rgba(0, 246, 255, 0.7);
-            transform: scale(1.03);
-        }
+    /* ====== CARTES VIDÉO / PARALLAX ====== */
+    .parallax-card {
+      will-change: transform;
+      transition: transform 0.6s ease-out;
+    }
 
-        header.site-header p {
-            margin-top: 0.5rem;
-            color: var(--text-muted);
-            font-size: 1rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-        }
+    /* ====== ICONES IOT HOVER ====== */
+    .iot-tool-icon {
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
 
-        /* ==== GENERIC CARD STYLE (bugatti-like) ==== */
-        .section-shell {
-            border-radius: 20px;
-            padding: 2rem 2.5rem;
-            background: radial-gradient(circle at top left, rgba(0, 246, 184, 0.08), transparent 55%) ,
-                        radial-gradient(circle at bottom right, rgba(0, 246, 255, 0.08), transparent 60%),
-                        rgba(3, 10, 25, 0.96);
-            border: 1px solid rgba(0, 246, 184, 0.25);
-            box-shadow:
-                0 0 35px rgba(0, 246, 184, 0.24),
-                0 40px 80px rgba(0, 0, 0, 0.9);
-            position: relative;
-            overflow: hidden;
-        }
+    .iot-tool:hover .iot-tool-icon {
+      transform: scale(1.35);
+      filter: drop-shadow(0 0 18px rgba(34, 242, 184, 0.95));
+    }
 
-        .section-shell + .section-shell {
-            margin-top: 2rem;
-        }
+    /* ====== SECTION CONTEXTE – VIDÉO DE FOND ====== */
+    .context-video-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
 
-        .section-title {
-            font-size: clamp(1.6rem, 2.4vw, 2rem);
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: var(--accent-strong);
-        }
+    .context-video-wrapper video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.35) saturate(1.2) blur(1px);
+      transform: scale(1.05);
+    }
 
-        .section-subtitle {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
+    .context-video-overlay {
+      position: relative;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: radial-gradient(circle at top left, rgba(34, 242, 184, 0.28), rgba(0, 0, 0, 0.85));
+    }
 
-        /* ==== CONTEXTE & OBJECTIFS VIDEO CARD ==== */
-        .context-card {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            padding: 2rem 2.25rem;
-        }
+    /* ====== CARDS & BLOCS FOND SOMBRE ====== */
+    .panel-deep {
+      background: radial-gradient(circle at top left, rgba(34, 242, 184, 0.1), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.98));
+      border-radius: 1.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 0.9),
+        0 30px 80px rgba(0, 0, 0, 0.95),
+        0 0 60px rgba(34, 242, 184, 0.15);
+    }
 
-        .context-video-layer {
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            overflow: hidden;
-        }
+    /* ====== MARQUEE Mots-clés ====== */
+    .marquee {
+      position: relative;
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    }
 
-        .context-video-layer video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.35) saturate(1.3);
-            transform: scale(1.02);
-        }
+    .marquee-track {
+      display: inline-flex;
+      gap: 3rem;
+      white-space: nowrap;
+      animation: marquee 28s linear infinite;
+    }
 
-        .context-video-gradient {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(120deg, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0.9));
-            z-index: -1;
-        }
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
 
-        .context-icon {
-            font-size: 4rem;
-            color: var(--accent-strong);
-            text-shadow: 0 0 15px rgba(0, 246, 184, 0.9);
-        }
+    /* ====== TABLE ====== */
+    .table-shell {
+      background: radial-gradient(circle at top left, rgba(34, 242, 184, 0.06), #020617);
+      border-radius: 1.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.9);
+    }
 
-        .context-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: .4rem;
-            padding: 0.25rem 0.8rem;
-            border-radius: 999px;
-            border: 1px solid rgba(0, 246, 184, 0.4);
-            color: var(--text-muted);
-            font-size: .8rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .context-pill i {
-            color: var(--accent-strong);
-        }
-
-        /* ==== OUTILS (icônes animées) ==== */
-        .outil-card {
-            border-radius: 18px;
-            padding: 1.8rem 1.6rem;
-            background: radial-gradient(circle at top, rgba(0, 246, 184, 0.11), transparent 60%), rgba(2, 8, 22, 0.96);
-            border: 1px solid rgba(0, 246, 184, 0.2);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.75);
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        }
-
-        .outil-card::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at top left, rgba(0, 246, 184, 0.15), transparent 60%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-
-        .outil-card:hover {
-            transform: translateY(-6px) scale(1.01);
-            box-shadow: 0 28px 60px rgba(0, 0, 0, 0.9);
-            border-color: rgba(0, 246, 184, 0.6);
-        }
-
-        .outil-card:hover::after {
-            opacity: 1;
-        }
-
-        .outil-card i {
-            font-size: 2.2rem;
-            color: var(--accent-strong);
-            margin-bottom: 1rem;
-            transition: transform 0.32s ease, filter 0.32s ease;
-        }
-
-        .outil-card:hover i {
-            transform: scale(1.35) translateY(-4px);
-            filter: drop-shadow(0 0 8px rgba(0, 246, 184, 0.9));
-        }
-
-        .outil-title {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .outil-card p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        /* ==== ARTICLES ==== */
-        .article-card {
-            border-radius: 18px;
-            padding: 1.4rem 1.6rem;
-            background: rgba(3, 11, 28, 0.96);
-            border: 1px solid rgba(0, 246, 184, 0.18);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8);
-            height: 100%;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        }
-
-        .article-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(0, 246, 184, 0.55);
-            box-shadow: 0 26px 60px rgba(0, 0, 0, 0.9);
-        }
-
-        .article-card h3 {
-            font-size: 1.1rem;
-            color: var(--accent-strong);
-            margin-bottom: 0.4rem;
-        }
-
-        .article-meta {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 0.75rem;
-        }
-
-        .article-card p {
-            font-size: 0.9rem;
-        }
-
-        /* ==== TABLEAU DE VEILLE ==== */
-        .table-shell {
-            border-radius: 18px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 246, 184, 0.35);
-            background: radial-gradient(circle at top left, rgba(0, 246, 184, 0.12), transparent 50%),
-                        rgba(2, 8, 24, 0.97);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
-        }
-
-        .table-shell table {
-            margin: 0;
-            width: 100%;
-            border-collapse: collapse;
-            color: var(--text-main);
-        }
-
-        .table-shell thead {
-            background: linear-gradient(90deg, rgba(0, 246, 184, 0.22), rgba(0, 148, 255, 0.22));
-        }
-
-        .table-shell th,
-        .table-shell td {
-            padding: 0.85rem 1.1rem;
-            font-size: 0.9rem;
-            border-bottom: 1px solid rgba(0, 246, 184, 0.14);
-        }
-
-        .table-shell tbody tr:nth-child(odd) {
-            background: rgba(0, 0, 0, 0.35);
-        }
-
-        .table-shell tbody tr:hover {
-            background: rgba(0, 246, 184, 0.16);
-        }
-
-        .table-shell a {
-            color: var(--accent-strong);
-            text-decoration: none;
-        }
-
-        .table-shell a:hover {
-            text-decoration: underline;
-        }
-
-        /* ==== FOOTER ==== */
-        footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 1.8rem 0 1rem;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            background: radial-gradient(circle at top, rgba(0, 246, 184, 0.06), transparent 55%);
-        }
-
-        /* ==== UTILS ==== */
-        .btn-ghost {
-            border-radius: 999px;
-            padding: 0.55rem 1.4rem;
-            border: 1px solid rgba(0, 246, 184, 0.6);
-            background: transparent;
-            color: var(--accent-strong);
-            font-size: 0.8rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-            transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .btn-ghost i {
-            font-size: 0.9rem;
-        }
-
-        .btn-ghost:hover {
-            background: var(--accent-strong);
-            color: #011316;
-            border-color: var(--accent-strong);
-            box-shadow: 0 0 24px rgba(0, 246, 184, 0.9);
-            transform: translateY(-1px);
-        }
-
-        @media (max-width: 768px) {
-            .section-shell,
-            .context-card {
-                padding: 1.6rem 1.4rem;
-            }
-        }
-    </style>
+    /* Scrollbar discrète */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #020617;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.6);
+      border-radius: 999px;
+    }
+  </style>
 </head>
-<body>
+<body class="min-h-screen bg-black text-slate-50">
 
-<!-- FOND MATRIX -->
-<canvas id="matrix-bg"></canvas>
-<div class="global-overlay"></div>
+  <!-- Canvas Matrix en fond -->
+  <canvas id="matrix-bg"></canvas>
+  <div class="matrix-overlay"></div>
 
-<div class="content-wrapper">
+  <!-- CONTENU PRINCIPAL -->
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
 
-    <!-- HEADER -->
-    <header class="site-header">
-        <h1>Veille Technologique</h1>
-        <p>Les Objets Connectés (IoT)</p>
+    <!-- NAV / HEADER -->
+    <header class="pt-6 sm:pt-10 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-full border border-emerald-400/70 bg-emerald-400/10 flex items-center justify-center shadow-[0_0_25px_rgba(34,242,184,0.65)]">
+          <span class="text-xl">IoT</span>
+        </div>
+        <div class="text-xs sm:text-sm tracking-[0.25em] uppercase text-slate-400">
+          Veille &nbsp;•&nbsp; Sécurité &nbsp;•&nbsp; Innovation
+        </div>
+      </div>
+      <a href="#tableau-veille" class="hidden sm:inline-flex text-xs font-medium tracking-[0.25em] uppercase border border-emerald-400/50 rounded-full px-4 py-1.5 text-emerald-300/80 hover:text-emerald-100 hover:bg-emerald-400/10 transition">
+        Tableau de veille
+      </a>
     </header>
 
-    <main class="container my-4">
+    <!-- HERO -->
+    <section class="mt-10 sm:mt-16 mb-14 sm:mb-20">
+      <div class="space-y-6">
+        <p class="text-xs sm:text-sm tracking-[0.25em] uppercase text-emerald-300/70">
+          BTS SIO • Veille Technologique
+        </p>
 
-        <!-- CONTEXTE & OBJECTIFS AVEC VIDEO -->
-        <section class="section-shell context-card mb-4">
-            <!-- Vidéo de fond -->
-            <div class="context-video-layer">
-                <!-- mets ta vidéo dans le même dossier et adapte le nom si besoin -->
-                <video src="video_iot_contexte.mp4" autoplay muted loop playsinline></video>
-                <div class="context-video-gradient"></div>
+        <h1 class="title-main text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight">
+          Veille Technologique<br>
+          <span class="text-slate-100">Objets Connectés (IoT)</span>
+        </h1>
+
+        <p class="max-w-2xl text-sm sm:text-base text-slate-300/90">
+          Une exploration continue des innovations, enjeux de cybersécurité et usages concrets des objets connectés :
+          maison intelligente, industrie 4.0, santé, mobilité et smart cities.
+        </p>
+
+        <div class="flex flex-wrap gap-3 items-center pt-2">
+          <a href="#contexte" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-emerald-400 text-slate-950 text-xs sm:text-sm font-semibold tracking-wide shadow-[0_0_30px_rgba(34,242,184,0.7)] hover:bg-emerald-300 transition">
+            Découvrir le contexte
+          </a>
+          <a href="#articles" class="inline-flex items-center justify-center px-4 py-2 rounded-full border border-slate-600 text-xs sm:text-sm text-slate-200 hover:border-emerald-300 hover:text-emerald-200 transition">
+            Dernières actualités IoT
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTEXTE & OBJECTIFS AVEC VIDÉO DE FOND -->
+    <section id="contexte" class="context-video-wrapper panel-deep mb-16">
+      <video autoplay muted loop playsinline>
+        <source src="Vidéo_de_fond_pour_section_IoT.mp4" type="video/mp4">
+      </video>
+
+      <div class="context-video-overlay rounded-3xl px-6 sm:px-10 py-7 sm:py-9 lg:py-10">
+        <div class="grid grid-cols-[auto,1fr] gap-5 sm:gap-8 items-start">
+          <div class="flex items-center justify-center">
+            <div class="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl bg-emerald-400/15 border border-emerald-400/60 flex items-center justify-center shadow-[0_0_30px_rgba(34,242,184,0.6)]">
+              <i class="bi bi-cpu-fill text-3xl sm:text-4xl text-emerald-300"></i>
             </div>
-
-            <div class="row align-items-center g-4">
-                <div class="col-md-2 text-center">
-                    <i class="bi bi-cpu-fill context-icon"></i>
-                </div>
-                <div class="col-md-10">
-                    <div class="mb-2">
-                        <span class="context-pill">
-                            <i class="bi bi-shield-lock"></i> IoT • Cybersécurité • Innovation
-                        </span>
-                    </div>
-                    <h2 class="section-title mb-2">Contexte & Objectifs</h2>
-                    <p class="section-subtitle mb-2">
-                        Cette veille technologique se concentre sur les objets connectés (IoT), un écosystème en pleine
-                        expansion qui transforme le logement, la santé, l'industrie et la ville intelligente.
-                    </p>
-                    <p class="mb-3" style="color: var(--text-muted);">
-                        Objectifs : suivre les innovations produits, détecter les nouvelles vulnérabilités de sécurité,
-                        analyser les stratégies des grands acteurs (Google, Amazon, Cisco, Xiaomi…) et anticiper
-                        l'impact de ces technologies sur les usages et les métiers.
-                    </p>
-                    <a href="#articles" class="btn-ghost">
-                        Explorer les dernières actualités
-                        <i class="bi bi-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- METHODOLOGIE & OUTILS -->
-        <section class="section-shell mb-4">
-            <div class="d-flex flex-wrap align-items-center justify-content-between mb-3 gap-2">
-                <div>
-                    <h2 class="section-title mb-1"><i class="bi bi-tools me-2"></i>Méthodologie & Outils de veille</h2>
-                    <p class="section-subtitle mb-0">
-                        Veille automatisée + filtrage manuel des sources pour garantir la fiabilité des informations.
-                    </p>
-                </div>
-            </div>
-
-            <div class="row g-4">
-                <div class="col-md-3 col-sm-6">
-                    <div class="outil-card h-100">
-                        <i class="bi bi-bell-fill"></i>
-                        <h3 class="outil-title">Google Alerts</h3>
-                        <p>
-                            Mots-clés : <strong>"IoT"</strong>, <strong>"objets connectés"</strong>,
-                            <strong>"cybersécurité IoT"</strong>, <strong>"Matter"</strong>.<br>
-                            Alertes quotidiennes pour capter les nouvelles annonces et incidents de sécurité.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="outil-card h-100">
-                        <i class="bi bi-rss-fill"></i>
-                        <h3 class="outil-title">Feedly</h3>
-                        <p>
-                            Flux spécialisés : ZDNet IoT, IoT News, The Verge, Android Authority, Cisco Blog.<br>
-                            Catégories : Sécurité, Domotique, Industrie 4.0, Smart Cities.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="outil-card h-100">
-                        <i class="bi bi-folder-fill"></i>
-                        <h3 class="outil-title">Inoreader</h3>
-                        <p>
-                            Classement automatique des articles, tags <strong>"Tendance"</strong> et
-                            <strong>"Vulnérabilité"</strong>.<br>
-                            Mise en favoris des contenus à présenter en soutenance.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="outil-card h-100">
-                        <i class="bi bi-bar-chart-line-fill"></i>
-                        <h3 class="outil-title">Twitter / LinkedIn</h3>
-                        <p>
-                            Veille sur les experts IoT et les entreprises clés : Cisco, Siemens, AWS, Google Cloud IoT.<br>
-                            Repérage des retours d'expérience et des bonnes pratiques en production.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ARTICLES DE VEILLE RECENTS -->
-        <section id="articles" class="section-shell mb-4">
-            <h2 class="section-title"><i class="bi bi-newspaper me-2"></i>Articles de veille récents</h2>
-            <p class="section-subtitle">
-                Sélection d’articles récents et vérifiés autour de l’IoT, centrés sur la sécurité, les standards et les cas d’usage.
+          </div>
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-semibold text-emerald-300 mb-3">
+              Contexte &amp; Objectifs
+            </h2>
+            <p class="text-sm sm:text-base text-slate-100/90 mb-3">
+              Cette veille technologique porte sur les objets connectés (IoT), un domaine en forte croissance
+              impactant les secteurs du logement, de la santé, de la cybersécurité et de l'industrie.
             </p>
-
-            <div class="row g-4">
-                <div class="col-lg-6">
-                    <article class="article-card h-100">
-                        <h3>Apple prépare un écosystème IoT unifié compatible Matter</h3>
-                        <div class="article-meta">
-                            Publié le 20/09/2023 · Source : The Verge
-                        </div>
-                        <p>
-                            Apple travaille sur une plateforme IoT capable d’unifier l’ensemble de ses appareils
-                            domestiques autour du standard Matter, pour simplifier l’installation et renforcer la sécurité.
-                        </p>
-                    </article>
-                </div>
-                <div class="col-lg-6">
-                    <article class="article-card h-100">
-                        <h3>Google annonce de nouveaux protocoles de sécurité pour l’IoT</h3>
-                        <div class="article-meta">
-                            Publié le 15/09/2023 · Source : Google AI Blog
-                        </div>
-                        <p>
-                            Google renforce la protection des objets connectés grâce à un chiffrement amélioré,
-                            couplé à des modèles IA capables de détecter des comportements anormaux sur le réseau.
-                        </p>
-                    </article>
-                </div>
-                <div class="col-lg-6">
-                    <article class="article-card h-100">
-                        <h3>Tesla connecte ses véhicules à un réseau IoT de diagnostic</h3>
-                        <div class="article-meta">
-                            Publié le 01/09/2023 · Source : Bloomberg
-                        </div>
-                        <p>
-                            Les véhicules Tesla envoient désormais en temps réel des données mécaniques vers des
-                            centres automatisés, permettant une maintenance prédictive plus fine.
-                        </p>
-                    </article>
-                </div>
-                <div class="col-lg-6">
-                    <article class="article-card h-100">
-                        <h3>Cisco lance une plateforme IoT pour les smart cities</h3>
-                        <div class="article-meta">
-                            Publié le 27/08/2023 · Source : Cisco Newsroom
-                        </div>
-                        <p>
-                            La nouvelle solution de Cisco connecte éclairage, capteurs de trafic et caméras
-                            urbaines, afin d’optimiser la circulation, l’énergie et la sécurité dans les grandes villes.
-                        </p>
-                    </article>
-                </div>
-                <div class="col-lg-6">
-                    <article class="article-card h-100">
-                        <h3>Xiaomi dévoile une nouvelle gamme IoT pour la maison</h3>
-                        <div class="article-meta">
-                            Publié le 12/08/2023 · Source : Android Authority
-                        </div>
-                        <p>
-                            Caméras, thermostats, prises connectées : Xiaomi renforce son positionnement
-                            sur l’IoT grand public avec des produits compatibles Matter à prix abordable.
-                        </p>
-                    </article>
-                </div>
-                <div class="col-lg-6">
-                    <article class="article-card h-100">
-                        <h3>Samsung SmartThings devient compatible avec Matter</h3>
-                        <div class="article-meta">
-                            Publié le 05/08/2023 · Source : Samsung Newsroom
-                        </div>
-                        <p>
-                            SmartThings se transforme en hub universel pour piloter tous les objets certifiés
-                            Matter, quelle que soit la marque, simplifiant l’intégration dans la maison connectée.
-                        </p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- TABLEAU DE VEILLE STRUCTURE -->
-        <section class="section-shell mb-4">
-            <h2 class="section-title"><i class="bi bi-table me-2"></i>Tableau de veille structuré</h2>
-            <p class="section-subtitle">
-                Synthèse des informations les plus pertinentes issues de la veille, avec lien direct vers les sources.
+            <p class="text-sm sm:text-base text-slate-300/95">
+              Objectifs : suivre les innovations, analyser les enjeux de sécurité, identifier les tendances, cartographier
+              les acteurs clés et anticiper les évolutions du marché IoT (protocoles, plateformes, standards comme Matter).
             </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div class="table-shell">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Titre</th>
-                            <th>Source</th>
-                            <th>Outil utilisé</th>
-                            <th>Catégorie</th>
-                            <th>Résumé</th>
-                            <th>Mots-clés</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>12/10/2023</td>
-                            <td>Vers un standard européen de sécurité IoT</td>
-                            <td><a href="#">ZDNet</a></td>
-                            <td>Feedly</td>
-                            <td>Sécurité</td>
-                            <td>Projet de règlement imposant un niveau de chiffrement minimal pour les objets connectés vendus en Europe.</td>
-                            <td>IoT, réglementation, chiffrement</td>
-                        </tr>
-                        <tr>
-                            <td>05/10/2023</td>
-                            <td>Hub domestique Amazon basé sur Matter</td>
-                            <td><a href="#">Les Numériques</a></td>
-                            <td>Google Alerts</td>
-                            <td>Domotique</td>
-                            <td>Amazon lance un nouveau routeur-hub capable de piloter tous les objets compatibles Matter avec un focus sur la confidentialité.</td>
-                            <td>Amazon, domotique, Matter</td>
-                        </tr>
-                        <tr>
-                            <td>27/09/2023</td>
-                            <td>Capteurs industriels connectés et maintenance prédictive</td>
-                            <td><a href="#">Siemens Blog</a></td>
-                            <td>Feedly</td>
-                            <td>Industrie 4.0</td>
-                            <td>Retour d’expérience sur des usines équipées de capteurs IoT permettant d’anticiper les pannes et d’optimiser la production.</td>
-                            <td>Industrie, capteurs, prédictif</td>
-                        </tr>
-                    </tbody>
-                </table>
+    <!-- MÉTHODOLOGIE & OUTILS (STYLE BUGATTI CARTES) -->
+    <section id="methodologie" class="mb-16 panel-deep px-6 sm:px-10 py-8 sm:py-10">
+      <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-4 mb-7">
+        <h2 class="text-2xl sm:text-3xl font-semibold text-emerald-300 flex items-center gap-3">
+          <i class="bi bi-tools text-emerald-300 text-xl"></i>
+          Méthodologie &amp; Outils utilisés
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 max-w-md">
+          Une combinaison d’alertes, de flux RSS et de réseaux sociaux pour couvrir l’écosystème IoT : normes, vulnérabilités,
+          produits, start-up et industriels.
+        </p>
+      </div>
+
+      <div class="grid gap-6 sm:gap-7 md:grid-cols-2 xl:grid-cols-4">
+        <!-- Google Alerts -->
+        <article class="iot-tool group relative overflow-hidden rounded-2xl border border-slate-600/70 bg-slate-950/70 px-5 py-5 flex flex-col justify-between">
+          <div class="absolute inset-0 bg-gradient-to-br from-emerald-400/15 via-transparent to-sky-500/10 opacity-0 group-hover:opacity-100 transition"></div>
+          <div class="relative z-10 space-y-4">
+            <div class="h-12 w-12 rounded-xl bg-emerald-400/15 flex items-center justify-center">
+              <i class="bi bi-bell-fill iot-tool-icon text-2xl text-emerald-300"></i>
             </div>
-        </section>
+            <div>
+              <h3 class="text-lg font-semibold text-slate-50">Google Alerts</h3>
+              <p class="text-xs text-slate-300/90 mt-1.5">
+                Mots-clés : &laquo; IoT &raquo;, &laquo; objets connectés &raquo;, &laquo; cybersécurité IoT &raquo;, &laquo; smart home &raquo;, &laquo; industrie 4.0 &raquo;.
+              </p>
+            </div>
+          </div>
+          <p class="relative z-10 mt-4 text-[11px] text-slate-400 uppercase tracking-[0.18em]">
+            Alertes quotidiennes ciblées
+          </p>
+        </article>
 
-        <!-- PETIT FOOTER INTERNE -->
-        <div class="d-flex flex-wrap justify-content-between align-items-center mt-3" style="gap: 1rem;">
-            <a href="#" class="btn-ghost">
-                <i class="bi bi-house-door-fill"></i>
-                Retour au sommaire
-            </a>
-            <span style="color: var(--text-muted); font-size: 0.8rem;">
-                Dernière mise à jour de la veille : Octobre 2023
-            </span>
+        <!-- Feedly -->
+        <article class="iot-tool group relative overflow-hidden rounded-2xl border border-slate-600/70 bg-slate-950/70 px-5 py-5 flex flex-col justify-between">
+          <div class="absolute inset-0 bg-gradient-to-br from-sky-500/20 via-transparent to-emerald-400/15 opacity-0 group-hover:opacity-100 transition"></div>
+          <div class="relative z-10 space-y-4">
+            <div class="h-12 w-12 rounded-xl bg-sky-500/15 flex items-center justify-center">
+              <i class="bi bi-rss-fill iot-tool-icon text-2xl text-sky-400"></i>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-slate-50">Feedly</h3>
+              <p class="text-xs text-slate-300/90 mt-1.5">
+                Flux : ZDNet IoT, IoT News, The Verge, blogs sécurité, cloud &amp; edge computing.
+              </p>
+            </div>
+          </div>
+          <p class="relative z-10 mt-4 text-[11px] text-slate-400 uppercase tracking-[0.18em]">
+            Agrégation &amp; tags thématiques
+          </p>
+        </article>
+
+        <!-- Inoreader -->
+        <article class="iot-tool group relative overflow-hidden rounded-2xl border border-slate-600/70 bg-slate-950/70 px-5 py-5 flex flex-col justify-between">
+          <div class="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-transparent to-emerald-400/15 opacity-0 group-hover:opacity-100 transition"></div>
+          <div class="relative z-10 space-y-4">
+            <div class="h-12 w-12 rounded-xl bg-purple-500/15 flex items-center justify-center">
+              <i class="bi bi-folder-fill iot-tool-icon text-2xl text-purple-300"></i>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-slate-50">Inoreader</h3>
+              <p class="text-xs text-slate-300/90 mt-1.5">
+                Règles de filtrage, tags &laquo; Sécurité &raquo;, &laquo; Protocole &raquo;, &laquo; Cloud &raquo; pour isoler les signaux forts.
+              </p>
+            </div>
+          </div>
+          <p class="relative z-10 mt-4 text-[11px] text-slate-400 uppercase tracking-[0.18em]">
+            Tri automatique des articles
+          </p>
+        </article>
+
+        <!-- Twitter / LinkedIn -->
+        <article class="iot-tool group relative overflow-hidden rounded-2xl border border-slate-600/70 bg-slate-950/70 px-5 py-5 flex flex-col justify-between">
+          <div class="absolute inset-0 bg-gradient-to-br from-emerald-400/20 via-transparent to-indigo-500/20 opacity-0 group-hover:opacity-100 transition"></div>
+          <div class="relative z-10 space-y-4">
+            <div class="h-12 w-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+              <i class="bi bi-bar-chart-line-fill iot-tool-icon text-2xl text-emerald-300"></i>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-slate-50">Twitter / LinkedIn</h3>
+              <p class="text-xs text-slate-300/90 mt-1.5">
+                Suivi d’experts IoT, CERT, chercheurs en sécurité, constructeurs (Cisco, Siemens, AWS, Azure IoT, etc.).
+              </p>
+            </div>
+          </div>
+          <p class="relative z-10 mt-4 text-[11px] text-slate-400 uppercase tracking-[0.18em]">
+            Veille temps réel &amp; signaux faibles
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- BLOCS "CAS D'USAGE" STYLE BUGATTI (PARALLAX + IMAGE/VIDÉO) -->
+    <section class="mb-18 sm:mb-20 space-y-10">
+      <div class="transition-all duration-700 ease-out opacity-100 blur-0">
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-[1.2fr,0.9fr] items-center">
+          <!-- Bloc texte -->
+          <div>
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-slate-50 mb-3">
+              Cas d’usage IoT sélectionnés
+            </h2>
+            <p class="text-sm sm:text-base text-slate-300/90 max-w-xl">
+              Quelques scénarios concrets illustrant les bénéfices et les risques des objets connectés :
+              maison intelligente, mobilité, smart city et industrie 4.0.
+            </p>
+          </div>
+
+          <!-- Carte vidéo principale -->
+          <a href="#articles" class="group relative col-span-1 aspect-[16/9] md:aspect-[5/3] overflow-hidden rounded-3xl border border-slate-600/70 bg-black parallax-card" data-speed="0.9">
+            <div class="absolute inset-0">
+              <video autoplay muted loop playsinline class="pointer-events-none w-full h-full object-cover scale-110 group-hover:scale-105 transition-transform duration-500">
+                <source src="Vidéo_de_fond_pour_section_IoT.mp4" type="video/mp4">
+              </video>
+              <div class="absolute inset-0 bg-gradient-to-tr from-black via-black/60 to-emerald-500/20"></div>
+            </div>
+            <div class="relative z-10 h-full flex flex-col justify-between p-6 sm:p-8">
+              <div class="space-y-3">
+                <p class="text-[11px] tracking-[0.25em] uppercase text-emerald-300/80">
+                  Focus • Sécurité &amp; impacts
+                </p>
+                <h3 class="text-xl sm:text-2xl font-semibold max-w-md">
+                  Maison connectée, véhicule autonome, capteurs industriels&nbsp;:
+                  des données partout, tout le temps.
+                </h3>
+              </div>
+              <button class="self-start inline-flex items-center gap-2 rounded-full border border-emerald-300/60 bg-emerald-300/10 px-4 py-1.5 text-[11px] tracking-[0.2em] uppercase text-emerald-100 group-hover:bg-emerald-300 group-hover:text-slate-900 transition">
+                Voir les articles associés
+                <span class="text-xs">↗</span>
+              </button>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTICLES DE VEILLE (STYLE CARTES) -->
+    <section id="articles" class="mb-18 sm:mb-20 panel-deep px-6 sm:px-10 py-8 sm:py-10">
+      <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-4 mb-7">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-semibold text-emerald-300 flex items-center gap-3">
+            <i class="bi bi-newspaper text-xl"></i>
+            Articles de veille récents
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1">
+            Actualités récentes et vérifiées autour de l’IoT.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        <!-- Article 1 -->
+        <article class="rounded-2xl border border-slate-600/60 bg-slate-950/70 px-5 py-4 hover:border-emerald-400/60 transition">
+          <h3 class="text-lg font-semibold text-emerald-300 mb-1">
+            Apple prépare un écosystème IoT unifié pour 2024
+          </h3>
+          <p class="text-xs text-slate-400 mb-2">
+            Publié le 20/09/2023 · Source : The Verge
+          </p>
+          <p class="text-sm text-slate-200/90">
+            Apple travaille sur une plateforme IoT compatible Matter pour rendre tous ses appareils interconnectés.
+          </p>
+        </article>
+
+        <!-- Article 2 -->
+        <article class="rounded-2xl border border-slate-600/60 bg-slate-950/70 px-5 py-4 hover:border-emerald-400/60 transition">
+          <h3 class="text-lg font-semibold text-emerald-300 mb-1">
+            Google annonce de nouveaux protocoles de sécurité IoT
+          </h3>
+          <p class="text-xs text-slate-400 mb-2">
+            Publié le 15/09/2023 · Source : Google AI Blog
+          </p>
+          <p class="text-sm text-slate-200/90">
+            Google renforce la sécurité des objets connectés via un chiffrement amélioré et des mises à jour automatiques.
+          </p>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="rounded-2xl border border-slate-600/60 bg-slate-950/70 px-5 py-4 hover:border-emerald-400/60 transition">
+          <h3 class="text-lg font-semibold text-emerald-300 mb-1">
+            Tesla connecte ses véhicules à un réseau IoT de diagnostic
+          </h3>
+          <p class="text-xs text-slate-400 mb-2">
+            Publié le 01/09/2023 · Source : Bloomberg
+          </p>
+          <p class="text-sm text-slate-200/90">
+            Les véhicules envoient en temps réel des données mécaniques vers des centres automatisés pour anticiper les pannes.
+          </p>
+        </article>
+
+        <!-- Article 4 -->
+        <article class="rounded-2xl border border-slate-600/60 bg-slate-950/70 px-5 py-4 hover:border-emerald-400/60 transition">
+          <h3 class="text-lg font-semibold text-emerald-300 mb-1">
+            Cisco lance une plateforme IoT pour les smart cities
+          </h3>
+          <p class="text-xs text-slate-400 mb-2">
+            Publié le 27/08/2023 · Source : Cisco Newsroom
+          </p>
+          <p class="text-sm text-slate-200/90">
+            Gestion intelligente de l’éclairage, des transports et de la vidéosurveillance via une plateforme cloud unifiée.
+          </p>
+        </article>
+
+        <!-- Article 5 -->
+        <article class="rounded-2xl border border-slate-600/60 bg-slate-950/70 px-5 py-4 hover:border-emerald-400/60 transition">
+          <h3 class="text-lg font-semibold text-emerald-300 mb-1">
+            Xiaomi dévoile une nouvelle gamme IoT pour la maison
+          </h3>
+          <p class="text-xs text-slate-400 mb-2">
+            Publié le 12/08/2023 · Source : Android Authority
+          </p>
+          <p class="text-sm text-slate-200/90">
+            Capteurs, thermostats, caméras… Xiaomi renforce son écosystème IoT abordable et compatible Matter.
+          </p>
+        </article>
+
+        <!-- Article 6 -->
+        <article class="rounded-2xl border border-slate-600/60 bg-slate-950/70 px-5 py-4 hover:border-emerald-400/60 transition">
+          <h3 class="text-lg font-semibold text-emerald-300 mb-1">
+            Samsung SmartThings devient compatible avec Matter
+          </h3>
+          <p class="text-xs text-slate-400 mb-2">
+            Publié le 05/08/2023 · Source : Samsung Newsroom
+          </p>
+          <p class="text-sm text-slate-200/90">
+            SmartThings devient une plateforme centrale pour tous les appareils IoT certifiés Matter.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- TABLEAU STRUCTURÉ DE VEILLE -->
+    <section id="tableau-veille" class="mb-16">
+      <div class="table-shell p-6 sm:p-8">
+        <div class="flex items-center justify-between gap-4 mb-5">
+          <h2 class="text-xl sm:text-2xl font-semibold text-emerald-300 flex items-center gap-3">
+            <i class="bi bi-table text-lg"></i>
+            Tableau de veille structuré
+          </h2>
+          <span class="text-[11px] sm:text-xs text-slate-400 tracking-[0.2em] uppercase">
+            Synthèse des signaux clés
+          </span>
         </div>
 
-    </main>
+        <div class="overflow-x-auto text-sm">
+          <table class="min-w-full border-collapse">
+            <thead>
+              <tr class="bg-slate-900/80 border-b border-slate-700/80 text-xs uppercase tracking-wide text-slate-300">
+                <th class="text-left py-3 px-3 sm:px-4">Date</th>
+                <th class="text-left py-3 px-3 sm:px-4">Titre</th>
+                <th class="text-left py-3 px-3 sm:px-4">Source</th>
+                <th class="text-left py-3 px-3 sm:px-4">Outil</th>
+                <th class="text-left py-3 px-3 sm:px-4">Catégorie</th>
+                <th class="text-left py-3 px-3 sm:px-4">Résumé</th>
+                <th class="text-left py-3 px-3 sm:px-4">Mots clés</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800/80">
+              <tr class="hover:bg-emerald-400/5 transition">
+                <td class="py-3 px-3 sm:px-4 text-slate-300">12/10/2023</td>
+                <td class="py-3 px-3 sm:px-4 text-slate-50">
+                  Standard de sécurité obligatoire pour les objets connectés
+                </td>
+                <td class="py-3 px-3 sm:px-4 text-sky-300 underline underline-offset-2">
+                  ZDNet
+                </td>
+                <td class="py-3 px-3 sm:px-4 text-slate-200">Feedly</td>
+                <td class="py-3 px-3 sm:px-4 text-emerald-300">Sécurité</td>
+                <td class="py-3 px-3 sm:px-4 text-slate-200">
+                  Adoption d’un standard imposant mises à jour, hardening et gestion de fin de vie des équipements IoT.
+                </td>
+                <td class="py-3 px-3 sm:px-4 text-slate-300 text-xs">
+                  IoT, sécurité, conformité, réglementation
+                </td>
+              </tr>
+              <tr class="hover:bg-emerald-400/5 transition">
+                <td class="py-3 px-3 sm:px-4 text-slate-300">05/10/2023</td>
+                <td class="py-3 px-3 sm:px-4 text-slate-50">
+                  Assistant domestique Amazon centré sur la confidentialité
+                </td>
+                <td class="py-3 px-3 sm:px-4 text-sky-300 underline underline-offset-2">
+                  Les Numériques
+                </td>
+                <td class="py-3 px-3 sm:px-4 text-slate-200">Google Alerts</td>
+                <td class="py-3 px-3 sm:px-4 text-emerald-300">Domotique</td>
+                <td class="py-3 px-3 sm:px-4 text-slate-200">
+                  Hub IoT domestique mettant en avant le chiffrement local et la gestion fine des données personnelles.
+                </td>
+                <td class="py-3 px-3 sm:px-4 text-slate-300 text-xs">
+                  Amazon, maison connectée, privacy
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
 
-    <footer>
-        © 2025 – Veille Technologique IoT · BTS SIO · Projet de culture et communication
+    <!-- MARQUEE MOTS-CLÉS IOT -->
+    <section class="mb-12 marquee">
+      <div class="marquee-track text-[11px] sm:text-xs tracking-[0.25em] uppercase text-emerald-200/75">
+        <span>IoT Security</span>
+        <span>Smart Home</span>
+        <span>Industrie 4.0</span>
+        <span>Edge Computing</span>
+        <span>5G &amp; NB-IoT</span>
+        <span>Cloud Platforms</span>
+        <span>Threat Intelligence</span>
+        <span>Smart City</span>
+
+        <!-- dupliqué pour l'animation infinie -->
+        <span>IoT Security</span>
+        <span>Smart Home</span>
+        <span>Industrie 4.0</span>
+        <span>Edge Computing</span>
+        <span>5G &amp; NB-IoT</span>
+        <span>Cloud Platforms</span>
+        <span>Threat Intelligence</span>
+        <span>Smart City</span>
+      </div>
+    </section>
+
+    <!-- FOOTER STYLE BUGATTI -->
+    <footer class="border-t border-slate-800 pt-6 mt-8 text-xs text-slate-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <div>
+        © 2025 &mdash; Veille Technologique IoT · BTS SIO
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href="#contexte" class="hover:text-emerald-300 transition">Contexte</a>
+        <a href="#methodologie" class="hover:text-emerald-300 transition">Méthodologie</a>
+        <a href="#articles" class="hover:text-emerald-300 transition">Articles</a>
+        <a href="#tableau-veille" class="hover:text-emerald-300 transition">Tableau de veille</a>
+      </div>
     </footer>
-</div>
+  </div>
 
-<!-- ===== SCRIPT ANIMATION MATRIX ===== -->
-<script>
+  <!-- ====== SCRIPT MATRIX + PARALLAX ====== -->
+  <script>
+    // --- MATRIX EFFECT ---
     const canvas = document.getElementById("matrix-bg");
     const ctx = canvas.getContext("2d");
 
     function resizeMatrix() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     }
     resizeMatrix();
     window.addEventListener("resize", resizeMatrix);
 
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     const iotIcons = ["💡","📡","📱","📶","🔐","📷","🏠","⚙️","🔌","🖥️","📊"];
-    const matrixChars = (chars + chars.toLowerCase()).split("").concat(iotIcons);
+    const matrixChars = (characters + characters.toLowerCase()).split("").concat(iotIcons);
 
-    const fontSize = 20;
+    const fontSize = 18;
     let columns = Math.floor(canvas.width / fontSize);
-    let drops = new Array(columns).fill(1);
+    let drops = Array.from({ length: columns }, () => 1);
 
     function drawMatrix() {
-        ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        ctx.font = fontSize + "px monospace";
+      ctx.fillStyle = "#22f2b8";
+      ctx.font = fontSize + "px monospace";
 
-        for (let i = 0; i < drops.length; i++) {
-            const text = matrixChars[Math.floor(Math.random() * matrixChars.length)];
-            const isIcon = iotIcons.includes(text);
+      for (let i = 0; i < drops.length; i++) {
+        const text = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-            ctx.fillStyle = isIcon ? "#00f6b8" : "#00ff55";
-            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-            if (drops[i] * fontSize > canvas.height && Math.random() > 0.96) {
-                drops[i] = 0;
-            }
-            drops[i]++;
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.96) {
+          drops[i] = 0;
         }
+        drops[i]++;
+      }
     }
 
     setInterval(drawMatrix, 50);
-</script>
 
+    // --- PARALLAX SIMPLE SUR LES CARTES ---
+    const parallaxCards = document.querySelectorAll(".parallax-card");
+
+    window.addEventListener("scroll", () => {
+      const scrollY = window.scrollY || window.pageYOffset;
+      parallaxCards.forEach(card => {
+        const speed = parseFloat(card.dataset.speed || "1");
+        const offset = scrollY * 0.03 * speed;
+        card.style.transform = `translateY(${offset}px)`;
+      });
+    });
+  </script>
+
+  <!-- Bootstrap Icons (pour les icônes CPU / outils) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 </body>
 </html>
