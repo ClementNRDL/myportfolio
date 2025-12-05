@@ -107,6 +107,37 @@ h1, h2, h3, h4, h5, h6 {
 p, li, span, a, td, th {
     color: #e7fff5 !important;
 }
+
+/* === ANIMATION SUR LES ICONES IOT === */
+.outil-card i {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.outil-card:hover i {
+    transform: scale(1.4);
+    filter: drop-shadow(0 0 10px #00ffcc);
+}
+
+/* === AMÉLIORATION DU TABLEAU DE VEILLE === */
+.table-custom {
+    background: rgba(0, 0, 0, 0.55) !important;
+    backdrop-filter: blur(8px);
+    color: #eafff4 !important;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,255,200,0.2);
+}
+.table-custom thead {
+    background: rgba(0, 255, 150, 0.25) !important;
+    color: #00ffcc !important;
+    text-shadow: 0 0 6px rgba(0,255,180,0.6);
+}
+.table-custom td, .table-custom th {
+    padding: 1rem !important;
+    border-color: rgba(0,255,200,0.15) !important;
+}
+.table-custom tr:hover {
+    background: rgba(0, 255, 150, 0.12) !important;
+}
 </style>
 
     <style>
@@ -247,7 +278,7 @@ p, li, span, a, td, th {
         <section class="mb-5 overlay-bg-fixed">
             <h2><i class="bi bi-table me-2"></i>Tableau de veille structuré</h2>
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-striped table-custom"">
                     <thead class="table-primary">
                         <tr>
                             <th>Date</th>
