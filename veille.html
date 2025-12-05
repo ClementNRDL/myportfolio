@@ -28,7 +28,8 @@
     }
 
     /* Canvas pour l’animation Matrix */
-    #matrix-bg {
+    /* MATRIX CANVAS BACKGROUND */
+#matrix-bg {
         position: fixed;
         top: 0;
         left: 0;
@@ -39,7 +40,14 @@
     }
 
     /* Filtre futuriste lumineux */
-    .overlay-fx {
+    .overlay-fx{
+        backdrop-filter:none;
+        background:rgba(0,0,0,0.65);
+    }
+
+    /* couche transparente pour lisibilité */
+    .content-wrapper {
+        position:-custom {
         position: fixed;
         top: 0;
         left: 0;
@@ -70,11 +78,23 @@
 
     /* Cartes et sections lisibles par-dessus */
     .overlay-bg {
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(6px);
-        border-radius: 15px;
+        background: rgba(255,255,255,0.92);
+        backdrop-filterder-radius: 15px;
         padding: 1rem;
     }
+
+/* Nouvelle couche pour lisibilité */
+.overlay-fx-custom {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.55);
+    z-index:-2;
+}
+
+.content-wrapper { position:relative; z-index:10; }
 </style>
 
     <style>
@@ -90,7 +110,9 @@
         }
     </style>
 </head>
-<body>
+<
+<div class="overlay-fx-custom"></div>
+<div class="content-wrapper">
     <header class="header-custom text-center">
         <h1 class="display-5 mb-1">Veille Technologique</h1>
         <p class="lead mb-0">Les Objets Connectés (IoT)</p>
@@ -251,7 +273,7 @@
 
         <!-- FOOTER -->
         <div class="d-flex justify-content-between align-items-center my-4">
-            <a href="index.html" class="btn btn-primary btn-lg shadow-sm"><i class="bi bi-house-door-fill me-2"></i>Retour</a>
+     <a href="index.html" class="btn btn-primary btn-lg shadow-sm"><i class="bi bi-house-door-fill me-2"></i>Retour</a>
             <p class="text-muted small mb-0">Dernière mise à jour : Octobre 2023</p>
         </div>
     </main>
@@ -313,5 +335,6 @@ window.addEventListener("resize", () => {
 });
 </script>
 
+</div>
 </body>
 </html>
