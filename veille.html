@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Bootstrap Icons pour quelques icônes -->
+  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
   <style>
@@ -29,7 +29,7 @@
 
     body {
       font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: black;
+      background: #000000;
       color: white;
     }
 
@@ -40,7 +40,7 @@
       width: 100%;
       height: 100%;
       z-index: -50;
-      background: black;
+      background: #000000;
     }
 
     .matrix-overlay {
@@ -49,9 +49,9 @@
       z-index: -40;
       pointer-events: none;
       background:
-        radial-gradient(circle at 0% 0%, rgba(34, 242, 184, 0.21), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.18), transparent 55%),
-        radial-gradient(circle at 50% 0%, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.98));
+        radial-gradient(circle at 0% 0%, rgba(34, 242, 184, 0.12), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.1), transparent 55%),
+        radial-gradient(circle at 50% 0%, rgba(10, 15, 30, 0.92), rgba(5, 10, 20, 0.98));
       mix-blend-mode: screen;
     }
 
@@ -110,7 +110,7 @@
       background: radial-gradient(circle at top left, rgba(34, 242, 184, 0.15), rgba(15, 23, 42, 1));
     }
 
-    /* ========= CONTEXTE : VIDÉO DE FOND ========= */
+    /* ========= VIDÉOS ========= */
     .context-video-wrapper {
       position: relative;
       overflow: hidden;
@@ -122,8 +122,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: brightness(0.35) saturate(1.15) blur(1px);
-      transform: scale(1.05);
+      filter: brightness(0.45) saturate(1.1) blur(0.5px);
+      transform: scale(1.04);
     }
 
     .context-video-overlay {
@@ -131,6 +131,17 @@
       z-index: 10;
       backdrop-filter: blur(14px);
       background: radial-gradient(circle at top left, rgba(34, 242, 184, 0.32), rgba(1, 4, 15, 0.9));
+    }
+
+    /* HERO vidéo immersive */
+    .hero-video-overlay {
+      position: relative;
+      z-index: 10;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.75rem 1.5rem;
     }
 
     /* ========= ICONES OUTILS ========= */
@@ -330,48 +341,29 @@
           </div>
         </div>
 
-        <!-- Card visuelle hero -->
-        <div class="panel-deep relative overflow-hidden aspect-[4/3] lg:aspect-[5/4] p-5 sm:p-6">
-          <div class="absolute inset-0 bg-gradient-to-tr from-emerald-400/25 via-transparent to-sky-500/25 opacity-80"></div>
-          <div class="relative z-10 flex flex-col h-full justify-between">
-            <div class="flex items-center justify-between gap-3">
-              <span class="badge-pill border-emerald-400/70 text-emerald-200">Radar IoT 2025</span>
-              <span class="text-[0.7rem] text-slate-300 flex items-center gap-1">
-                <i class="bi bi-shield-lock-fill text-emerald-300"></i> Cyber &amp; Privacy
-              </span>
-            </div>
+        <!-- HERO CARD IMMERSIVE AVEC VIDÉO -->
+        <div class="panel-deep relative overflow-hidden aspect-[4/3] lg:aspect-[5/4] p-0">
+          <div class="context-video-wrapper h-full w-full">
+            <video autoplay muted loop playsinline>
+              <source src="Vidéo_de_fond_pour_section_IoT.mp4" type="video/mp4">
+            </video>
 
-            <div class="space-y-3 mt-6">
-              <p class="text-xs text-slate-300/85 uppercase tracking-[0.25em]">Vue synthétique</p>
-              <h2 class="text-lg sm:text-xl font-semibold text-slate-50">
-                Interconnexions, plateformes cloud, standards (Matter, MQTT) et menaces émergentes.
-              </h2>
-              <p class="text-xs text-slate-300/90">
-                Le dossier met en perspective les bénéfices (efficacité, confort, data) et
-                les risques (intrusions, dépendance fournisseurs, fuite de données).
-              </p>
-            </div>
+            <div class="hero-video-overlay">
+              <!-- dégradé sombre par-dessus la vidéo -->
+              <div class="absolute inset-0 bg-gradient-to-b from-slate-900/15 via-slate-950/45 to-slate-950/95"></div>
 
-            <div class="mt-4 grid grid-cols-2 gap-3 text-[0.7rem] sm:text-[0.75rem] text-slate-300">
-              <div class="space-y-1">
-                <p class="font-semibold text-slate-100 flex items-center gap-1">
-                  <span class="h-2 w-2 rounded-full bg-emerald-400"></span> Domaines suivis
+              <!-- contenu centré -->
+              <div class="relative z-10 flex flex-col items-center text-center gap-3 px-4 sm:px-8">
+                <p class="badge-pill border-emerald-400/70 text-emerald-200 bg-slate-950/40">
+                  Radar IoT 2025 · Vue synthétique
                 </p>
-                <ul class="space-y-0.5 list-disc list-inside">
-                  <li>Domotique &amp; smart home</li>
-                  <li>Industrie 4.0 / IIoT</li>
-                  <li>Smart city &amp; mobilité</li>
-                </ul>
-              </div>
-              <div class="space-y-1">
-                <p class="font-semibold text-slate-100 flex items-center gap-1">
-                  <span class="h-2 w-2 rounded-full bg-sky-400"></span> Axes d’analyse
+                <h2 class="text-lg sm:text-xl md:text-2xl font-semibold text-slate-50 max-w-md">
+                  Interconnexions, plateformes cloud, standards (Matter, MQTT) et menaces émergentes.
+                </h2>
+                <p class="text-[0.7rem] sm:text-xs text-slate-200/85 max-w-md">
+                  Une vue globale des bénéfices et des risques liés aux objets connectés dans la maison,
+                  l’industrie et les smart cities.
                 </p>
-                <ul class="space-y-0.5 list-disc list-inside">
-                  <li>Sécurité &amp; chiffrement</li>
-                  <li>Interopérabilité</li>
-                  <li>Modèles économiques</li>
-                </ul>
               </div>
             </div>
           </div>
@@ -656,7 +648,6 @@
       </div>
 
       <div class="grid gap-6 md:grid-cols-2">
-        <!-- 6 cartes (comme avant mais plus pro) -->
         <article class="panel-soft card-hover px-5 py-4">
           <h3 class="text-lg font-semibold text-emerald-300 mb-1">
             Apple prépare un écosystème IoT unifié pour 2024
@@ -1013,7 +1004,7 @@
     let drops = Array.from({ length: columns }, () => 1);
 
     function drawMatrix() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.16)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.fillStyle = "#22f2b8";
@@ -1053,7 +1044,7 @@
           const el = entry.target;
           const target = parseInt(el.dataset.kpiTarget, 10);
           let current = 0;
-          const duration = 1200; // ms
+          const duration = 1200;
           const start = performance.now();
 
           function animate(time) {
