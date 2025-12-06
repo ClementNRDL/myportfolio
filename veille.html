@@ -310,10 +310,10 @@
         <select id="mobile-nav" class="bg-slate-950/80 border border-slate-700 text-[0.7rem] px-2 py-1 rounded-full">
           <option value="#hero">Accueil</option>
           <option value="#contexte">Contexte</option>
-          <option value="#methodologie">Méthodologie</option>
           <option value="#usecases">Cas d’usage</option>
-          <option value="#risques">Risques</option>
-          <option value="#tableau-veille">Tableau</option>
+           <option value="#risques">Risques</option>
+           <option value="#methodologie">Tableau</option>
+          <option value="#methodologie">Méthodologie</option>
           <option value="#faq">FAQ</option>
         </select>
       </div>
@@ -351,27 +351,7 @@
             </a>
           </div>
 
-          <!-- KPI -->
-          <div class="grid grid-cols-3 gap-4 max-w-md pt-4 text-xs sm:text-sm">
-            <div class="panel-soft px-3 py-3 flex flex-col gap-1 items-start">
-              <div class="badge-pill border-emerald-400/60 text-emerald-300/90">Articles</div>
-              <div class="kpi-number text-lg sm:text-xl font-semibold" data-kpi-target="68">0</div>
-              <span class="text-[0.7rem] text-slate-400">sources IoT analysées</span>
-            </div>
-            <div class="panel-soft px-3 py-3 flex flex-col gap-1 items-start">
-              <div class="badge-pill border-sky-400/70 text-sky-300">Alertes</div>
-              <div class="kpi-number text-lg sm:text-xl font-semibold" data-kpi-target="5">0</div>
-              <span class="text-[0.7rem] text-slate-400">outils de veille actifs</span>
-            </div>
-            <div class="panel-soft px-3 py-3 flex flex-col gap-1 items-start">
-              <div class="badge-pill border-fuchsia-400/70 text-fuchsia-300">Mises à jour</div>
-              <div class="kpi-number text-lg sm:text-xl font-semibold" data-kpi-target="12">0</div>
-              <span class="text-[0.7rem] text-slate-400">mises à jour mensuelles</span>
-            </div>
-          </div>
-        </div>
-
-       <!-- Card visuelle hero avec vidéo de fond -->
+     <!-- Card visuelle hero avec vidéo de fond -->
 <div class="panel-deep context-video-wrapper relative overflow-hidden aspect-[4/3] lg:aspect-[5/4] p-5 sm:p-6">
 
   <!-- 🎥 VIDÉO EN FOND -->
@@ -382,21 +362,15 @@
   <!-- Overlay pour atténuer un peu la vidéo -->
   <div class="absolute inset-0 bg-gradient-to-tr from-emerald-400/25 via-slate-900/60 to-sky-500/25"></div>
 
-  <!-- CONTENU DE LA CARTE -->
-  <div class="relative z-10 flex flex-col h-full justify-between">
-    <div class="flex items-center justify-between gap-3">
-      <span class="text-[0.7rem] text-slate-300 flex items-center gap-1">
-        <i class="bi bi-shield-lock-fill text-emerald-300"></i> Cyber &amp; Privacy
-      </span>
-    </div>
+  <!-- TITRE CENTRÉ AU MILIEU -->
+  <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+    <h1 class="text-3xl sm:text-4xl font-bold text-white drop-shadow-[0_0_20px_rgba(0,0,0,0.7)]">
+      IoT – Cyber & Innovation Hyper Cloud 
+    </h1>
+  </div>
 
-    <div class="space-y-3 mt-6">
-      <h1 class="text-lg sm:text-xl font-semibold text-slate-50">
-        IoT.
-      </h1>
+  </div>
 </div>
-
-      </div>
     </section>
 
    <section id="contexte" class="panel-deep mb-16 reveal px-5 sm:px-8 lg:px-10 py-8 sm:py-10">
@@ -610,9 +584,8 @@
           </p>
         </div>
         <div class="text-[0.7rem] text-slate-400 flex flex-wrap gap-2">
-          <span class="badge-pill border-emerald-400/60 text-emerald-300">Matter</span>
-          <span class="badge-pill border-sky-400/60 text-sky-300">Cloud IoT</span>
-          <span class="badge-pill border-rose-400/60 text-rose-300">Vulnérabilités</span>
+          <span class="badge-pill border-emerald-400/60 text-emerald-300">Sources vérifiées</span>
+          <span class="badge-pill border-sky-400/60 text-sky-300"> À jour </span>
         </div>
       </div>
 
@@ -694,14 +667,41 @@
   </article>
 
 </div>
+
+      <!-- ⭐ KPI placés en bas à droite ⭐ -->
+<div class="mt-10 flex justify-end">
+  <div class="grid grid-cols-3 gap-4 max-w-md text-xs sm:text-sm">
+
+    <!-- KPI Articles -->
+    <div class="panel-soft px-3 py-3 flex flex-col gap-1 items-start">
+      <div class="badge-pill border-emerald-400/60 text-emerald-300/90">Articles</div>
+      <div class="kpi-number text-lg sm:text-xl font-semibold" data-kpi-target="68">0</div>
+      <span class="text-[0.7rem] text-slate-400">sources IoT analysées</span>
+    </div>
+
+    <!-- KPI Alertes -->
+    <div class="panel-soft px-3 py-3 flex flex-col gap-1 items-start">
+      <div class="badge-pill border-sky-400/70 text-sky-300">Alertes</div>
+      <div class="kpi-number text-lg sm:text-xl font-semibold" data-kpi-target="5">0</div>
+      <span class="text-[0.7rem] text-slate-400">outils de veille actifs</span>
+    </div>
+
+    <!-- KPI Mises à jour -->
+    <div class="panel-soft px-3 py-3 flex flex-col gap-1 items-start">
+      <div class="badge-pill border-fuchsia-400/70 text-fuchsia-300">Mises à jour</div>
+      <div class="kpi-number text-lg sm:text-xl font-semibold" data-kpi-target="12">0</div>
+      <span class="text-[0.7rem] text-slate-400">mises à jour mensuelles</span>
+    </div>
+
+  </div>
+</div>
     </section>
 
  <!-- METHODOLOGIE & OUTILS -->
     <section id="methodologie" class="panel-deep px-5 sm:px-8 lg:px-10 py-8 sm:py-10 mb-16 reveal">
       <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-4 mb-7">
         <div class="space-y-1">
-          <h2 class="text-2xl sm:text-3xl font-semibold text-emerald-300 flex items-center gap-3">
-            <i class="bi bi-tools text-xl"></i>
+          <h2 class="text-2xl sm:text-3xl font-semibold text-emerald-300">
             Méthodologie &amp; Outils utilisés
           </h2>
           <p class="text-xs sm:text-sm text-slate-400">
@@ -795,72 +795,7 @@
       </div>
     </section>
 
-     <!-- TABLEAU STRUCTURE -->
-    <section id="tableau-veille" class="mb-16 reveal">
-      <div class="table-shell p-5 sm:p-7">
-        <div class="flex items-center justify-between gap-4 mb-5">
-          <h2 class="text-xl sm:text-2xl font-semibold text-emerald-300 flex items-center gap-3">
-            <i class="bi bi-table text-lg"></i>
-            Tableau de veille structuré
-          </h2>
-          <span class="text-[0.7rem] sm:text-xs text-slate-400 tracking-[0.2em] uppercase">
-            Synthèse multi-critères
-          </span>
-        </div>
 
-        <div class="overflow-x-auto text-xs sm:text-sm">
-          <table class="min-w-full border-collapse">
-            <thead>
-              <tr class="bg-slate-900/80 text-[0.7rem] uppercase tracking-[0.2em] text-slate-300">
-                <th class="text-left py-3 px-3 sm:px-4">Date</th>
-                <th class="text-left py-3 px-3 sm:px-4">Titre</th>
-                <th class="text-left py-3 px-3 sm:px-4">Source</th>
-                <th class="text-left py-3 px-3 sm:px-4">Outil</th>
-                <th class="text-left py-3 px-3 sm:px-4">Catégorie</th>
-                <th class="text-left py-3 px-3 sm:px-4">Résumé</th>
-                <th class="text-left py-3 px-3 sm:px-4">Mots clés</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-800/80">
-              <tr class="hover:bg-emerald-400/5 transition">
-                <td class="py-3 px-3 sm:px-4 text-slate-300">12/10/2023</td>
-                <td class="py-3 px-3 sm:px-4 text-slate-50">
-                  Standard de sécurité obligatoire pour les objets connectés
-                </td>
-                <td class="py-3 px-3 sm:px-4">
-                  <a href="#" class="text-sky-300 underline underline-offset-2">ZDNet</a>
-                </td>
-                <td class="py-3 px-3 sm:px-4 text-slate-200">Feedly</td>
-                <td class="py-3 px-3 sm:px-4 text-emerald-300">Sécurité</td>
-                <td class="py-3 px-3 sm:px-4 text-slate-200">
-                  Adoption d’un standard imposant mises à jour, gestion de mots de passe et politique de support minimale.
-                </td>
-                <td class="py-3 px-3 sm:px-4 text-slate-300 text-[0.75rem]">
-                  IoT, sécurité, conformité, réglementation
-                </td>
-              </tr>
-              <tr class="hover:bg-emerald-400/5 transition">
-                <td class="py-3 px-3 sm:px-4 text-slate-300">05/10/2023</td>
-                <td class="py-3 px-3 sm:px-4 text-slate-50">
-                  Assistant domestique Amazon axé sur la confidentialité
-                </td>
-                <td class="py-3 px-3 sm:px-4">
-                  <a href="#" class="text-sky-300 underline underline-offset-2">Les Numériques</a>
-                </td>
-                <td class="py-3 px-3 sm:px-4 text-slate-200">Google Alerts</td>
-                <td class="py-3 px-3 sm:px-4 text-emerald-300">Domotique</td>
-                <td class="py-3 px-3 sm:px-4 text-slate-200">
-                  Hub IoT intégrant des mécanismes de chiffrement local et une gestion fine des autorisations.
-                </td>
-                <td class="py-3 px-3 sm:px-4 text-slate-300 text-[0.75rem]">
-                  Amazon, smart home, privacy, chiffrement
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
 
     <!-- MARQUEE -->
     <section class="mb-14 marquee reveal">
