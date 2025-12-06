@@ -45,16 +45,16 @@
     }
 
     .matrix-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: -40;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(34, 242, 184, 0.21), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.18), transparent 55%),
-        radial-gradient(circle at 50% 0%, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.98));
-      mix-blend-mode: screen;
-    }
+  position: fixed;
+  inset: 0;
+  z-index: -40;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(34, 242, 184, 0.08), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.08), transparent 55%),
+    radial-gradient(circle at 50% 0%, rgba(5, 10, 20, 0.92), rgba(5, 10, 20, 1));
+  mix-blend-mode: screen;
+}
 
     /* ========= HEADER STICKY ========= */
     .app-header {
@@ -638,6 +638,83 @@
         </article>
       </div>
     </section>
+    
+       <!-- MATRICE DE RISQUES -->
+    <section id="risques" class="mb-16 reveal">
+      <div class="w-full">
+        <!-- matrice -->
+        <div class="table-shell p-5 sm:p-7">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl sm:text-2xl font-semibold text-emerald-300 flex items-center gap-2">
+              <i class="bi bi-exclamation-triangle-fill text-amber-300"></i>
+              Matrice des risques IoT
+            </h2>
+            <span class="badge-pill border-amber-400/80 text-amber-300 text-[0.65rem]">Analyse</span>
+          </div>
+          <div class="overflow-x-auto text-xs sm:text-sm">
+            <table class="min-w-full border-collapse">
+              <thead>
+                <tr class="bg-slate-900/90 text-[0.7rem] uppercase tracking-[0.2em] text-slate-300">
+                  <th class="text-left py-3 px-3 sm:px-4">Risque</th>
+                  <th class="text-left py-3 px-3 sm:px-4">Impact</th>
+                  <th class="text-left py-3 px-3 sm:px-4">Probabilité</th>
+                  <th class="text-left py-3 px-3 sm:px-4">Exemple</th>
+                  <th class="text-left py-3 px-3 sm:px-4">Mesures</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-800/80">
+                <tr class="hover:bg-emerald-400/5">
+                  <td class="py-3 px-3 sm:px-4 text-slate-50">Botnet / DDoS</td>
+                  <td class="py-3 px-3 sm:px-4 text-rose-300">Très fort</td>
+                  <td class="py-3 px-3 sm:px-4 text-amber-300">Élevée</td>
+                  <td class="py-3 px-3 sm:px-4 text-slate-300">
+                    Appareils grand public utilisés pour attaquer des sites ou services.
+                  </td>
+                  <td class="py-3 px-3 sm:px-4 text-slate-300">
+                    Mises à jour, changement mots de passe, filtrage réseau, segmentations VLAN.
+                  </td>
+                </tr>
+                <tr class="hover:bg-emerald-400/5">
+                  <td class="py-3 px-3 sm:px-4 text-slate-50">Intrusion dans un foyer</td>
+                  <td class="py-3 px-3 sm:px-4 text-rose-300">Fort</td>
+                  <td class="py-3 px-3 sm:px-4 text-amber-300">Moyenne</td>
+                  <td class="py-3 px-3 sm:px-4 text-slate-300">
+                    Caméra ou serrure connectée compromise permettant un accès physique.
+                  </td>
+                  <td class="py-3 px-3 sm:px-4 text-slate-300">
+                    Choix de marques fiables, chiffrement, authentification forte, mise à jour.
+                  </td>
+                </tr>
+                <tr class="hover:bg-emerald-400/5">
+                  <td class="py-3 px-3 sm:px-4 text-slate-50">Fuite de données de santé</td>
+                  <td class="py-3 px-3 sm:px-4 text-rose-300">Très fort</td>
+                  <td class="py-3 px-3 sm:px-4 text-amber-300">Moyenne</td>
+                  <td class="py-3 px-3 sm:px-4 text-slate-300">
+                    Dispositif médical connecté exposant des données sensibles.
+                  </td>
+                  <td class="py-3 px-3 sm:px-4 text-slate-300">
+                    Protocoles sécurisés, stockage chiffré, politique RGPD stricte, audits réguliers.
+                  </td>
+                </tr>
+                <tr class="hover:bg-emerald-400/5">
+                  <td class="py-3 px-3 sm:px-4 text-slate-50">Arrêt de production IIoT</td>
+                  <td class="py-3 px-3 sm:px-4 text-rose-300">Très fort</td>
+                  <td class="py-3 px-3 sm:px-4 text-amber-300">Faible à moyenne</td>
+                  <td class="py-3 px-3 sm:px-4 text-slate-300">
+                    Attaque ciblant des automates ou capteurs industriels.
+                  </td>
+                  <td class="py-3 px-3 sm:px-4 text-slate-300">
+                    Segmentation OT/IT, sauvegardes, supervision, plans de continuité.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- stack techno -->
+        
+    </section>
 
     <!-- ARTICLES -->
     <section id="articles" class="panel-deep px-5 sm:px-8 lg:px-10 py-8 sm:py-10 mb-16 reveal">
@@ -727,82 +804,6 @@
       </div>
     </section>
 
-    <!-- MATRICE DE RISQUES -->
-    <section id="risques" class="mb-16 reveal">
-      <div class="w-full">
-        <!-- matrice -->
-        <div class="table-shell p-5 sm:p-7">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl sm:text-2xl font-semibold text-emerald-300 flex items-center gap-2">
-              <i class="bi bi-exclamation-triangle-fill text-amber-300"></i>
-              Matrice des risques IoT
-            </h2>
-            <span class="badge-pill border-amber-400/80 text-amber-300 text-[0.65rem]">Analyse</span>
-          </div>
-          <div class="overflow-x-auto text-xs sm:text-sm">
-            <table class="min-w-full border-collapse">
-              <thead>
-                <tr class="bg-slate-900/90 text-[0.7rem] uppercase tracking-[0.2em] text-slate-300">
-                  <th class="text-left py-3 px-3 sm:px-4">Risque</th>
-                  <th class="text-left py-3 px-3 sm:px-4">Impact</th>
-                  <th class="text-left py-3 px-3 sm:px-4">Probabilité</th>
-                  <th class="text-left py-3 px-3 sm:px-4">Exemple</th>
-                  <th class="text-left py-3 px-3 sm:px-4">Mesures</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-800/80">
-                <tr class="hover:bg-emerald-400/5">
-                  <td class="py-3 px-3 sm:px-4 text-slate-50">Botnet / DDoS</td>
-                  <td class="py-3 px-3 sm:px-4 text-rose-300">Très fort</td>
-                  <td class="py-3 px-3 sm:px-4 text-amber-300">Élevée</td>
-                  <td class="py-3 px-3 sm:px-4 text-slate-300">
-                    Appareils grand public utilisés pour attaquer des sites ou services.
-                  </td>
-                  <td class="py-3 px-3 sm:px-4 text-slate-300">
-                    Mises à jour, changement mots de passe, filtrage réseau, segmentations VLAN.
-                  </td>
-                </tr>
-                <tr class="hover:bg-emerald-400/5">
-                  <td class="py-3 px-3 sm:px-4 text-slate-50">Intrusion dans un foyer</td>
-                  <td class="py-3 px-3 sm:px-4 text-rose-300">Fort</td>
-                  <td class="py-3 px-3 sm:px-4 text-amber-300">Moyenne</td>
-                  <td class="py-3 px-3 sm:px-4 text-slate-300">
-                    Caméra ou serrure connectée compromise permettant un accès physique.
-                  </td>
-                  <td class="py-3 px-3 sm:px-4 text-slate-300">
-                    Choix de marques fiables, chiffrement, authentification forte, mise à jour.
-                  </td>
-                </tr>
-                <tr class="hover:bg-emerald-400/5">
-                  <td class="py-3 px-3 sm:px-4 text-slate-50">Fuite de données de santé</td>
-                  <td class="py-3 px-3 sm:px-4 text-rose-300">Très fort</td>
-                  <td class="py-3 px-3 sm:px-4 text-amber-300">Moyenne</td>
-                  <td class="py-3 px-3 sm:px-4 text-slate-300">
-                    Dispositif médical connecté exposant des données sensibles.
-                  </td>
-                  <td class="py-3 px-3 sm:px-4 text-slate-300">
-                    Protocoles sécurisés, stockage chiffré, politique RGPD stricte, audits réguliers.
-                  </td>
-                </tr>
-                <tr class="hover:bg-emerald-400/5">
-                  <td class="py-3 px-3 sm:px-4 text-slate-50">Arrêt de production IIoT</td>
-                  <td class="py-3 px-3 sm:px-4 text-rose-300">Très fort</td>
-                  <td class="py-3 px-3 sm:px-4 text-amber-300">Faible à moyenne</td>
-                  <td class="py-3 px-3 sm:px-4 text-slate-300">
-                    Attaque ciblant des automates ou capteurs industriels.
-                  </td>
-                  <td class="py-3 px-3 sm:px-4 text-slate-300">
-                    Segmentation OT/IT, sauvegardes, supervision, plans de continuité.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- stack techno -->
-        
-    </section>
 
     <!-- TABLEAU STRUCTURE -->
     <section id="tableau-veille" class="mb-16 reveal">
