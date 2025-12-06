@@ -30,7 +30,7 @@
 
     body {
       font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        background: rgba(0, 0, 0, 0.88);
+          background: transparent;
       color: white;
     }
 
@@ -255,6 +255,11 @@
   color: rgba(34, 242, 184, 0.8) !important;
 }
     #vanta-bg {
+      position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -50;
   background-color: transparent !important;
 }
   </style>
@@ -993,21 +998,24 @@
       else header.classList.remove("scrolled");
     });
 
-    // --- VANTA.NET BACKGROUND ---
-VANTA.NET({
-  el: "#vanta-bg",
-  mouseControls: true,
-  touchControls: true,
-  gyroControls: false,
-  minHeight: 200.00,
-  minWidth: 200.00,
-  scale: 1.0,
-  scaleMobile: 1.0,
-  color: 0x22f2b8,
-  backgroundColor: 0x00000000,
-  points: 12.00,
-  maxDistance: 22.00,
-  spacing: 18.00
+   
+// --- VANTA.NET BACKGROUND ---
+window.addEventListener("DOMContentLoaded", function () {
+  VANTA.NET({
+    el: "#vanta-bg",
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 200.00,
+    minWidth: 200.00,
+    scale: 1.0,
+    scaleMobile: 1.0,
+    color: 0x22f2b8,
+    backgroundColor: 0x00000000, // transparent
+    points: 12.00,
+    maxDistance: 22.00,
+    spacing: 18.00
+  });
 });
   </script>
 </body>
