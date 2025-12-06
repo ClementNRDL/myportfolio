@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Bootstrap Icons pour quelques icônes -->
+  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
   <style>
@@ -25,12 +25,11 @@
 
     * {
       scroll-behavior: smooth;
-      box-sizing: border-box;
     }
 
     body {
       font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: black;
+      background: #000000;
       color: white;
     }
 
@@ -41,7 +40,7 @@
       width: 100%;
       height: 100%;
       z-index: -50;
-      background: black;
+      background: #000000;
     }
 
     .matrix-overlay {
@@ -50,9 +49,9 @@
       z-index: -40;
       pointer-events: none;
       background:
-        radial-gradient(circle at 0% 0%, rgba(34, 242, 184, 0.21), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.18), transparent 55%),
-        radial-gradient(circle at 50% 0%, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.98));
+        radial-gradient(circle at 0% 0%, rgba(34, 242, 184, 0.12), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.1), transparent 55%),
+        radial-gradient(circle at 50% 0%, rgba(10, 15, 30, 0.92), rgba(5, 10, 20, 0.98));
       mix-blend-mode: screen;
     }
 
@@ -62,37 +61,9 @@
       background: radial-gradient(circle at top left, rgba(34, 242, 184, 0.07), rgba(2, 6, 23, 0.98));
       border-bottom: 1px solid rgba(148, 163, 184, 0.35);
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85);
-      transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .app-header.scrolled {
-      background: radial-gradient(circle at top left, rgba(34, 242, 184, 0.14), rgba(2, 6, 23, 0.98));
-      border-bottom-color: rgba(34, 242, 184, 0.8);
-      box-shadow:
-        0 22px 60px rgba(0, 0, 0, 1),
-        0 0 36px rgba(34, 242, 184, 0.3);
-    }
-
-    /* ========= TITRES (ANIMATION SURVOL) ========= */
-    h1, h2, h3 {
-      position: relative;
-      transition:
-        color 0.3s ease,
-        text-shadow 0.3s ease,
-        transform 0.3s ease,
-        letter-spacing 0.3s ease;
-    }
-
-    h1:hover, h2:hover, h3:hover {
-      color: #f9fafb;
-      letter-spacing: 0.03em;
-      transform: translateY(-2px);
-      text-shadow:
-        0 0 10px rgba(34, 242, 184, 0.6),
-        0 0 20px rgba(34, 242, 184, 0.8),
-        0 0 30px rgba(56, 189, 248, 0.7);
-    }
-
+    /* ========= TITRE PRINCIPAL ========= */
     .title-main {
       text-shadow: 0 0 18px rgba(34, 242, 184, 0.5);
       transition: color 0.35s ease, text-shadow 0.35s ease, transform 0.35s ease;
@@ -127,11 +98,7 @@
     }
 
     .card-hover {
-      transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease,
-        border-color 0.35s ease,
-        background 0.35s ease;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
     }
 
     .card-hover:hover {
@@ -143,7 +110,7 @@
       background: radial-gradient(circle at top left, rgba(34, 242, 184, 0.15), rgba(15, 23, 42, 1));
     }
 
-    /* ========= CONTEXTE : VIDÉO DE FOND ========= */
+    /* ========= VIDÉOS ========= */
     .context-video-wrapper {
       position: relative;
       overflow: hidden;
@@ -155,8 +122,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: brightness(0.35) saturate(1.15) blur(1px);
-      transform: scale(1.05);
+      filter: brightness(0.45) saturate(1.1) blur(0.5px);
+      transform: scale(1.04);
     }
 
     .context-video-overlay {
@@ -164,6 +131,17 @@
       z-index: 10;
       backdrop-filter: blur(14px);
       background: radial-gradient(circle at top left, rgba(34, 242, 184, 0.32), rgba(1, 4, 15, 0.9));
+    }
+
+    /* HERO vidéo immersive */
+    .hero-video-overlay {
+      position: relative;
+      z-index: 10;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.75rem 1.5rem;
     }
 
     /* ========= ICONES OUTILS ========= */
@@ -363,48 +341,29 @@
           </div>
         </div>
 
-        <!-- Card visuelle hero -->
-        <div class="panel-deep relative overflow-hidden aspect-[4/3] lg:aspect-[5/4] p-5 sm:p-6">
-          <div class="absolute inset-0 bg-gradient-to-tr from-emerald-400/25 via-transparent to-sky-500/25 opacity-80"></div>
-          <div class="relative z-10 flex flex-col h-full justify-between">
-            <div class="flex items-center justify-between gap-3">
-              <span class="badge-pill border-emerald-400/70 text-emerald-200">Radar IoT 2025</span>
-              <span class="text-[0.7rem] text-slate-300 flex items-center gap-1">
-                <i class="bi bi-shield-lock-fill text-emerald-300"></i> Cyber &amp; Privacy
-              </span>
-            </div>
+        <!-- HERO CARD IMMERSIVE AVEC VIDÉO -->
+        <div class="panel-deep relative overflow-hidden aspect-[4/3] lg:aspect-[5/4] p-0">
+          <div class="context-video-wrapper h-full w-full">
+            <video autoplay muted loop playsinline>
+              <source src="Vidéo_de_fond_pour_section_IoT.mp4" type="video/mp4">
+            </video>
 
-            <div class="space-y-3 mt-6">
-              <p class="text-xs text-slate-300/85 uppercase tracking-[0.25em]">Vue synthétique</p>
-              <h2 class="text-lg sm:text-xl font-semibold text-slate-50">
-                Interconnexions, plateformes cloud, standards (Matter, MQTT) et menaces émergentes.
-              </h2>
-              <p class="text-xs text-slate-300/90">
-                Le dossier met en perspective les bénéfices (efficacité, confort, data) et
-                les risques (intrusions, dépendance fournisseurs, fuite de données).
-              </p>
-            </div>
+            <div class="hero-video-overlay">
+              <!-- dégradé sombre par-dessus la vidéo -->
+              <div class="absolute inset-0 bg-gradient-to-b from-slate-900/15 via-slate-950/45 to-slate-950/95"></div>
 
-            <div class="mt-4 grid grid-cols-2 gap-3 text-[0.7rem] sm:text-[0.75rem] text-slate-300">
-              <div class="space-y-1">
-                <p class="font-semibold text-slate-100 flex items-center gap-1">
-                  <span class="h-2 w-2 rounded-full bg-emerald-400"></span> Domaines suivis
+              <!-- contenu centré -->
+              <div class="relative z-10 flex flex-col items-center text-center gap-3 px-4 sm:px-8">
+                <p class="badge-pill border-emerald-400/70 text-emerald-200 bg-slate-950/40">
+                  Radar IoT 2025 · Vue synthétique
                 </p>
-                <ul class="space-y-0.5 list-disc list-inside">
-                  <li>Domotique &amp; smart home</li>
-                  <li>Industrie 4.0 / IIoT</li>
-                  <li>Smart city &amp; mobilité</li>
-                </ul>
-              </div>
-              <div class="space-y-1">
-                <p class="font-semibold text-slate-100 flex items-center gap-1">
-                  <span class="h-2 w-2 rounded-full bg-sky-400"></span> Axes d’analyse
+                <h2 class="text-lg sm:text-xl md:text-2xl font-semibold text-slate-50 max-w-md">
+                  Interconnexions, plateformes cloud, standards (Matter, MQTT) et menaces émergentes.
+                </h2>
+                <p class="text-[0.7rem] sm:text-xs text-slate-200/85 max-w-md">
+                  Une vue globale des bénéfices et des risques liés aux objets connectés dans la maison,
+                  l’industrie et les smart cities.
                 </p>
-                <ul class="space-y-0.5 list-disc list-inside">
-                  <li>Sécurité &amp; chiffrement</li>
-                  <li>Interopérabilité</li>
-                  <li>Modèles économiques</li>
-                </ul>
               </div>
             </div>
           </div>
@@ -475,6 +434,7 @@
       <div class="grid gap-6 sm:gap-7 md:grid-cols-2 xl:grid-cols-4">
         <!-- Google Alerts -->
         <article class="iot-tool card-hover relative overflow-hidden rounded-2xl border border-slate-600/70 bg-slate-950/80 px-5 py-5 flex flex-col justify-between">
+          <div class="absolute inset-0 bg-gradient-to-br from-emerald-400/18 via-transparent to-sky-500/10 opacity-0 pointer-events-none"></div>
           <div class="relative z-10 space-y-4">
             <div class="h-12 w-12 rounded-xl bg-emerald-400/15 flex items-center justify-center">
               <i class="bi bi-bell-fill iot-tool-icon text-2xl text-emerald-300"></i>
@@ -494,6 +454,7 @@
 
         <!-- Feedly -->
         <article class="iot-tool card-hover relative overflow-hidden rounded-2xl border border-slate-600/70 bg-slate-950/80 px-5 py-5 flex flex-col justify-between">
+          <div class="absolute inset-0 bg-gradient-to-br from-sky-500/20 via-transparent to-emerald-400/10 opacity-0 pointer-events-none"></div>
           <div class="relative z-10 space-y-4">
             <div class="h-12 w-12 rounded-xl bg-sky-500/15 flex items-center justify-center">
               <i class="bi bi-rss-fill iot-tool-icon text-2xl text-sky-400"></i>
@@ -513,6 +474,7 @@
 
         <!-- Inoreader -->
         <article class="iot-tool card-hover relative overflow-hidden rounded-2xl border border-slate-600/70 bg-slate-950/80 px-5 py-5 flex flex-col justify-between">
+          <div class="absolute inset-0 bg-gradient-to-br from-fuchsia-500/16 via-transparent to-emerald-400/12 opacity-0 pointer-events-none"></div>
           <div class="relative z-10 space-y-4">
             <div class="h-12 w-12 rounded-xl bg-fuchsia-500/15 flex items-center justify-center">
               <i class="bi bi-folder-fill iot-tool-icon text-2xl text-fuchsia-300"></i>
@@ -532,6 +494,7 @@
 
         <!-- Réseaux sociaux -->
         <article class="iot-tool card-hover relative overflow-hidden rounded-2xl border border-slate-600/70 bg-slate-950/80 px-5 py-5 flex flex-col justify-between">
+          <div class="absolute inset-0 bg-gradient-to-br from-emerald-400/16 via-transparent to-indigo-500/15 opacity-0 pointer-events-none"></div>
           <div class="relative z-10 space-y-4">
             <div class="h-12 w-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
               <i class="bi bi-bar-chart-line-fill iot-tool-icon text-2xl text-emerald-300"></i>
@@ -625,53 +588,45 @@
           </div>
         </div>
 
-        <!-- NOUVELLE ROADMAP : TA VIDÉO -->
-      <div class="context-video-wrapper panel-deep reveal">
-  <video autoplay muted loop playsinline>
-    <source src="vidéoiot.mp4" type="video/mp4">
-  </video>
-
-  <div class="context-video-overlay rounded-3xl px-5 sm:px-6 lg:px-8 py-7 space-y-5">
-    <div class="flex items-center justify-between gap-4">
-      <h3 class="text-lg sm:text-xl font-semibold text-emerald-300">Roadmap de veille (vidéo)</h3>
-      <span class="badge-pill border-sky-400/70 text-sky-300 text-[0.65rem]">Organisation</span>
-    </div>
-
-    <p class="text-sm text-slate-100/90">
-      Cette vidéo illustre les grandes étapes de ta veille technologique IoT :
-      définition du périmètre, choix des outils, collecte des informations,
-      analyse et mise à jour régulière du tableau de veille.
-    </p>
-
-    <ol class="space-y-3 text-xs sm:text-[0.8rem] text-slate-200">
-      <li class="flex gap-3">
-        <span class="mt-1 h-5 w-5 flex items-center justify-center rounded-full bg-emerald-400/20 border border-emerald-400/70 text-[0.7rem]">1</span>
-        <div>
-          <p class="font-semibold text-slate-50">Définition du périmètre</p>
-          <p class="text-slate-400">Thèmes : sécurité, standards, cas d’usage, acteurs, réglementation.</p>
+        <!-- Timeline / Roadmap -->
+        <div class="panel-deep px-5 sm:px-6 py-7 space-y-5">
+          <div class="flex items-center justify-between gap-4">
+            <h3 class="text-lg sm:text-xl font-semibold text-emerald-300">Roadmap de veille</h3>
+            <span class="badge-pill border-sky-400/70 text-sky-300 text-[0.65rem]">Organisation</span>
+          </div>
+          <ol class="space-y-3 text-xs sm:text-[0.8rem] text-slate-200">
+            <li class="flex gap-3">
+              <span class="mt-1 h-5 w-5 flex items-center justify-center rounded-full bg-emerald-400/20 border border-emerald-400/70 text-[0.7rem]">1</span>
+              <div>
+                <p class="font-semibold text-slate-50">Définition du périmètre</p>
+                <p class="text-slate-400">Choix des thèmes : sécurité, standards, cas d’usage, acteurs, réglementation.</p>
+              </div>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1 h-5 w-5 flex items-center justify-center rounded-full bg-emerald-400/20 border border-emerald-400/70 text-[0.7rem]">2</span>
+              <div>
+                <p class="font-semibold text-slate-50">Configuration des outils</p>
+                <p class="text-slate-400">Paramétrage de Google Alerts, flux RSS Feedly/Inoreader, listes Twitter/LinkedIn.</p>
+              </div>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1 h-5 w-5 flex items-center justify-center rounded-full bg-emerald-400/20 border border-emerald-400/70 text-[0.7rem]">3</span>
+              <div>
+                <p class="font-semibold text-slate-50">Collecte &amp; tri hebdomadaire</p>
+                <p class="text-slate-400">Lecture, tagging, mise de côté des articles importants ou surprenants.</p>
+              </div>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1 h-5 w-5 flex items-center justify-center rounded-full bg-emerald-400/20 border border-emerald-400/70 text-[0.7rem]">4</span>
+              <div>
+                <p class="font-semibold text-slate-50">Synthèse mensuelle</p>
+                <p class="text-slate-400">Mise à jour du tableau, rédaction de mini-analyses et identification des impacts.</p>
+              </div>
+            </li>
+          </ol>
         </div>
-      </li>
-
-      <li class="flex gap-3">
-        <span class="mt-1 h-5 w-5 flex items-center justify-center rounded-full bg-emerald-400/20 border border-emerald-400/70 text-[0.7rem]">2</span>
-        <div>
-          <p class="font-semibold text-slate-50">Configuration des outils</p>
-          <p class="text-slate-400">Google Alerts, flux RSS, listes d’experts sur les réseaux sociaux.</p>
-        </div>
-      </li>
-
-      <li class="flex gap-3">
-        <span class="mt-1 h-5 w-5 flex items-center justify-center rounded-full bg-emerald-400/20 border border-emerald-400/70 text-[0.7rem]">3</span>
-        <div>
-          <p class="font-semibold text-slate-50">Collecte &amp; tri hebdomadaire</p>
-          <p class="text-slate-400">Lecture, tagging, mise de côté des articles importants ou surprenants.</p>
-        </div>
-      </li>
-
-      <li class="flex gap-3">
-        <span class="mt-1 h-5 w-5 flex items-center justify-center rounded-full bg-emerald-400/20 border border-emerald-400/70 text-[0.7rem]">4</span>
-        <div>
-          <p class="font-semibold text-slate-50">Synthèse mensuelle</p>
+      </div>
+    </section>
 
     <!-- ARTICLES -->
     <section id="articles" class="panel-deep px-5 sm:px-8 lg:px-10 py-8 sm:py-10 mb-16 reveal">
@@ -1049,7 +1004,7 @@
     let drops = Array.from({ length: columns }, () => 1);
 
     function drawMatrix() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.16)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.fillStyle = "#22f2b8";
@@ -1066,15 +1021,7 @@
       }
     }
 
-    let matrixInterval = setInterval(drawMatrix, 50);
-
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden) {
-        clearInterval(matrixInterval);
-      } else {
-        matrixInterval = setInterval(drawMatrix, 50);
-      }
-    });
+    setInterval(drawMatrix, 50);
 
     // --- SCROLL REVEAL ---
     const revealElements = document.querySelectorAll(".reveal");
@@ -1097,7 +1044,7 @@
           const el = entry.target;
           const target = parseInt(el.dataset.kpiTarget, 10);
           let current = 0;
-          const duration = 1200; // ms
+          const duration = 1200;
           const start = performance.now();
 
           function animate(time) {
@@ -1147,13 +1094,6 @@
     }, { threshold: 0.4 });
 
     sections.forEach(sec => sectionObserver.observe(sec));
-
-    // --- HEADER SCROLL STYLE ---
-    const header = document.querySelector(".app-header");
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 40) header.classList.add("scrolled");
-      else header.classList.remove("scrolled");
-    });
   </script>
 </body>
 </html>
