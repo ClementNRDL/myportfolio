@@ -626,11 +626,53 @@
         </div>
 
         <!-- NOUVELLE ROADMAP : TA VIDÉO -->
-       <div class="context-video-wrapper panel-deep reveal rounded-3xl overflow-hidden">
-  <video autoplay muted loop playsinline class="w-full h-full object-cover">
-    <source src="iot1.mp4" type="video/mp4">
+      <div class="context-video-wrapper panel-deep reveal">
+  <video autoplay muted loop playsinline>
+    <source src="vidéoiot.mp4" type="video/mp4">
   </video>
-</div>
+
+  <div class="context-video-overlay rounded-3xl px-5 sm:px-6 lg:px-8 py-7 space-y-5">
+    <div class="flex items-center justify-between gap-4">
+      <h3 class="text-lg sm:text-xl font-semibold text-emerald-300">Roadmap de veille (vidéo)</h3>
+      <span class="badge-pill border-sky-400/70 text-sky-300 text-[0.65rem]">Organisation</span>
+    </div>
+
+    <p class="text-sm text-slate-100/90">
+      Cette vidéo illustre les grandes étapes de ta veille technologique IoT :
+      définition du périmètre, choix des outils, collecte des informations,
+      analyse et mise à jour régulière du tableau de veille.
+    </p>
+
+    <ol class="space-y-3 text-xs sm:text-[0.8rem] text-slate-200">
+      <li class="flex gap-3">
+        <span class="mt-1 h-5 w-5 flex items-center justify-center rounded-full bg-emerald-400/20 border border-emerald-400/70 text-[0.7rem]">1</span>
+        <div>
+          <p class="font-semibold text-slate-50">Définition du périmètre</p>
+          <p class="text-slate-400">Thèmes : sécurité, standards, cas d’usage, acteurs, réglementation.</p>
+        </div>
+      </li>
+
+      <li class="flex gap-3">
+        <span class="mt-1 h-5 w-5 flex items-center justify-center rounded-full bg-emerald-400/20 border border-emerald-400/70 text-[0.7rem]">2</span>
+        <div>
+          <p class="font-semibold text-slate-50">Configuration des outils</p>
+          <p class="text-slate-400">Google Alerts, flux RSS, listes d’experts sur les réseaux sociaux.</p>
+        </div>
+      </li>
+
+      <li class="flex gap-3">
+        <span class="mt-1 h-5 w-5 flex items-center justify-center rounded-full bg-emerald-400/20 border border-emerald-400/70 text-[0.7rem]">3</span>
+        <div>
+          <p class="font-semibold text-slate-50">Collecte &amp; tri hebdomadaire</p>
+          <p class="text-slate-400">Lecture, tagging, mise de côté des articles importants ou surprenants.</p>
+        </div>
+      </li>
+
+      <li class="flex gap-3">
+        <span class="mt-1 h-5 w-5 flex items-center justify-center rounded-full bg-emerald-400/20 border border-emerald-400/70 text-[0.7rem]">4</span>
+        <div>
+          <p class="font-semibold text-slate-50">Synthèse mensuelle</p>
+
     <!-- ARTICLES -->
     <section id="articles" class="panel-deep px-5 sm:px-8 lg:px-10 py-8 sm:py-10 mb-16 reveal">
       <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-4 mb-7">
