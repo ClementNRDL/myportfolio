@@ -30,11 +30,31 @@
 
     body {
       font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-          background: transparent;
+      background: black;
       color: white;
     }
 
-  
+    /* ========= FOND MATRIX ========= */
+    #matrix-bg {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -50;
+      background: black;
+    }
+
+    .matrix-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -40;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(34, 242, 184, 0.08), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.08), transparent 55%),
+    radial-gradient(circle at 50% 0%, rgba(5, 10, 20, 0.92), rgba(5, 10, 20, 1));
+  mix-blend-mode: screen;
+}
 
     /* ========= HEADER STICKY ========= */
     .app-header {
@@ -254,25 +274,13 @@
   text-shadow: none !important;
   color: rgba(34, 242, 184, 0.8) !important;
 }
-    #vanta-bg {
-      position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -50;
-  background-color: transparent !important;
-}
   </style>
-  
-<!-- 🌐 VANTA + THREE.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
 </head>
-<body class="relative min-h-screen text-slate-50">
+<body class="min-h-screen bg-black text-slate-50">
 
-  
-  <!-- 🌐 FOND VANTA.NET -->
-  <div id="vanta-bg" class="absolute inset-0 -z-50"></div>
+  <!-- MATRIX -->
+  <canvas id="matrix-bg"></canvas>
+  <div class="matrix-overlay"></div>
 
   <!-- HEADER STICKY -->
   <header class="app-header sticky top-0 z-40">
@@ -917,7 +925,54 @@
     </footer>
   </main>
 
- 
+  <!-- ====== SCRIPTS : MATRIX, REVEAL, KPI, NAV ====== -->
+  <script>
+    // --- MATRIX EFFECT ---
+    const canvas = document.getElementById("matrix-bg");
+    const ctx = canvas.getContext("2d");
+
+    function resizeMatrix() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeMatrix();
+    window.addEventListener("resize", resizeMatrix);
+
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const iotIcons = ["💡","📡","📱","📶","🔐","📷","🏠","⚙️","🔌","🖥️","📊"];
+    const matrixChars = (characters + characters.toLowerCase()).split("").concat(iotIcons);
+
+    const fontSize = 18;
+    let columns = Math.floor(canvas.width / fontSize);
+    let drops = Array.from({ length: columns }, () => 1);
+
+    function drawMatrix() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#22f2b8";
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.96) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    let matrixInterval = setInterval(drawMatrix, 50);
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        clearInterval(matrixInterval);
+      } else {
+        matrixInterval = setInterval(drawMatrix, 50);
+      }
+    });
 
     // --- SCROLL REVEAL ---
     const revealElements = document.querySelectorAll(".reveal");
@@ -998,25 +1053,7 @@
       else header.classList.remove("scrolled");
     });
 
-   
-// --- VANTA.NET BACKGROUND ---
-window.addEventListener("DOMContentLoaded", function () {
-  VANTA.NET({
-    el: "#vanta-bg",
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-    minHeight: 200.00,
-    minWidth: 200.00,
-    scale: 1.0,
-    scaleMobile: 1.0,
-    color: 0x22f2b8,
-    backgroundColor: 0x00000000, // transparent
-    points: 12.00,
-    maxDistance: 22.00,
-    spacing: 18.00
-  });
-});
+
   </script>
 </body>
 </html>
