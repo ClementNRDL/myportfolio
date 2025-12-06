@@ -298,10 +298,10 @@
       <nav class="hidden md:flex items-center gap-6 text-xs font-medium tracking-[0.2em] uppercase text-slate-300">
         <a href="#hero" class="nav-link">Accueil</a>
         <a href="#contexte" class="nav-link">Contexte</a>
-         <a href="#usecases" class="nav-link">Cas d’usage</a>
-           <a href="#risques" class="nav-link">Risques</a>
-        <a href="#tableau-veille" class="nav-link">Tableau</a>
         <a href="#methodologie" class="nav-link">Méthodo</a>
+        <a href="#usecases" class="nav-link">Cas d’usage</a>
+        <a href="#risques" class="nav-link">Risques</a>
+        <a href="#tableau-veille" class="nav-link">Tableau</a>
         <a href="#faq" class="nav-link">FAQ</a>
       </nav>
 
@@ -351,7 +351,26 @@
             </a>
           </div>
 
-    
+          <!-- KPI -->
+          <div class="grid grid-cols-3 gap-4 max-w-md pt-4 text-xs sm:text-sm">
+            <div class="panel-soft px-3 py-3 flex flex-col gap-1 items-start">
+              <div class="badge-pill border-emerald-400/60 text-emerald-300/90">Articles</div>
+              <div class="kpi-number text-lg sm:text-xl font-semibold" data-kpi-target="68">0</div>
+              <span class="text-[0.7rem] text-slate-400">sources IoT analysées</span>
+            </div>
+            <div class="panel-soft px-3 py-3 flex flex-col gap-1 items-start">
+              <div class="badge-pill border-sky-400/70 text-sky-300">Alertes</div>
+              <div class="kpi-number text-lg sm:text-xl font-semibold" data-kpi-target="5">0</div>
+              <span class="text-[0.7rem] text-slate-400">outils de veille actifs</span>
+            </div>
+            <div class="panel-soft px-3 py-3 flex flex-col gap-1 items-start">
+              <div class="badge-pill border-fuchsia-400/70 text-fuchsia-300">Mises à jour</div>
+              <div class="kpi-number text-lg sm:text-xl font-semibold" data-kpi-target="12">0</div>
+              <span class="text-[0.7rem] text-slate-400">mises à jour mensuelles</span>
+            </div>
+          </div>
+        </div>
+
      <!-- Card visuelle hero avec vidéo de fond -->
 <div class="panel-deep context-video-wrapper relative overflow-hidden aspect-[4/3] lg:aspect-[5/4] p-5 sm:p-6">
 
@@ -668,25 +687,6 @@
   </article>
 
 </div>
-      <!-- KPI -->
-          <div class="grid grid-cols-3 gap-4 max-w-md pt-4 text-xs sm:text-sm">
-            <div class="panel-soft px-3 py-3 flex flex-col gap-1 items-start">
-              <div class="badge-pill border-emerald-400/60 text-emerald-300/90">Articles</div>
-              <div class="kpi-number text-lg sm:text-xl font-semibold" data-kpi-target="68">0</div>
-              <span class="text-[0.7rem] text-slate-400">sources IoT analysées</span>
-            </div>
-            <div class="panel-soft px-3 py-3 flex flex-col gap-1 items-start">
-              <div class="badge-pill border-sky-400/70 text-sky-300">Alertes</div>
-              <div class="kpi-number text-lg sm:text-xl font-semibold" data-kpi-target="5">0</div>
-              <span class="text-[0.7rem] text-slate-400">outils de veille actifs</span>
-            </div>
-            <div class="panel-soft px-3 py-3 flex flex-col gap-1 items-start">
-              <div class="badge-pill border-fuchsia-400/70 text-fuchsia-300">Mises à jour</div>
-              <div class="kpi-number text-lg sm:text-xl font-semibold" data-kpi-target="12">0</div>
-              <span class="text-[0.7rem] text-slate-400">mises à jour mensuelles</span>
-            </div>
-        </div>
-
     </section>
 
  <!-- METHODOLOGIE & OUTILS -->
