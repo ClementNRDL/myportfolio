@@ -262,10 +262,18 @@
       background: linear-gradient(90deg, #22f2b8, #38bdf8);
       transition: width 0.25s ease-out;
     }
-    .nav-link:hover::after,
-    .nav-link.nav-active::after {
-      width: 100%;
-    }
+   .nav-link:hover::after,
+.nav-link.nav-active::after {
+  width: 100%;
+}
+
+.no-hover,
+.no-hover:hover {
+  transform: none !important;
+  letter-spacing: 0 !important;
+  text-shadow: none !important;
+  color: rgba(34, 242, 184, 0.8) !important;
+}
   </style>
 </head>
 <body class="min-h-screen bg-black text-slate-50">
@@ -323,15 +331,15 @@
             Veille technologique · Objets connectés (IoT)
           </p>
 
-          <h1 class="title-main text-3xl sm:text-4xl lg:text-5xl xl:text-[3.25rem] font-semibold leading-tight">
-            Cartographie complète de l’écosystème
-            <span class="block text-slate-100">des objets connectés (IoT)</span>
-          </h1>
+         <h1 class="title-main no-hover text-3xl sm:text-4xl lg:text-5xl xl:text-[3.25rem] font-semibold leading-tight">
+  Veille technologique
+  <span class="block text-slate-100">des objets connectés (IoT)</span>
+</h1>
 
           <p class="max-w-xl text-sm sm:text-base text-slate-300/90">
             Ce tableau de veille suit les innovations, les risques de cybersécurité et les enjeux
-            économiques des objets connectés&nbsp;: domotique, santé, mobilité, industrie 4.0
-            et smart cities. L’objectif est de disposer d’une vision claire, argumentée et à jour.
+           des objets connectés&nbsp;: domotique, santé, mobilité, industrie 4.0
+            et smart cities. L’objectif est de disposer d’une vision claire, documentée et à jour.
           </p>
 
           <div class="flex flex-wrap gap-3 items-center pt-1">
@@ -444,9 +452,6 @@
               <li>Comprendre les positionnements des principaux acteurs (GAFAM, équipementiers, start-ups).</li>
               <li>Détecter des cas d’usage pertinents pour une organisation (BTS SIO / PME / collectivité).</li>
             </ul>
-            <p class="text-xs sm:text-[0.8rem] text-emerald-200 tracking-[0.26em] uppercase">
-              Mise à jour continue &nbsp;•&nbsp; approche critique &nbsp;•&nbsp; sources vérifiées
-            </p>
           </div>
         </div>
       </div>
@@ -574,7 +579,7 @@
               </p>
               <ul class="text-[0.7rem] text-slate-400 space-y-1 list-disc list-inside">
                 <li>Confort &amp; économies d’énergie.</li>
-                <li>Risque d’intrusion via objets mal configurés.</li>
+                <li>Gestion intelligente des appareils pour un meilleur confort au quotidien.</li>
               </ul>
             </article>
 
@@ -589,7 +594,7 @@
               </p>
               <ul class="text-[0.7rem] text-slate-400 space-y-1 list-disc list-inside">
                 <li>Surveillance continue et alerte précoce.</li>
-                <li>Fortes contraintes RGPD / données sensibles.</li>
+                <li>Suivi personnalisé de l’état de santé grâce aux données collectées.</li>
               </ul>
             </article>
 
@@ -604,7 +609,7 @@
               </p>
               <ul class="text-[0.7rem] text-slate-400 space-y-1 list-disc list-inside">
                 <li>Réduction des pannes et optimisation des flux.</li>
-                <li>Risque d’attaque sur chaînes de production.</li>
+                <li>Suivi en temps réel des machines et processus industriels.</li>
               </ul>
             </article>
 
@@ -619,7 +624,7 @@
               </p>
               <ul class="text-[0.7rem] text-slate-400 space-y-1 list-disc list-inside">
                 <li>Optimisation de l’énergie et des déplacements.</li>
-                <li>Enjeux de surveillance et de respect de la vie privée.</li>
+                <li>Amélioration de la mobilité grâce à des données de circulation en temps réel.</li>
               </ul>
             </article>
           </div>
@@ -723,7 +728,7 @@
 
     <!-- MATRICE DE RISQUES -->
     <section id="risques" class="mb-16 reveal">
-      <div class="grid gap-8 lg:grid-cols-[1.1fr,1fr] items-start">
+      <div class="w-full">
         <!-- matrice -->
         <div class="table-shell p-5 sm:p-7">
           <div class="flex items-center justify-between mb-4">
@@ -795,35 +800,7 @@
         </div>
 
         <!-- stack techno -->
-        <div class="panel-deep px-5 sm:px-6 py-7 space-y-5">
-          <div class="flex items-center justify-between gap-4">
-            <h3 class="text-lg sm:text-xl font-semibold text-slate-50">Empilement technologique IoT</h3>
-            <span class="badge-pill border-sky-400/70 text-sky-300 text-[0.65rem]">Layers</span>
-          </div>
-          <ul class="space-y-3 text-xs sm:text-[0.8rem] text-slate-200">
-            <li>
-              <p class="font-semibold text-emerald-300 mb-1">1. Objets &amp; capteurs</p>
-              <p class="text-slate-400">Thermostats, caméras IP, montres connectées, capteurs industriels, véhicules.</p>
-            </li>
-            <li>
-              <p class="font-semibold text-emerald-300 mb-1">2. Connectivité</p>
-              <p class="text-slate-400">Wi-Fi, Ethernet, Zigbee, Z-Wave, Bluetooth LE, LoRaWAN, NB-IoT, 5G.</p>
-            </li>
-            <li>
-              <p class="font-semibold text-emerald-300 mb-1">3. Protocoles &amp; middleware</p>
-              <p class="text-slate-400">MQTT, CoAP, HTTP(S), OPC-UA, passerelles edge, brokers de messages.</p>
-            </li>
-            <li>
-              <p class="font-semibold text-emerald-300 mb-1">4. Plateformes cloud</p>
-              <p class="text-slate-400">AWS IoT, Azure IoT Hub, Google Cloud IoT, plateformes open source.</p>
-            </li>
-            <li>
-              <p class="font-semibold text-emerald-300 mb-1">5. Applications &amp; tableaux de bord</p>
-              <p class="text-slate-400">Apps mobiles, dashboards web, intégration avec SI, IA/ML pour la détection d’anomalies.</p>
-            </li>
-          </ul>
-        </div>
-      </div>
+        
     </section>
 
     <!-- TABLEAU STRUCTURE -->
