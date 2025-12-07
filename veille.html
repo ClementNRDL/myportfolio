@@ -343,11 +343,7 @@
             <a href="#contexte" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-emerald-400 text-slate-950 text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase shadow-[0_0_30px_rgba(34,242,184,0.7)] hover:bg-emerald-300 transition">
               Découvrir le dossier
             </a>
-            <a href="#tableau-veille" class="inline-flex items-center justify-center px-4 py-2 rounded-full border border-slate-500 text-xs sm:text-sm text-slate-200 hover:border-emerald-300 hover:text-emerald-200 transition">
-              Voir la synthèse structurée
-            </a>
-          </div>
-
+           
           <!-- KPI -->
           <div class="grid grid-cols-3 gap-4 max-w-md pt-4 text-xs sm:text-sm">
             <div class="panel-soft px-3 py-3 flex flex-col gap-1 items-start">
@@ -390,42 +386,56 @@
 </div>
     </section>
 
-   <section id="contexte" class="scroll-mt-32 panel-deep mb-16 reveal px-5 sm:px-8 lg:px-10 py-8 sm:py-10">
+  <section id="contexte" class="scroll-mt-32 panel-deep mb-16 reveal px-5 sm:px-8 lg:px-10 py-8 sm:py-10">
 
   <div class="grid grid-cols-[auto,1fr] gap-5 sm:gap-8 items-start">
 
-    <div class="flex items-center justify-center">
+    <div class="flex items-start justify-center">
       <div class="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl bg-emerald-400/15 border border-emerald-400/60 
                   flex items-center justify-center shadow-[0_0_30px_rgba(34,242,184,0.6)]">
         <i class="bi bi-cpu-fill text-3xl sm:text-4xl text-emerald-300"></i>
       </div>
     </div>
 
-    <div>
-      <h2 class="text-2xl sm:text-3xl font-semibold text-emerald-300 mb-3">
-        Contexte & Objectifs
-      </h2>
+    <!-- 🔥 NOUVEAU CONTENU EN DEUX COLONNES -->
+    <div class="grid md:grid-cols-2 gap-8">
 
-      <p class="text-sm sm:text-base text-slate-100/90 mb-3">
-        Les objets connectés (IoT) se démocratisent dans tous les environnements :
-        logement, santé, industrie, transports, villes...
-      </p>
+      <!-- 🌐 Colonne gauche -->
+      <div>
+        <h2 class="text-xl sm:text-2xl font-semibold text-emerald-300 mb-3">
+          Qu’est-ce qu’un objet connecté ?
+        </h2>
+        <p class="text-sm sm:text-base text-slate-100/90 mb-3">
+          Un objet connecté est un dispositif capable de collecter, transmettre ou recevoir des données
+          via Internet ou un autre type de réseau (Wi-Fi, Bluetooth, 4G/5G, LoRa, etc.).
+        </p>
+        <p class="text-sm sm:text-base text-slate-100/90">
+          Ces objets peuvent être domestiques (montres, thermostats, caméras)
+          ou industriels (capteurs IIoT, robots, machines connectées).
+        </p>
+      </div>
 
-      <p class="text-sm sm:text-base text-slate-100/90 mb-3">
-        Cette veille poursuit plusieurs objectifs :
-      </p>
+      <!-- 🌐 Colonne droite -->
+      <div>
+        <h2 class="text-xl sm:text-2xl font-semibold text-emerald-300 mb-3">
+          Qu’est-ce que l’IoT (Internet of Things) ?
+        </h2>
+        <p class="text-sm sm:text-base text-slate-100/90 mb-3">
+          L’Internet des Objets (IoT) désigne l’ensemble des objets connectés et 
+          des technologies qui leur permettent de communiquer entre eux ou avec une plateforme cloud.
+        </p>
+        <p class="text-sm sm:text-base text-slate-100/90">
+          L’IoT forme un écosystème : objets + réseaux + cloud + analyse de données + automatisation.
+          Il est utilisé dans la maison, la santé, l’industrie 4.0, la mobilité et les smart cities.
+        </p>
+      </div>
 
-      <ul class="text-sm sm:text-base text-slate-50/95 space-y-1.5 list-disc list-inside mb-4">
-        <li>Identifier les grandes tendances technologiques.</li>
-        <li>Surveiller les risques en cybersécurité IoT.</li>
-        <li>Comprendre le positionnement des acteurs.</li>
-        <li>Détecter des cas d’usage pertinents.</li>
-      </ul>
     </div>
 
   </div>
 
 </section>
+
 
 
     <!-- USE CASES / DOMAINE -->
@@ -587,7 +597,94 @@
         
     </section>
 
-   
+   <section id="domains-right" class="scroll-mt-32 mb-16 reveal">
+  <div class="grid grid-cols-1 lg:grid-cols-[1fr,1.1fr] gap-8 items-start">
+
+    <!-- 🎥 Colonne GAUCHE : vidéo -->
+    <div class="panel-deep context-video-wrapper rounded-3xl overflow-hidden min-h-[380px]">
+      <video autoplay muted loop playsinline class="w-full h-full object-cover">
+        <source src="/iot1.4.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- 📦 Colonne DROITE : Bloc domaines IoT -->
+    <div class="panel-deep px-5 sm:px-8 py-7 sm:py-9 rounded-3xl">
+      
+      <!-- Titre + badge -->
+      <div class="flex items-center justify-between gap-4 mb-6">
+        <h2 class="text-2xl sm:text-3xl font-semibold text-slate-50">
+          Principaux domaines d’application IoT
+        </h2>
+        <span class="badge-pill border-emerald-400/60 text-emerald-300 text-[0.65rem]">
+          Panorama
+        </span>
+      </div>
+
+      <!-- 4 Cartes -->
+      <div class="grid gap-4 sm:gap-5 md:grid-cols-2 text-sm">
+
+        <!-- Maison intelligente -->
+        <article class="panel-soft card-hover px-4 py-4">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="font-semibold text-slate-50">Maison intelligente</h3>
+            <i class="bi bi-house-door-fill text-emerald-300"></i>
+          </div>
+          <p class="text-xs text-slate-300/90 mb-2">
+            Capteurs, caméras, thermostats, serrures intelligentes.
+          </p>
+          <ul class="text-[0.7rem] text-slate-400 space-y-1 list-disc list-inside">
+            <li>Confort & économies d’énergie.</li>
+            <li>Gestion intelligente du domicile.</li>
+          </ul>
+        </article>
+
+        <!-- e-Santé -->
+        <article class="panel-soft card-hover px-4 py-4">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="font-semibold text-slate-50">e-Santé & wearables</h3>
+            <i class="bi bi-heart-pulse-fill text-rose-400"></i>
+          </div>
+          <p class="text-xs text-slate-300/90 mb-2">
+            Capteurs médicaux, bracelets de suivi, télésurveillance.
+          </p>
+          <ul class="text-[0.7rem] text-slate-400 space-y-1 list-disc list-inside">
+            <li>Surveillance continue.</li>
+            <li>Alertes précoces & suivi personnalisé.</li>
+          </ul>
+        </article>
+
+        <!-- Industrie -->
+        <article class="panel-soft card-hover px-4 py-4">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="font-semibold text-slate-50">Industrie 4.0 / IIoT</h3>
+            <i class="bi bi-gear-wide-connected text-sky-400"></i>
+          </div>
+          <p class="text-xs text-slate-300/90 mb-2">
+            Capteurs industriels, robots, maintenance prédictive.
+          </p>
+          <ul class="text-[0.7rem] text-slate-400 space-y-1 list-disc list-inside">
+            <li>Réduction des pannes.</li>
+            <li>Suivi temps réel de la production.</li>
+          </ul>
+        </article>
+
+        <!-- Smart city -->
+        <article class="panel-soft card-hover px-4 py-4">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="font-semibold text-slate-50">Smart city & mobilité</h3>
+            <i class="bi bi-building-fill-check text-amber-300"></i>
+          </div>
+          <p class="text-xs text-slate-300/90 mb-2">
+            Eclairage, parkings connectés, véhicules intelligents.
+          </p>
+          <ul class="text-[0.7rem] text-slate-400 space-y-1 list-disc list-inside">
+            <li>Optimisation énergie & trafic.</li>
+            <li>Mobilité améliorée grâce aux données.</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
     <!-- ARTICLES -->
     <section id="articles" class="panel-deep px-5 sm:px-8 lg:px-10 py-8 sm:py-10 mb-16 reveal">
       <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-4 mb-7">
