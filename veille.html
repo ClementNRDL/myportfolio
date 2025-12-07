@@ -195,7 +195,7 @@
 
     /* ========= TABLE ========= */
     .table-shell {
-      background: radial-gradient(circle at top left, rgba(34, 242, 184, 0.15), #020617);
+      background: radial-gradient(circle at top left, rgba(34, 242, 184, 0.5), #020617);
       border-radius: 1.5rem;
       border: 1px solid rgba(148, 163, 184, 0.4);
       box-shadow: 0 26px 70px rgba(0, 0, 0, 0.9);
@@ -300,7 +300,7 @@
         <a href="#contexte" class="nav-link">Contexte</a>
          <a href="#usecases" class="nav-link">Cas d’usage</a>
           <a href="#risques" class="nav-link">Risques</a>
-        <a href="#tableau-veille" class="nav-link">Tableau</a>
+        <a href="#articles" class="nav-link">Tableau</a>
          <a href="#methodologie" class="nav-link">Outils</a>
         <a href="#faq" class="nav-link">FAQ</a>
       </nav>
@@ -312,8 +312,8 @@
           <option value="#contexte">Contexte</option>
           <option value="#usecases">Cas d’usage</option>
            <option value="#risques">Risques</option>
-           <option value="#methodologie">Tableau</option>
-          <option value="#methodologie">Outils</option>
+          <option value="#tableau-veille">Tableau</option>
+         <option value="#methodologie">Outils</option>
           <option value="#faq">FAQ</option>
         </select>
       </div>
@@ -327,16 +327,13 @@
     <section class="mt-10 sm:mt-16 mb-14 sm:mb-20 reveal">
       <div class="grid gap-10 lg:grid-cols-[1.4fr,1fr] items-center">
         <div class="space-y-6">
-          <p class="text-[0.65rem] sm:text-xs tracking-[0.25em] uppercase text-emerald-300/80">
-            Veille technologique · Objets connectés (IoT)
-          </p>
-
+         
          <h1 class="title-main no-hover text-3xl sm:text-4xl lg:text-5xl xl:text-[3.25rem] font-semibold leading-tight">
   Veille technologique
   <span class="block text-slate-100">des objets connectés (IoT)</span>
 </h1>
 
-          <p class="max-w-xl text-sm sm:text-base text-slate-300/90">
+        <p class="max-w-xl text-sm sm:text-base text-white">
             Ce tableau de veille suit les innovations, les risques de cybersécurité et les enjeux
            des objets connectés&nbsp;: domotique, santé, mobilité, industrie 4.0
             et smart cities. L’objectif est de disposer d’une vision claire, documentée et à jour.
@@ -382,12 +379,12 @@
   <!-- Overlay pour atténuer un peu la vidéo -->
   <div class="absolute inset-0 bg-gradient-to-tr from-emerald-400/25 via-slate-900/60 to-sky-500/25"></div>
 
-  <!-- TITRE CENTRÉ AU MILIEU -->
-  <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
-    <h1 class="text-3xl sm:text-4xl font-bold text-white drop-shadow-[0_0_20px_rgba(0,0,0,0.7)]">
-      IoT – Cyber & Innovation Hyper Cloud 
-    </h1>
-  </div>
+ <!-- TITRE CENTRÉ AU MILIEU -->
+<div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+  <h1 class="text-3xl sm:text-4xl font-bold text-white drop-shadow-[0_0_20px_rgba(0,0,0,0.7)]">
+    IoT
+  </h1>
+</div>
 
   </div>
 </div>
@@ -514,14 +511,14 @@
     </section>
 
       <!-- MATRICE DE RISQUES -->
-    <section id="risques" class="mb-16 reveal">
+    <section id="risques" class="scroll-mt-32 mb-16 reveal">
       <div class="w-full">
         <!-- matrice -->
         <div class="table-shell p-5 sm:p-7">
           <div class="flex items-center justify-between mb-4">
             <h2 class="text-xl sm:text-2xl font-semibold text-emerald-300 flex items-center gap-2">
               <i class="bi bi-exclamation-triangle-fill text-amber-300"></i>
-              Matrice des risques IoT
+              Tableau des risques IoT
             </h2>
             <span class="badge-pill border-amber-400/80 text-amber-300 text-[0.65rem]">Analyse</span>
           </div>
@@ -614,75 +611,71 @@
   <!-- Article – 3 décembre 2025 -->
   <article class="panel-soft card-hover px-5 py-4">
     <h3 class="text-lg font-semibold text-emerald-300 mb-1">
-      Google déploie un système d’IA embarquée pour sécuriser les objets IoT
+     Philips Hue : nouvelle fonction 
     </h3>
     <p class="text-xs text-slate-400 mb-2">
-      03/12/2025 · Source :
-      <a href="https://blog.google" target="_blank" class="text-sky-300 underline">Google AI Blog</a>
+      06/12/2025 · Source :
+      <a href="https://www.lesnumeriques.com/objet-connecte/philips-hue-j-ai-teste-la-fonction-magique-qui-transforme-vos-ampoules-en-detecteurs-de-mouvement-n247072.html" target="_blank" class="text-sky-300 underline">Les numériques</a>
     </p>
     <p class="text-sm text-slate-200/90">
-      Google dévoile Astra-IoT, un module capable de détecter localement les comportements anormaux
-      sans collecter de données personnelles dans le cloud.
+      La nouvelle mise à jour offre quelques fonctionnalités inédites, dont la possibilité de créer des zones de détection de mouvement avec de simples ampoules.
     </p>
   </article>
 
   <!-- Article – 1 décembre 2025 -->
   <article class="panel-soft card-hover px-5 py-4">
     <h3 class="text-lg font-semibold text-emerald-300 mb-1">
-      Matter 2.0 améliore la compatibilité des objets connectés
+      Test serrures connectées intelligentes
     </h3>
     <p class="text-xs text-slate-400 mb-2">
-      01/12/2025 · Source :
-      <a href="https://www.theverge.com" target="_blank" class="text-sky-300 underline">The Verge</a>
+      03/12/2025 · Source :
+      <a href="https://www.theverge.com/23393163/best-smart-door-lock" target="_blank" class="text-sky-300 underline">The Verge</a>
     </p>
     <p class="text-sm text-slate-200/90">
-      La nouvelle version introduit un chiffrement renforcé et une prise en charge optimisée des
-      caméras de sécurité dans l’écosystème domestique.
+      Test de 30 serrures connectées controlables depuis votre téléphone, votre visage ou votre empreinte digitale.
     </p>
   </article>
 
   <!-- Article – 28 novembre 2025 -->
   <article class="panel-soft card-hover px-5 py-4">
     <h3 class="text-lg font-semibold text-emerald-300 mb-1">
-      Tesla améliore son réseau IoT industriel pour la maintenance prédictive
+      Le Wi-Fi 6 arrive sur les capteurs nouvelles générations
     </h3>
     <p class="text-xs text-slate-400 mb-2">
-      28/11/2025 · Source :
-      <a href="https://www.bloomberg.com" target="_blank" class="text-sky-300 underline">Bloomberg Tech</a>
+      01/12/2025 · Source :
+      <a href="https://www.monnit.com/blog/monnit-news-briefs-december-2025/?srsltid=AfmBOoruS3ELszjceJ72vn1qqUwlNhDY3cQi71Qb-Uhg0_P_7gAdPWLx&utm_source=chatgpt.com" class="text-sky-300 underline">Monnit/a>
     </p>
     <p class="text-sm text-slate-200/90">
-      Tesla annonce une réduction de 20% des arrêts de production grâce à de nouveaux capteurs IoT
-      capables de prédire les pannes critiques plusieurs jours à l’avance.
+      Adoption de la norme Wi-Fi 6 pour les capteurs IoT, ce qui promet de meilleures performances, densité d’appareils, efficacité et compatibilité réseaux.
     </p>
   </article>
 
   <!-- Article – 25 novembre 2025 -->
   <article class="panel-soft card-hover px-5 py-4">
     <h3 class="text-lg font-semibold text-emerald-300 mb-1">
-      Cisco renforce la cybersécurité de sa plateforme IoT CloudEdge
+      Campagne malveillante ciblant des objets IoT
     </h3>
     <p class="text-xs text-slate-400 mb-2">
-      25/11/2025 · Source :
-      <a href="https://newsroom.cisco.com" target="_blank" class="text-sky-300 underline">Cisco Newsroom</a>
+      27/11/2025 · Source :
+      <a href="https://thehackernews.com/2025/11/threatsday-bulletin-ai-malware-voice.html">The Hacker News</a>
     </p>
     <p class="text-sm text-slate-200/90">
-      Cisco introduit un nouveau moteur Zero Trust dédié aux appareils connectés, facilitant
-      l’authentification automatique et la segmentation dynamique des réseaux.
+      Un botnet nommé ShadowV2, basé sur Mirai, a ciblé les objets connectés fin octobre 2025.
+Il exploite plusieurs failles connues pour infecter des équipements IoT vulnérables et les transformer en bots DDoS.
     </p>
   </article>
 
   <!-- Article – 18 novembre 2025 -->
   <article class="panel-soft card-hover px-5 py-4">
     <h3 class="text-lg font-semibold text-emerald-300 mb-1">
-      Une faille critique découverte dans des millions de caméras IoT grand public
+      Prévision de croissance du marché IoT
     </h3>
     <p class="text-xs text-slate-400 mb-2">
-      18/11/2025 · Source :
-      <a href="https://www.wired.com" target="_blank" class="text-sky-300 underline">Wired</a>
+      29/10/2025 · Source :
+      <a href="https://www.mobileworldlive.com/old_latest-stories/liot-devrait-progresser-de-14-en-2025/" target="_blank" class="text-sky-300 underline">Mobile World Live</a>
     </p>
     <p class="text-sm text-slate-200/90">
-      Une vulnérabilité permettant un accès non autorisé aux flux vidéo a été identifiée.
-      Plusieurs fabricants ont publié des correctifs d’urgence.
+      Le nombre d’appareils IoT devrait encore progresser fortement (+ 14 % en 2025), ce qui confirme un marché en expansion rapide.
     </p>
   </article>
 
@@ -690,8 +683,8 @@
     </section>
 
  <!-- METHODOLOGIE & OUTILS -->
-    <section id="methodologie" class="panel-deep px-5 sm:px-8 lg:px-10 py-8 sm:py-10 mb-16 reveal">
-      <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-4 mb-7">
+   <section id="methodologie" class="scroll-mt-32 panel-deep px-5 sm:px-8 lg:px-10 py-8 sm:py-10 mb-16 reveal">
+    <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-4 mb-7">
         <div class="space-y-1">
           <h2 class="text-2xl sm:text-3xl font-semibold text-emerald-300">
             Méthodologie &amp; Outils utilisés
