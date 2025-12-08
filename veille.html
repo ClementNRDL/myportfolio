@@ -944,43 +944,153 @@ Il exploite plusieurs failles connues pour infecter des équipements IoT vulnér
 
 </article>
 
-        <!-- Inoreader -->
-        <article class="iot-tool card-hover relative overflow-hidden rounded-2xl border border-slate-600/70 bg-slate-950/80 px-5 py-5 flex flex-col justify-between">
-          <div class="relative z-10 space-y-4">
-            <div class="h-12 w-12 rounded-xl bg-fuchsia-500/15 flex items-center justify-center">
-              <i class="bi bi-folder-fill iot-tool-icon text-2xl text-fuchsia-300"></i>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold text-slate-50">Inoreader</h3>
-              <p class="text-xs text-slate-300/90 mt-1.5">
-                Règles : classement automatique en <strong>Sécurité</strong>, <strong>Standards</strong>,
-                <strong>Cas d’usage</strong>. Ajout de tags (ex. <em>Zero Trust</em>, <em>Matter</em>).
-              </p>
-            </div>
-          </div>
-          <p class="relative z-10 mt-4 text-[0.7rem] text-slate-400">
-            ➜ Permet de prioriser les signaux importants et de réduire le bruit informationnel.
-          </p>
-        </article>
+        <!-- INOREADER -->
+<article
+  class="group iot-tool relative overflow-visible rounded-2xl border border-slate-700 bg-slate-950/80
+         px-5 py-5 flex flex-col justify-between transition-all duration-300 ease-out h-72"
+>
 
-        <!-- Réseaux sociaux -->
-        <article class="iot-tool card-hover relative overflow-hidden rounded-2xl border border-slate-600/70 bg-slate-950/80 px-5 py-5 flex flex-col justify-between">
-          <div class="relative z-10 space-y-4">
-            <div class="h-12 w-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
-              <i class="bi bi-bar-chart-line-fill iot-tool-icon text-2xl text-emerald-300"></i>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold text-slate-50">Twitter / LinkedIn</h3>
-              <p class="text-xs text-slate-300/90 mt-1.5">
-                Suivi d’experts IoT, CERT, chercheurs en sécurité, éditeurs cloud (AWS, Azure, GCP),
-                fabricants (Cisco, Siemens, Xiaomi, etc.).
-              </p>
-            </div>
-          </div>
-          <p class="relative z-10 mt-4 text-[0.7rem] text-slate-400">
-            ➜ Permet de détecter en amont les vulnérabilités et tendances avant la presse généraliste.
-          </p>
-        </article>
+  <!-- Contenu compact (carte) -->
+  <div class="inner transition-all duration-300 ease-out group-hover:scale-[1.01] space-y-4">
+
+    <div class="h-12 w-12 rounded-xl bg-fuchsia-400/15 flex items-center justify-center">
+      <i class="bi bi-folder-fill text-2xl text-fuchsia-300"></i>
+    </div>
+
+    <h3 class="text-lg font-semibold text-slate-50">
+      Inoreader
+    </h3>
+
+    <p class="text-xs text-slate-300/90">
+      Agrégateur avancé : règles, filtrage intelligent, recherche IoT renforcée.
+    </p>
+
+    <p class="mt-4 text-[0.7rem] text-slate-400">
+      Survoler pour voir un exemple détaillé.
+    </p>
+  </div>
+
+  <!-- 🟣 PANNEAU FLOTTANT CENTRÉ (même format que les deux autres) -->
+  <div
+    class="pointer-events-none group-hover:pointer-events-auto
+           fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+           w-[40rem] max-w-[95vw] max-h-[80vh]
+           rounded-2xl bg-slate-950/95 backdrop-blur-xl
+           border border-fuchsia-400/70 shadow-[0_0_60px_rgba(232,121,249,0.55)]
+           opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100
+           transition-all duration-300 ease-out
+           z-[2147483647]"
+  >
+
+    <div class="p-6 space-y-4 text-[0.85rem] text-slate-200 h-full overflow-y-auto">
+
+      <h4 class="font-semibold text-fuchsia-300 text-lg">Inoreader</h4>
+
+      <p>
+        Inoreader est un <span class="font-semibold text-slate-100">outil avancé de veille et d’agrégation</span>
+        permettant de rechercher, filtrer et organiser des articles provenant de milliers de sources.
+        Grâce à son moteur RSS, ses règles automatiques et ses filtres puissants, il optimise la surveillance
+        des thématiques IoT.
+      </p>
+
+      <p>
+        En saisissant un mot-clé comme <span class="font-semibold text-slate-100">“IoT”</span>,
+        Inoreader explore <span class="font-semibold">l'ensemble des flux publics disponibles</span>
+        et affiche les articles pertinents. Plusieurs filtres permettent d’affiner les résultats :
+        langue, type de contenu, date, popularité ou source.
+      </p>
+
+      <!-- IMAGE -->
+      <div class="w-full rounded-lg overflow-hidden border border-slate-700 shadow-xl">
+        <img src="inoreader.png" alt="Interface Inoreader" class="w-full object-cover">
+      </div>
+
+      <p>
+        L’outil permet aussi de réaliser une recherche avancée dans tous les flux suivis,
+        ce qui <span class="font-semibold text-slate-100">facilite l’identification rapide d’articles pertinents
+        liés à l’IoT</span>.  
+        Inoreader excelle dans la gestion de dossiers, le filtrage automatique et
+        le classement thématique, rendant la veille très efficace.
+      </p>
+
+    </div>
+  </div>
+
+</article>
+        <!-- TWITTER -->
+<article
+  class="group iot-tool relative overflow-visible rounded-2xl border border-slate-700 bg-slate-950/80
+         px-5 py-5 flex flex-col justify-between transition-all duration-300 ease-out h-72"
+>
+
+  <!-- Contenu compact (carte) -->
+  <div class="inner transition-all duration-300 ease-out group-hover:scale-[1.01] space-y-4">
+
+    <div class="h-12 w-12 rounded-xl bg-sky-400/15 flex items-center justify-center">
+      <i class="bi bi-twitter text-2xl text-sky-300"></i>
+    </div>
+
+    <h3 class="text-lg font-semibold text-slate-50">
+      Twitter / X
+    </h3>
+
+    <p class="text-xs text-slate-300/90">
+      Suivi en temps réel des experts, entreprises et communautés IoT.
+    </p>
+
+    <p class="mt-4 text-[0.7rem] text-slate-400">
+      Survoler pour voir un exemple détaillé.
+    </p>
+
+  </div>
+
+
+  <!-- 🔵 PANNEAU FLOTTANT CENTRÉ (même format que les autres) -->
+  <div
+    class="pointer-events-none group-hover:pointer-events-auto
+           fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+           w-[40rem] max-w-[95vw] max-h-[80vh]
+           rounded-2xl bg-slate-950/95 backdrop-blur-xl
+           border border-sky-400/70 shadow-[0_0_60px_rgba(56,189,248,0.55)]
+           opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100
+           transition-all duration-300 ease-out
+           z-[2147483647]"
+  >
+
+    <div class="p-6 space-y-4 text-[0.85rem] text-slate-200 h-full overflow-y-auto">
+
+      <h4 class="font-semibold text-sky-300 text-lg">Twitter / X</h4>
+
+      <p>
+        Twitter est un outil très puissant pour la veille IoT.  
+        Il permet de <span class="font-semibold text-slate-100">suivre en temps réel</span> les publications
+        d’experts, d’entreprises spécialisées et de communautés actives.  
+        Grâce à son fonctionnement basé sur <span class="font-semibold">l’instantanéité</span>, il offre
+        un accès direct aux informations clés et aux annonces importantes.
+      </p>
+
+      <p>
+        En recherchant des mots-clés IoT, l’outil met en avant
+        <span class="font-semibold text-slate-100">les comptes experts</span>,
+        <span class="font-semibold text-slate-100">les organismes spécialisés</span>
+        et <span class="font-semibold text-slate-100">les discussions récentes</span>.
+        Cela en fait un canal essentiel pour détecter tendances, événements, vulnérabilités et nouveautés.
+      </p>
+
+      <!-- IMAGE -->
+      <div class="w-full rounded-lg overflow-hidden border border-slate-700 shadow-xl">
+        <img src="twitter.png" alt="Capture Twitter IoT" class="w-full object-cover">
+      </div>
+
+      <p>
+        Twitter complète parfaitement les autres outils de veille grâce à sa réactivité
+        et à la richesse de ses communautés IoT. Idéal pour rester informé instantanément.
+      </p>
+
+    </div>
+  </div>
+
+</article>
         
        <!-- Mention -->
 <article class="iot-tool card-hover relative overflow-hidden rounded-2xl border border-slate-600/70 bg-slate-950/80 px-5 py-5 flex flex-col justify-between">
