@@ -870,24 +870,79 @@ Il exploite plusieurs failles connues pour infecter des équipements IoT vulnér
   </div>
 
 </article>
-        <!-- Feedly -->
-        <article class="iot-tool card-hover relative overflow-hidden rounded-2xl border border-slate-600/70 bg-slate-950/80 px-5 py-5 flex flex-col justify-between">
-          <div class="relative z-10 space-y-4">
-            <div class="h-12 w-12 rounded-xl bg-sky-500/15 flex items-center justify-center">
-              <i class="bi bi-rss-fill iot-tool-icon text-2xl text-sky-400"></i>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold text-slate-50">Feedly</h3>
-              <p class="text-xs text-slate-300/90 mt-1.5">
-                Flux : ZDNet IoT, IoT World Today, The Verge, Wired, blogs sécurité, cloud &amp; edge.
-                Catégories : <em>Tech</em>, <em>Sécurité</em>, <em>Business</em>.
-              </p>
-            </div>
-          </div>
-          <p class="relative z-10 mt-4 text-[0.7rem] text-slate-400">
-            ➜ Centralise les sources pour un balayage quotidien rapide et un archivage thématique.
-          </p>
-        </article>
+       <!-- FEEDLY -->
+<article
+  class="group iot-tool relative overflow-visible rounded-2xl border border-slate-700 bg-slate-950/80
+         px-5 py-5 flex flex-col justify-between transition-all duration-300 ease-out h-72"
+>
+
+  <!-- Contenu compact (carte) -->
+  <div class="inner transition-all duration-300 ease-out group-hover:scale-[1.01] space-y-4">
+    
+    <div class="h-12 w-12 rounded-xl bg-sky-400/15 flex items-center justify-center">
+      <i class="bi bi-rss-fill text-2xl text-sky-400"></i>
+    </div>
+
+    <h3 class="text-lg font-semibold text-slate-50">
+      Feedly
+    </h3>
+
+    <p class="text-xs text-slate-300/90">
+      Agrégateur de flux RSS pour suivre blogs, sites spécialisés et news IoT.
+    </p>
+
+    <p class="mt-4 text-[0.7rem] text-slate-400">
+      Survoler pour voir un exemple détaillé.
+    </p>
+
+  </div>
+
+  <!-- 🟢 PANNEAU FLOTTANT CENTRÉ (même format que Google Alerts) -->
+  <div
+    class="pointer-events-none group-hover:pointer-events-auto
+           fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+           w-[40rem] max-w-[95vw] max-h-[80vh]
+           rounded-2xl bg-slate-950/95 backdrop-blur-xl
+           border border-sky-400/70 shadow-[0_0_60px_rgba(56,189,248,0.55)]
+           opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100
+           transition-all duration-300 ease-out
+           z-[2147483647]"
+  >
+
+    <div class="p-6 space-y-4 text-[0.85rem] text-slate-200 h-full overflow-y-auto">
+
+      <h4 class="font-semibold text-sky-300 text-lg">Feedly</h4>
+
+      <p>
+        Feedly est une <span class="font-semibold text-slate-100">plateforme de veille</span>
+        permettant de centraliser les flux RSS, sites web, blogs et newsletters.
+        L’outil <span class="font-semibold text-slate-100">agrège automatiquement</span>
+        les contenus publiés, facilitant une veille rapide, organisée et continue.
+      </p>
+
+      <p>
+        En recherchant un mot-clé (ex. <span class="font-semibold text-slate-100">IoT</span>),
+        Feedly propose <span class="font-semibold">des sites, blogs et flux RSS pertinents</span>
+        liés au thème sélectionné. Il est possible d’ajouter des sources individuelles ou
+        de suivre des groupes recommandés.
+      </p>
+
+      <!-- IMAGE -->
+      <div class="w-full rounded-lg overflow-hidden border border-slate-700 shadow-xl">
+        <img src="feedly.png" alt="Interface Feedly" class="w-full object-cover">
+      </div>
+
+      <p>
+        L’outil classe les sources dans des dossiers, organise les flux par thématiques et 
+        permet une lecture structurée des contenus récents.
+        Cela fait de Feedly <span class="font-semibold text-slate-100">un agrégateur essentiel
+        pour surveiller en continu les évolutions IoT</span>.
+      </p>
+
+    </div>
+  </div>
+
+</article>
 
         <!-- Inoreader -->
         <article class="iot-tool card-hover relative overflow-hidden rounded-2xl border border-slate-600/70 bg-slate-950/80 px-5 py-5 flex flex-col justify-between">
