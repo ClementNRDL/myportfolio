@@ -1174,17 +1174,17 @@ Il exploite plusieurs failles connues pour infecter des équipements IoT vulnér
 
 </article>
 
-<!-- TALKWALKER ALERTS -->
+<!-- Talkwalker Alerts -->
 <article
   class="group iot-tool relative overflow-visible rounded-2xl border border-slate-700 bg-slate-950/80
          px-5 py-5 flex flex-col justify-between transition-all duration-300 ease-out h-72"
 >
 
-  <!-- Carte compacte -->
+  <!-- Contenu compact -->
   <div class="inner transition-all duration-300 ease-out group-hover:scale-[1.01] space-y-4">
 
-    <div class="h-12 w-12 rounded-xl bg-blue-400/15 flex items-center justify-center">
-      <i class="bi bi-search text-2xl text-blue-300"></i>
+    <div class="h-12 w-12 rounded-xl bg-purple-400/15 flex items-center justify-center">
+      <i class="bi bi-search-heart iot-tool-icon text-2xl text-purple-300"></i>
     </div>
 
     <h3 class="text-lg font-semibold text-slate-50">
@@ -1192,7 +1192,7 @@ Il exploite plusieurs failles connues pour infecter des équipements IoT vulnér
     </h3>
 
     <p class="text-xs text-slate-300/90">
-      Alertes IoT précises : médias, réseaux sociaux, tendances, signaux forts.
+      Alternative plus précise à Google Alerts pour le suivi IoT et des médias.
     </p>
 
     <p class="mt-4 text-[0.7rem] text-slate-400">
@@ -1202,13 +1202,13 @@ Il exploite plusieurs failles connues pour infecter des équipements IoT vulnér
   </div>
 
 
-  <!-- 🔵 GRAND PANNEAU FLOTTANT CENTRÉ (même format que les autres) -->
+  <!-- 🟣 Fenêtre flottante centrée -->
   <div
     class="pointer-events-none group-hover:pointer-events-auto
            fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
            w-[40rem] max-w-[95vw] max-h-[80vh]
            rounded-2xl bg-slate-950/95 backdrop-blur-xl
-           border border-blue-400/70 shadow-[0_0_60px_rgba(59,130,246,0.55)]
+           border border-purple-400/70 shadow-[0_0_60px_rgba(168,85,247,0.45)]
            opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100
            transition-all duration-300 ease-out
            z-[2147483647]"
@@ -1216,38 +1216,28 @@ Il exploite plusieurs failles connues pour infecter des équipements IoT vulnér
 
     <div class="p-6 space-y-4 text-[0.85rem] text-slate-200 h-full overflow-y-auto">
 
-      <h4 class="font-semibold text-blue-300 text-lg">Talkwalker Alerts</h4>
+      <h4 class="font-semibold text-purple-300 text-lg">Talkwalker Alerts</h4>
 
       <p>
-        Talkwalker Alerts est un <span class="font-semibold text-slate-100">outil de veille gratuit</span> 
-        permettant de surveiller automatiquement les mentions de mots-clés sur le web.  
-        Il offre <span class="font-semibold">une meilleure couverture des médias</span>
-        et une <span class="font-semibold">détection plus rapide</span> des publications que Google Alerts,
-        ce qui le rend particulièrement utile pour les secteurs IoT, cybersécurité ou innovation.
+        Talkwalker Alerts est un outil de veille permettant de
+        <span class="font-semibold text-slate-100">surveiller automatiquement les mentions</span>
+        de mots-clés sur le web.  
+        Il offre une <span class="font-semibold">meilleure couverture médiatique</span> que Google Alerts
+        et une détection souvent plus rapide.
       </p>
 
       <ul class="list-disc list-inside space-y-1">
-        <li>
-          <span class="font-semibold text-slate-100">Surveillance médiatique :</span>
-          analyse des articles, discussions, tendances et signaux provenant des réseaux sociaux et sites influents.
-        </li>
-        <li>
-          <span class="font-semibold text-slate-100">Visualisation des tendances :</span>
-          suivi des volumes de mentions, zones géographiques et tonalités (positive, neutre, négative).
-        </li>
-        <li>
-          <span class="font-semibold text-slate-100">Alertes e-mail :</span>
-          notifie à chaque nouvelle publication pertinente.
-        </li>
-        <li>
-          <span class="font-semibold text-slate-100">Benchmarking :</span>
-          évolution des mentions, part de voix et portée médiatique d’un sujet IoT.
-        </li>
+        <li><span class="font-semibold text-slate-100">Surveillance médiatique :</span> articles, discussions, signaux sociaux.</li>
+        <li><span class="font-semibold text-slate-100">Tendances :</span> évolution des volumes de mentions, tonalité.</li>
+        <li><span class="font-semibold text-slate-100">Alertes e-mail :</span> chaque nouvelle publication pertinente.</li>
+        <li><span class="font-semibold text-slate-100">Benchmarking :</span> analyse de la portée médiatique d’un sujet IoT.</li>
       </ul>
 
-      <!-- IMAGE -->
+      <!-- 📸 Image (corrigée, ne déborde plus) -->
       <div class="w-full rounded-lg overflow-hidden border border-slate-700 shadow-xl">
-        <img src="talkwalker.png" alt="Interface Talkwalker Alerts" class="w-full object-cover">
+        <img src="talkwalker.png"
+             alt="Capture Talkwalker Alerts"
+             class="w-full max-h-60 object-contain">
       </div>
 
     </div>
@@ -1255,35 +1245,98 @@ Il exploite plusieurs failles connues pour infecter des équipements IoT vulnér
 
 </article>
 
-<!-- CVE / NVD (Vulnérabilités IoT) -->
-<article class="iot-tool card-hover relative overflow-hidden rounded-2xl border border-slate-600/70 bg-slate-950/80 px-5 py-5 flex flex-col justify-between">
-  <div class="relative z-10 space-y-4">
-    <div class="h-12 w-12 rounded-xl bg-rose-400/15 flex items-center justify-center">
-      <i class="bi bi-shield-lock-fill iot-tool-icon text-2xl text-rose-300"></i>
-    </div>
-    <div>
-      <h3 class="text-lg font-semibold text-slate-50">CVE / NVD Alerts</h3>
-      <p class="text-xs text-slate-300/90 mt-1.5">
-        Suivi automatique des vulnérabilités IoT (caméras, routeurs, capteurs, API).
-      </p>
-    </div>
-  </div>
-  <p class="relative z-10 mt-4 text-[0.7rem] text-slate-400">
-    ➜ Indispensable pour identifier les failles critiques et botnets exploitant l’IoT.
-  </p>
-</article>
-
-<!-- SYFT -->
+<!-- CVE / Vulnérabilités -->
 <article
   class="group iot-tool relative overflow-visible rounded-2xl border border-slate-700 bg-slate-950/80
          px-5 py-5 flex flex-col justify-between transition-all duration-300 ease-out h-72"
 >
 
-  <!-- Carte compacte -->
+  <!-- Contenu compact -->
   <div class="inner transition-all duration-300 ease-out group-hover:scale-[1.01] space-y-4">
 
-    <div class="h-12 w-12 rounded-xl bg-fuchsia-400/15 flex items-center justify-center">
-      <i class="bi bi-phone-fill text-2xl text-fuchsia-300"></i>
+    <div class="h-12 w-12 rounded-xl bg-rose-400/15 flex items-center justify-center">
+      <i class="bi bi-shield-exclamation text-2xl text-rose-300"></i>
+    </div>
+
+    <h3 class="text-lg font-semibold text-slate-50">
+      CVE / Vulnérabilités
+    </h3>
+
+    <p class="text-xs text-slate-300/90">
+      Suivi des failles IoT répertoriées dans la base CVE. Très utile pour repérer les risques émergents.
+    </p>
+
+    <p class="mt-4 text-[0.7rem] text-slate-400">
+      Survoler pour voir un exemple détaillé.
+    </p>
+
+  </div>
+
+  <!-- 🟢 PANNEAU FLOTTANT CENTRÉ -->
+  <div
+    class="pointer-events-none group-hover:pointer-events-auto
+           fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+           w-[40rem] max-w-[95vw] max-h-[80vh]
+           rounded-2xl bg-slate-950/95 backdrop-blur-xl
+           border border-rose-400/70 shadow-[0_0_60px_rgba(255,100,120,0.45)]
+           opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100
+           transition-all duration-300 ease-out
+           z-[2147483647]"
+  >
+
+    <div class="p-6 space-y-4 text-[0.85rem] text-slate-200 h-full overflow-y-auto">
+
+      <h4 class="font-semibold text-rose-300 text-lg">CVE – Base de données des failles</h4>
+
+      <p>
+        Le site <span class="font-semibold text-slate-100">CVE (Common Vulnerabilities and Exposures)</span>
+        est une plateforme publique qui répertorie toutes les failles de sécurité connues.
+        Chaque vulnérabilité reçoit un identifiant unique (ex : <em>CVE-2025-12345</em>).
+      </p>
+
+      <p>
+        Pour la veille technologique IoT, CVE est essentiel : il permet de suivre immédiatement
+        la publication de nouvelles failles pouvant toucher des objets connectés,
+        routeurs, caméras, capteurs, API ou firmwares.
+      </p>
+
+      <!-- IMAGE -->
+      <div class="w-full rounded-lg overflow-hidden border border-slate-700 shadow-xl">
+        <img src="cve.png" alt="Recherche CVE" class="w-full object-cover">
+      </div>
+
+      <p>
+        L’interface permet de rechercher une faille par :
+      </p>
+
+      <ul class="list-disc list-inside space-y-1">
+        <li><span class="font-semibold text-slate-100">Nom ou ID CVE</span></li>
+        <li><span class="font-semibold text-slate-100">Produit / logiciel concerné</span></li>
+        <li><span class="font-semibold text-slate-100">Fabricant (Cisco, Siemens, TP-Link…)</span></li>
+        <li><span class="font-semibold text-slate-100">Gravité (CVSS)</span></li>
+      </ul>
+
+      <p>
+        Chaque entrée fournit une description de la faille, son niveau de risque et des liens
+        vers des analyses plus complètes via la NVD.
+      </p>
+
+    </div>
+  </div>
+
+</article>
+
+<!-- Syft -->
+<article
+  class="group iot-tool relative overflow-visible rounded-2xl border border-slate-700 bg-slate-950/80
+         px-5 py-5 flex flex-col justify-between transition-all duration-300 ease-out h-72"
+>
+
+  <!-- Contenu compact -->
+  <div class="inner transition-all duration-300 ease-out group-hover:scale-[1.01] space-y-4">
+
+    <div class="h-12 w-12 rounded-xl bg-sky-400/15 flex items-center justify-center">
+      <i class="bi bi-reddit iot-tool-icon text-2xl text-sky-300"></i>
     </div>
 
     <h3 class="text-lg font-semibold text-slate-50">
@@ -1291,7 +1344,7 @@ Il exploite plusieurs failles connues pour infecter des équipements IoT vulnér
     </h3>
 
     <p class="text-xs text-slate-300/90">
-      App mobile de veille IoT : flux personnalisés, alertes et suivi en mobilité.
+      Application mobile de veille IoT : flux personnalisés, alertes et suivi en mobilité.
     </p>
 
     <p class="mt-4 text-[0.7rem] text-slate-400">
@@ -1301,13 +1354,13 @@ Il exploite plusieurs failles connues pour infecter des équipements IoT vulnér
   </div>
 
 
-  <!-- 🟣 PANNEAU FLOTTANT CENTRÉ (même format que les autres) -->
+  <!-- 🔵 Fenêtre flottante centrée -->
   <div
     class="pointer-events-none group-hover:pointer-events-auto
            fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
            w-[40rem] max-w-[95vw] max-h-[80vh]
            rounded-2xl bg-slate-950/95 backdrop-blur-xl
-           border border-fuchsia-400/70 shadow-[0_0_60px_rgba(217,70,239,0.55)]
+           border border-sky-400/70 shadow-[0_0_60px_rgba(56,189,248,0.45)]
            opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100
            transition-all duration-300 ease-out
            z-[2147483647]"
@@ -1315,37 +1368,27 @@ Il exploite plusieurs failles connues pour infecter des équipements IoT vulnér
 
     <div class="p-6 space-y-4 text-[0.85rem] text-slate-200 h-full overflow-y-auto">
 
-      <h4 class="font-semibold text-fuchsia-300 text-lg">Syft – Veille mobile IoT</h4>
+      <h4 class="font-semibold text-sky-300 text-lg">Syft</h4>
 
       <p>
-        Syft est une <span class="font-semibold text-slate-100">application mobile</span> dédiée au suivi 
-        de l’actualité technologique et des tendances IoT.  
-        Elle centralise articles, analyses, signaux faibles et actualités dans 
-        un <span class="font-semibold text-slate-100">fil personnalisé</span>.
+        Syft est une application mobile permettant de suivre 
+        <span class="font-semibold text-slate-100">l’actualité technologique IoT en mobilité</span>.
+        L’outil centralise articles, analyses, rapports et signaux faibles
+        dans un <span class="font-semibold">fil personnalisé</span>.
       </p>
 
       <ul class="list-disc list-inside space-y-1">
-        <li>
-          <span class="font-semibold text-slate-100">Veille en mobilité :</span>
-          accès rapide depuis smartphone, parfait pour un suivi quotidien.
-        </li>
-        <li>
-          <span class="font-semibold text-slate-100">Recommandations intelligentes :</span>
-          l’app met en avant les sujets proches de vos centres d’intérêt IoT.
-        </li>
-        <li>
-          <span class="font-semibold text-slate-100">Classement & archivage :</span>
-          possibilité d’enregistrer, partager ou organiser les contenus.
-        </li>
-        <li>
-          <span class="font-semibold text-slate-100">Domaines personnalisables :</span>
-          l’utilisateur choisit les thématiques qu’il souhaite suivre.
-        </li>
+        <li><span class="font-semibold text-slate-100">Veille en temps réel</span> depuis un smartphone.</li>
+        <li><span class="font-semibold text-slate-100">Catégories personnalisables</span> : choisir ses domaines IoT.</li>
+        <li><span class="font-semibold text-slate-100">Enregistrement & partage</span> des contenus détectés.</li>
+        <li><span class="font-semibold text-slate-100">Suivi des tendances</span> grâce à une interface claire et mobile.</li>
       </ul>
 
-      <!-- IMAGE -->
+      <!-- 📸 Image (taille contrôlée) -->
       <div class="w-full rounded-lg overflow-hidden border border-slate-700 shadow-xl">
-        <img src="syft.png" alt="Interface Syft Mobile" class="w-full object-cover">
+        <img src="syft.png"
+             alt="Capture Syft"
+             class="w-full max-h-60 object-contain">
       </div>
 
     </div>
