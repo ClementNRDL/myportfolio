@@ -804,12 +804,13 @@ Il exploite plusieurs failles connues pour infecter des équipements IoT vulnér
       <div class="grid gap-6 sm:gap-7 md:grid-cols-2 xl:grid-cols-4">
     <!-- Google Alerts -->
 <article
-  class="group iot-tool relative overflow-visible rounded-2xl border border-slate-700 bg-slate-950/80 px-5 py-5
-         flex flex-col justify-between transition-all duration-300 ease-out
-         hover:scale-[1.01] hover:border-emerald-400/70 hover:shadow-[0_0_40px_rgba(34,242,184,0.3)] hover:bg-slate-900/90 h-72"
+  class="group iot-tool relative overflow-visible rounded-2xl border border-slate-700 bg-slate-950/80
+         px-5 py-5 flex flex-col justify-between transition-all duration-300 ease-out h-72"
 >
-  <!-- Contenu compact -->
-  <div class="space-y-4">
+
+  <!-- Contenu compact (scale appliqué ici pour éviter stacking context) -->
+  <div class="inner transition-all duration-300 ease-out group-hover:scale-[1.01] space-y-4">
+    
     <div class="h-12 w-12 rounded-xl bg-emerald-400/15 flex items-center justify-center">
       <i class="bi bi-bell-fill text-2xl text-emerald-300"></i>
     </div>
@@ -821,13 +822,15 @@ Il exploite plusieurs failles connues pour infecter des équipements IoT vulnér
     <p class="text-xs text-slate-300/90">
       Service d’alertes Google pour suivre des mots-clés IoT, cybersécurité, smart home, etc.
     </p>
+
+    <p class="mt-4 text-[0.7rem] text-slate-400">
+      Survoler pour voir un exemple détaillé.
+    </p>
+
   </div>
 
-  <p class="mt-4 text-[0.7rem] text-slate-400">
-    Survoler pour voir un exemple détaillé.
-  </p>
 
-  <!-- 🟢 PANNEAU FLOTTANT CENTRÉ -->
+  <!-- 🟢 PANNEAU FLOTTANT CENTRÉ → maintenant EN PREMIER PLAN ABSOLU -->
   <div
     class="pointer-events-none group-hover:pointer-events-auto
            fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
@@ -835,8 +838,10 @@ Il exploite plusieurs failles connues pour infecter des équipements IoT vulnér
            rounded-2xl bg-slate-950/95 backdrop-blur-xl
            border border-emerald-400/70 shadow-[0_0_60px_rgba(34,242,184,0.55)]
            opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100
-           transition-all duration-300 ease-out z-[9999]"
+           transition-all duration-300 ease-out
+           z-[2147483647]"
   >
+
     <div class="p-6 space-y-4 text-[0.85rem] text-slate-200 h-full overflow-y-auto">
 
       <h4 class="font-semibold text-emerald-300 text-lg">Google Alerts</h4>
@@ -845,23 +850,19 @@ Il exploite plusieurs failles connues pour infecter des équipements IoT vulnér
         Google Alerts est un service permettant de
         <span class="font-semibold text-slate-100">recevoir automatiquement des notifications</span>
         lorsqu’un nouveau contenu correspondant à un mot-clé apparaît sur le web.
-        Le moteur Google effectue un <span class="font-semibold">balayage continu</span> :
-        lorsqu’un article ou une publication correspond à vos critères,
-        <span class="font-semibold text-slate-100">une alerte est envoyée à l’utilisateur</span>.
+        Il utilise un <span class="font-semibold">balayage continu</span> du moteur Google.
       </p>
 
-      <!-- IMAGE -->
       <div class="w-full rounded-lg overflow-hidden border border-slate-700 shadow-xl">
         <img src="googlealert.png" alt="Capture Google Alerts" class="w-full object-cover">
       </div>
 
       <p>
-        Pour créer une alerte, il suffit d’indiquer un mot-clé
-        (ex : <span class="font-semibold text-slate-100">objet connecté</span>) puis de configurer :
+        Pour créer une alerte, il suffit d’indiquer un mot-clé puis de configurer :
       </p>
 
       <ul class="list-disc list-inside space-y-1">
-        <li><span class="font-semibold text-slate-100">Fréquence :</span> immédiate, quotidienne ou hebdomadaire.</li>
+        <li><span class="font-semibold text-slate-100">Fréquence :</span> immédiate, quotidienne, hebdomadaire.</li>
         <li><span class="font-semibold text-slate-100">Sources :</span> actualités, blogs, vidéos, web, etc.</li>
       </ul>
 
