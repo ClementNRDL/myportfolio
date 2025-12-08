@@ -802,13 +802,14 @@ Il exploite plusieurs failles connues pour infecter des équipements IoT vulnér
       </div>
 
       <div class="grid gap-6 sm:gap-7 md:grid-cols-2 xl:grid-cols-4">
-      <!-- Google Alerts -->
+     <!-- Google Alerts -->
 <article
-  class="group iot-tool relative overflow-hidden rounded-2xl border border-slate-700 bg-slate-950/80 px-5 py-5 flex flex-col justify-between
-         transition-all duration-300 ease-out hover:scale-[1.03] hover:border-emerald-400/70 hover:shadow-[0_0_40px_rgba(34,242,184,0.3)] hover:bg-slate-900/90 h-72"
+  class="group iot-tool relative overflow-visible rounded-2xl border border-slate-700 bg-slate-950/80 px-5 py-5
+         flex flex-col justify-between transition-all duration-300 ease-out
+         hover:scale-[1.01] hover:border-emerald-400/70 hover:shadow-[0_0_40px_rgba(34,242,184,0.3)] hover:bg-slate-900/90 h-72"
 >
-  <!-- Contenu "compact" de base -->
-  <div class="space-y-4 relative z-10">
+  <!-- Contenu compact -->
+  <div class="space-y-4">
     <div class="h-12 w-12 rounded-xl bg-emerald-400/15 flex items-center justify-center">
       <i class="bi bi-bell-fill text-2xl text-emerald-300"></i>
     </div>
@@ -822,26 +823,29 @@ Il exploite plusieurs failles connues pour infecter des équipements IoT vulnér
     </p>
   </div>
 
-  <!-- Petit texte bas de carte -->
-  <p class="relative z-10 mt-4 text-[0.7rem] text-slate-400">
+  <p class="mt-4 text-[0.7rem] text-slate-400">
     Survoler pour voir un exemple détaillé.
   </p>
 
-  <!-- 🟢 OVERLAY DÉTAILLÉ QUI SE DÉPLOIE AU SURVOL -->
+  <!-- 🟢 GRAND PANNEAU FLOTTANT AU SURVOL -->
   <div
-    class="absolute inset-0 rounded-2xl bg-slate-950/95 border border-emerald-400/60 shadow-[0_0_40px_rgba(34,242,184,0.3)]
-           opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ease-out
-           pointer-events-none group-hover:pointer-events-auto overflow-hidden"
+    class="pointer-events-none group-hover:pointer-events-auto
+           absolute z-30 left-1/2 -translate-x-1/2 top-full mt-4
+           w-[32rem] max-w-[95vw]
+           rounded-2xl bg-slate-950 border border-emerald-400/70 shadow-[0_0_50px_rgba(34,242,184,0.45)]
+           opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100
+           transition-all duration-300 ease-out"
   >
-    <div class="p-4 space-y-4 text-[0.78rem] text-slate-200 h-full overflow-y-auto">
+    <div class="p-5 space-y-4 text-[0.8rem] text-slate-200 max-h-[30rem] overflow-y-auto">
       <div>
-        <h4 class="font-semibold text-emerald-300">Google Alerts</h4>
+        <h4 class="font-semibold text-emerald-300">Google Alerts :</h4>
         <p class="mt-1">
           Google Alerts est un service permettant de
           <span class="font-semibold text-slate-100">recevoir automatiquement des notifications</span>
-          lorsqu’un nouveau contenu correspondant à un mot-clé apparaît sur le web. Le moteur Google effectue
-          un <span class="font-semibold">balayage continu</span> : dès qu’un article, une page ou une publication
-          correspond à vos critères, <span class="font-semibold text-slate-100">une alerte vous est envoyée</span>.
+          lorsqu’un nouveau contenu correspondant à un mot-clé apparaît sur le web.
+          Le moteur Google effectue un <span class="font-semibold">balayage continu</span> :
+          dès qu’un article, une page ou une publication correspond à vos critères,
+          <span class="font-semibold text-slate-100">une alerte est envoyée à l’utilisateur</span>.
         </p>
       </div>
 
@@ -852,8 +856,8 @@ Il exploite plusieurs failles connues pour infecter des équipements IoT vulnér
 
       <div>
         <p>
-          Pour créer une alerte, il suffit de saisir un mot-clé (ex :
-          <span class="font-semibold text-slate-100">objet connecté</span>) puis de configurer :
+          Pour créer une alerte, il suffit d’indiquer un mot-clé
+          (par ex. <span class="font-semibold text-slate-100">objet connecté</span>) puis de configurer :
         </p>
 
         <ul class="list-disc list-inside space-y-1 mt-2 text-slate-300">
@@ -870,7 +874,6 @@ Il exploite plusieurs failles connues pour infecter des équipements IoT vulnér
     </div>
   </div>
 </article>
-
         <!-- Feedly -->
         <article class="iot-tool card-hover relative overflow-hidden rounded-2xl border border-slate-600/70 bg-slate-950/80 px-5 py-5 flex flex-col justify-between">
           <div class="relative z-10 space-y-4">
