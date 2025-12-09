@@ -295,16 +295,25 @@
       </div>
 
       <!-- Nav desktop -->
-      <nav class="hidden md:flex items-center gap-6 text-xs font-medium tracking-[0.2em] uppercase text-slate-300">
-        <a href="#hero" class="nav-link">Accueil</a>
-        <a href="#contexte" class="nav-link">Contexte</a>
-         <a href="#usecases" class="nav-link">Cas d’usage</a>
-          <a href="#risques" class="nav-link">Risques</a>
-        <a href="#articles" class="nav-link">Tableau</a>
-         <a href="#methodologie" class="nav-link">Outils</a>
-        <a href="#faq" class="nav-link">FAQ</a>
-        <a href="index.html" class="nav-link">Retour à l'accueil</a>
-      </nav>
+      <nav class="hidden md:flex items-center text-xs font-medium tracking-[0.2em] uppercase text-slate-300 w-full justify-between">
+
+  <!-- Groupe des liens principaux -->
+  <div class="flex items-center gap-6">
+    <a href="#hero" class="nav-link">Accueil</a>
+    <a href="#contexte" class="nav-link">Contexte</a>
+    <a href="#usecases" class="nav-link">Cas d’usage</a>
+    <a href="#risques" class="nav-link">Risques</a>
+    <a href="#articles" class="nav-link">Tableau</a>
+    <a href="#methodologie" class="nav-link">Outils</a>
+    <a href="#faq" class="nav-link">FAQ</a>
+  </div>
+
+  <!-- Bouton séparé -->
+  <a href="index.html" class="nav-link text-emerald-300 hover:text-emerald-200">
+    Retour à l'accueil
+  </a>
+
+</nav>
 
       <!-- Nav mobile simple -->
       <div class="md:hidden">
