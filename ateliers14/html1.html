@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Rendre les liens externes orange</title>
+</head>
+<body>
+
+<h3>The list:</h3>
+
+<ul>
+    <li><a href="http://google.com">http://google.com</a></li>
+    <li><a href="/tutorial.html">/tutorial.html</a></li>
+    <li><a href="local/path">local/path</a></li>
+    <li><a href="ftp://ftp.com/my.zip">ftp://ftp.com/my.zip</a></li>
+    <li><a href="http://nodejs.org">http://nodejs.org</a></li>
+    <li><a href="http://internal.com/test">http://internal.com/test</a></li>
+</ul>
+
+<script>
+/* ================= EXERCICE 35 ================= */
+/* Rendre les liens externes orange */
+
+let links = document.querySelectorAll("a");
+
+for (let link of links) {
+    let href = link.getAttribute("href");
+
+    if (href && href.includes("://") && !href.startsWith("http://internal.com")) {
+        link.style.color = "orange";
+    }
+}
+</script>
+
+</body>
+</html>
