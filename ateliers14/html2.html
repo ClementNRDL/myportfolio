@@ -3,14 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <title>Exercice 36 – Arbre depuis un objet</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            padding: 30px;
+        }
+
+        .exercise {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            width: fit-content;
+        }
+
+        /* ===== RENDU DE L’ARBRE ===== */
+
+        ul {
+            list-style-type: disc;     /* ● niveau 1 */
+            margin-left: 20px;
+            padding-left: 20px;
+        }
+
+        ul ul {
+            list-style-type: circle;   /* ○ niveau 2 */
+        }
+
+        ul ul ul {
+            list-style-type: square;   /* ■ niveau 3 */
+        }
+
+        li {
+            margin: 4px 0;
+        }
+    </style>
 </head>
+
 <body>
 
-    
-    
+    <div class="exercise">
+        <h2>Exercice 36 – Arbre depuis un objet</h2>
+        <div id="container"></div>
+    </div>
 
-    <div id="container"></div>
+    <script>
+        // ================= EXERCICE 36 =================
+        // Création d’un arbre HTML à partir d’un objet JavaScript
 
-    <script src="script.js"></script>
+        const data = {
+            Fish: {
+                trout: {},
+                salmon: {}
+            },
+            Tree: {
+                Huge: {
+                    sequoia: {},
+                    oak: {}
+                },
+                Flowering: {
+                    "apple tree": {},
+                    magnolia: {}
+                }
+            }
+        };
+
+        /**
+         * Crée récursivement une liste ul/li à partir d’un objet
+         * @param {HTMLElement} container
+         * @param {Object} obj
+         */
+        function createTree(container, obj) {
+            const ul = document.createElement("ul");
+
+            for (let key in obj) {
+                const li = document.createElement("li");
+                li.textContent = key;
+
+                if (Object.keys(obj[key]).length > 0) {
+                    createTree(li, obj[key]);
+                }
+
+                ul.append(li);
+            }
+
+            container.append(ul);
+        }
+
+        // Lancement
+        const container = document.getElementById("container");
+        createTree(container, data);
+    </script>
+
 </body>
 </html>
