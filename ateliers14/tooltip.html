@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Info-bulle avec data-tooltip</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        .tooltip {
+            position: fixed;
+            padding: 6px 10px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .box {
+            border: 2px solid red;
+            padding: 20px;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Info-bulle avec data-tooltip</h2>
+
+<div class="box" data-tooltip="Voici l'intérieur de la maison">
+    Il était une fois, une maman cochon qui avait trois petits cochons.
+
+    <div data-tooltip="Voici le toit" style="margin:10px 0;">
+        🏠
+    </div>
+
+    Bientôt ils rencontrèrent un homme.
+    <a href="#" data-tooltip="Read on...">Survolez moi</a>
+</div>
+
+<script>
+/* ================= EXERCICE 47 ================= */
+/* Info-bulle avec data-tooltip */
+
+let tooltip;
+
+document.addEventListener("mouseover", function (event) {
+    let target = event.target.closest("[data-tooltip]");
+    if (!target) return;
+
+    tooltip = document.createElement("div");
+    tooltip.className = "tooltip";
+    tooltip.textContent = target.dataset.tooltip;
+
+    document.body.append(tooltip);
+
+    let rect = target.getBoundingClientRect();
+    tooltip.style.left = rect.left + "px";
+    tooltip.style.top = rect.top - tooltip.offsetHeight - 5 + "px";
+});
+
+document.addEventListener("mouseout", function () {
+    if (tooltip) {
+        tooltip.remove();
+        tooltip = null;
+    }
+});
+</script>
+
+</body>
+</html>
