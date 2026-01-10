@@ -1,0 +1,181 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    padding: 30px;
+}
+
+.exercise {
+    background: #ffffff;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Carré blanc */
+.capture-box {
+    width: 320px;
+    height: auto;
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 10px;
+    margin: 15px 0;
+}
+
+.capture-box img {
+    width: 100%;
+    display: block;
+}
+
+/* Boutons */
+.btn {
+    padding: 8px 14px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.btn.secondary {
+    background: #6c757d;
+}
+
+.code {
+    display: none;
+    background: #1e1e1e;
+    color: #dcdcdc;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+}
+
+.caption {
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* ================= EXERCICE 46 ================= */
+/* Create a notification */
+
+.notification {
+    position: fixed;
+    padding: 10px 15px;
+    background: darkred;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    z-index: 1000;
+}
+
+.notification.welcome {
+    background: darkred;
+}
+
+/* ================= EXERCICE 48 ================= */
+/* Terrain et balle */
+
+#field {
+    width: 200px;
+    height: 120px;
+    border: 10px groove black;
+    background-color: #00ff00;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+#ball {
+    position: absolute;
+}
+
+/* ================= EXERCICE 49 ================= */
+/* Champ vert pour coordonnées */
+
+#field-coords {
+    width: 200px;
+    height: 120px;
+    background: green;
+    border: 10px solid black;
+    margin: 15px 0;
+}
+
+/* ================= EXERCICE 50 ================= */
+/* Cacher sur clic */
+
+.hide-box {
+    border: 1px solid #000;
+    padding: 10px;
+    width: fit-content;
+}
+
+/* ================= EXERCICE 52 ================= */
+
+.field {
+    width: 320px;
+    height: 200px;
+    border: 10px solid black;
+    background: #00ff00;
+    position: relative;
+    cursor: pointer;
+}
+
+#ball {
+    position: absolute;
+    transition: left 0.4s ease, top 0.4s ease;
+}
+
+.field {
+    width: 320px;
+    height: 200px;
+    border: 10px solid black;
+    background: #00ff00;
+    position: relative;
+    cursor: pointer;
+}
+
+#ball52 {
+    position: absolute;
+    transition: left 0.4s ease, top 0.4s ease;
+    pointer-events: none; /* ⭐ LA LIGNE QUI MANQUAIT */
+}
+
+/* ================= EXERCICE 53 ================= */
+
+.menu {
+    width: 200px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    font-family: Arial, sans-serif;
+}
+
+.menu-title {
+    cursor: pointer;
+    user-select: none;
+    font-weight: bold;
+}
+
+/* Icône fermée */
+.menu-title::before {
+    content: "▶ ";
+}
+
+/* Icône ouverte */
+.menu.open .menu-title::before {
+    content: "▼ ";
+}
+
+.menu-list {
+    margin-left: 15px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+/* Menu ouvert */
+.menu.open .menu-list {
+    max-height: 100px;
+}
+
