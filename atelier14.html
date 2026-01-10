@@ -1,0 +1,2149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Récapitulatif des exercices JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Récapitulatif des exercices JavaScript</h1>
+
+<!-- ================= EXERCICE 1 ================= -->
+<div class="exercise">
+    <h2>Afficher une alerte</h2>
+    <p>Créer une page qui affiche un message <strong>"Je suis JavaScript!"</strong>.</p>
+
+    <div class="capture-box">
+        <img src="alerte.png" alt="Capture exercice alerte">
+    </div>
+
+    <p class="caption">
+        Résultat : boîte de dialogue affichant le message "Je suis JavaScript!"
+    </p>
+
+    <button class="btn" onclick="runAlert()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code1')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code1" class="code">
+&lt;script&gt;
+alert("Je suis JavaScript!");
+&lt;/script&gt;
+    </pre>
+</div>
+
+<!-- ================= EXERCICE 2 ================= -->
+<div class="exercise">
+    <h2>Travailler avec des variables</h2>
+
+    <p>
+        Déclarer deux variables <code>admin</code> et <code>name</code>, assigner
+        la valeur <strong>"John"</strong> à <code>name</code>, copier la valeur
+        dans <code>admin</code> puis l’afficher avec <code>alert</code>.
+    </p>
+
+    <div class="capture-box">
+        <img src="john.png" alt="Capture exercice variables">
+    </div>
+
+    <p class="caption">
+        Résultat : affichage de la valeur "John" via une boîte de dialogue.
+    </p>
+
+    <button class="btn" onclick="runVariables()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code2')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code2" class="code">
+let admin;
+let name;
+
+name = "John";
+admin = name;
+
+alert(admin);
+    </pre>
+</div>
+
+<!-- ================= EXERCICE 3 ================= -->
+<div class="exercise">
+    <h2>Assigner le bon nom</h2>
+
+    <p>
+        Créer une variable pour stocker le nom de notre planète et une autre
+        pour stocker le nom de l’utilisateur actuel.
+    </p>
+
+    <div class="capture-box">
+        <img src="terre.png" alt="Capture exercice assiger le bon nom">
+    </div>
+
+    <p class="caption">
+        Variables correctement nommées : <code>planetname</code> et
+        <code>currentnameuser</code>.
+    </p>
+
+    <button class="btn" onclick="runAssignName()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code3')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code3" class="code">
+let planetname = "Earth";
+let currentnameuser = "John";
+
+alert(planetname);
+alert(currentnameuser);
+    </pre>
+</div>
+
+<!-- ================= EXERCICE 4 ================= -->
+<div class="exercise">
+    <h2>String quotes</h2>
+
+    <p>Quelle est la sortie du script ?</p>
+
+    <div class="capture-box">
+        <img src="hello1.png" alt="Capture exercice string quotes">
+    </div>
+
+    <p class="caption">
+        Le script affiche : <strong>hello 1</strong>, <strong>hello name</strong> et
+        <strong>hello Ilya</strong>.
+    </p>
+
+    <button class="btn" onclick="runStringQuotes()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code4')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code4" class="code">
+let name = "Ilya";
+
+alert(`hello ${1}`);
+alert(`hello ${"name"}`);
+alert(`hello ${name}`);
+    </pre>
+</div>
+
+<!-- ================= EXERCICE 5 ================= -->
+<div class="exercise">
+    <h2>Une simple page</h2>
+
+    <p>Créer une page Web qui demande un nom et l’affiche.</p>
+
+    <div class="capture-box">
+        <img src="nom.png" alt="Capture exercice une simple page">
+    </div>
+
+    <p class="caption">
+        Une boîte de dialogue demande le nom de l’utilisateur.
+    </p>
+
+    <button class="btn" onclick="runSimplePage()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code5')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code5" class="code">
+let name = prompt("Quel est ton nom ?");
+    </pre>
+</div>
+
+<!-- ================= EXERCICE 6 ================= -->
+<div class="exercise">
+    <h2>Les formes postfixes et préfixes</h2>
+
+    <p>
+        Quelles sont les valeurs finales de toutes les variables
+        <code>a</code>, <code>b</code>, <code>c</code> et <code>d</code> après le code ci-dessous ?
+    </p>
+
+    <div class="capture-box">
+        <img src="a=.png" alt="Capture exercice postfixes et préfixes">
+    </div>
+
+    <p class="caption">
+        À la fin de l’exécution : <strong>a = 2</strong>, <strong>b = 2</strong>,
+        <strong>c = 2</strong> et <strong>d = 1</strong>.
+    </p>
+
+    <button class="btn" onclick="runPrefixPostfix()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code6')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code6" class="code">
+let a = 1, b = 1;
+
+let c = ++a; // ?
+let d = b++; // ?
+    </pre>
+</div>
+
+<!-- ================= EXERCICE 7 ================= -->
+<div class="exercise">
+    <h2>Résultat d’affectation</h2>
+
+    <p>Quelles sont les valeurs de <code>a</code> et <code>x</code> après le code ci-dessous ?</p>
+
+    <div class="capture-box">
+        <img src="a=x.png" alt="Capture exercice affectation">
+    </div>
+
+    <p class="caption">
+        Valeurs finales : <strong>a = 4</strong> et <strong>x = 5</strong>.
+    </p>
+
+    <button class="btn" onclick="runAffectation()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code7')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code7" class="code">
+let a = 2;
+let x = 1 + (a *= 2);
+    </pre>
+</div>
+
+<!-- ================= EXERCICE 8 ================= -->
+<div class="exercise">
+    <h2>Les conversions de type</h2>
+
+    <p>Quels sont les résultats de ces expressions ?</p>
+
+    <div class="capture-box">
+        <img src="images/ex08-conversions.png" alt="Capture exercice conversions">
+    </div>
+
+    <p class="caption">
+        Les résultats correspondent aux règles de conversion automatique en JavaScript.
+    </p>
+
+    <button class="btn" onclick="runConversions()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code8')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code8" class="code">
+"" + 1 + 0
+"" - 1 + 0
+true + false
+6 / "3"
+"2" * "3"
+4 + 5 + "px"
+"$" + 4 + 5
+"4" - 2
+"4px" - 2
+"-9" + 5
+"-9" - 5
+null + 1
+undefined + 1
+"\t \n" - 2
+    </pre>
+</div>
+
+<!-- ================= EXERCICE 9 ================= -->
+<div class="exercise">
+    <h2>Le nom de JavaScript</h2>
+
+    <p>
+        Écrire un code qui demande : <em>Quel est le nom officiel de JavaScript ?</em>
+        et affiche un message selon la réponse.
+    </p>
+
+    <div class="capture-box">
+        <img src="nomjs.png" alt="Capture exercice nom JavaScript">
+    </div>
+
+    <p class="caption">
+        Si l’utilisateur répond <strong>ECMAScript</strong>, le programme affiche
+        <em>Bonne réponse !</em>, sinon <em>Ne sait pas ? ECMAScript !</em>.
+    </p>
+
+    <button class="btn" onclick="runOfficialName()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code10')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code10" class="code">
+let answer = prompt("Quel est le nom officiel de JavaScript ?");
+
+if (answer === "ECMAScript") {
+    alert("Bonne réponse !");
+} else {
+    alert("Ne sait pas ? ECMAScript !");
+}
+    </pre>
+</div>
+
+<!-- ================= EXERCICE 10 ================= -->
+<div class="exercise">
+    <h2>Afficher le signe</h2>
+
+    <p>
+        Demander un nombre à l’utilisateur et afficher :
+        <strong>1</strong> s’il est positif,
+        <strong>-1</strong> s’il est négatif,
+        <strong>0</strong> s’il est égal à zéro.
+    </p>
+
+    <div class="capture-box">
+        <img src="nombre.png" alt="Capture exercice afficher le signe">
+    </div>
+
+    <p class="caption">
+        Le programme vérifie si le nombre est positif, négatif ou nul.
+    </p>
+
+    <button class="btn" onclick="runSign()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code11')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code11" class="code">
+let number = Number(prompt("Entrez un nombre :"));
+
+if (number > 0) {
+    alert(1);
+} else if (number < 0) {
+    alert(-1);
+} else {
+    alert(0);
+}
+    </pre>
+</div>
+
+<!-- ================= OR ================= -->
+<div class="exercise">
+    <h2>Quel est le résultat de OR ?</h2>
+
+    <p>Qu’est-ce que le code ci-dessous va sortir ?</p>
+
+    <div class="capture-box">
+        <img src="or.png" alt="Capture exercice résultat OR">
+    </div>
+
+    <p class="caption">
+        L’opérateur <code>||</code> retourne la première valeur vraie rencontrée.
+        Ici, le résultat affiché est <strong>2</strong>.
+    </p>
+
+    <button class="btn" onclick="runOrResult()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code12')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code12" class="code">
+alert( null || 2 || undefined );
+    </pre>
+</div>
+
+<!-- ================= Quel est le résultat des alertes OR ? ================= -->
+<div class="exercise">
+    <h2>Quel est le résultat des alertes OR ?</h2>
+
+    <p>Qu’est-ce que le code ci-dessous va sortir ?</p>
+
+    <div class="capture-box">
+        <img src="or2.png" alt="Capture exercice alertes OR">
+    </div>
+
+    <p class="caption">
+        <code>alert(1)</code> s’exécute en premier et affiche <strong>1</strong>, puis retourne
+        <code>undefined</code>. L’opérateur <code>||</code> continue et exécute
+        <code>alert(2)</code> qui affiche <strong>2</strong>. <code>alert(3)</code> n’est jamais exécuté.
+    </p>
+
+    <button class="btn" onclick="runAlertOr()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code13')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code13" class="code">
+alert( alert(1) || 2 || alert(3) );
+    </pre>
+</div>
+
+<!-- ================= Quel est le résultat de AND ? ================= -->
+<div class="exercise">
+    <h2>Quel est le résultat de AND ?</h2>
+
+    <p>Qu’est-ce que ce code va afficher ?</p>
+
+    <div class="capture-box">
+        <img src="and.png" alt="Capture exercice résultat AND">
+    </div>
+
+    <p class="caption">
+        L’opérateur <code>&&</code> retourne la première valeur fausse rencontrée.
+        Ici, le résultat affiché est <strong>null</strong>.
+    </p>
+
+    <button class="btn" onclick="runAndResult()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code14')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code14" class="code">
+alert(1 && null && 2);
+    </pre>
+</div>
+
+<!-- ================= Quel est le résultat des alertes AND ?================= -->
+<div class="exercise">
+    <h2>Quel est le résultat des alertes AND ?</h2>
+
+    <p>Qu’est-ce que ce code va afficher ?</p>
+
+    <div class="capture-box">
+        <img src="undefined.png" alt="Capture exercice alertes AND">
+    </div>
+
+    <p class="caption">
+        <code>alert(1)</code> s’exécute et affiche <strong>1</strong>, puis retourne
+        <code>undefined</code>. L’opérateur <code>&&</code> s’arrête, donc
+        <code>alert(2)</code> n’est jamais exécuté.
+    </p>
+
+    <button class="btn" onclick="runAlertAnd()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code15')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code15" class="code">
+alert( alert(1) && alert(2) );
+    </pre>
+</div>
+
+<!-- ================= Le résultat de OR AND OR ================= -->
+<div class="exercise">
+    <h2>Le résultat de OR AND OR</h2>
+
+    <p>Quel sera le résultat du code suivant ?</p>
+
+    <div class="capture-box">
+        <img src="or3.png" alt="Capture exercice OR AND OR">
+    </div>
+
+    <p class="caption">
+        L’opérateur <code>&&</code> est évalué avant <code>||</code>.
+        Le résultat affiché est <strong>3</strong>.
+    </p>
+
+    <button class="btn" onclick="runOrAndOr()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code16')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code16" class="code">
+alert( null || 2 && 3 || 4 );
+    </pre>
+</div>
+
+
+
+<!-- ================= Vérifiez la plage entre================= -->
+<div class="exercise">
+    <h2>Vérifiez la plage entre</h2>
+
+    <p>
+        Écrire une condition <code>if</code> pour vérifier que l’âge est compris
+        entre <strong>14</strong> et <strong>90</strong> ans inclus.
+    </p>
+
+    <div class="capture-box">
+        <img src="age.png" alt="Capture exercice plage entre">
+    </div>
+
+    <p class="caption">
+        Le navigateur affiche le message :
+        <em>« L'âge est compris entre 14 et 90 ans inclus. »</em>
+    </p>
+
+    <button class="btn" onclick="runCheckRangeFixed()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code17')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code17" class="code">
+let age = 25;
+
+if (age >= 14 && age <= 90) {
+    alert("L'âge est compris entre 14 et 90 ans inclus.");
+} else {
+    alert("L'âge est en dehors de la plage autorisée.");
+}
+    </pre>
+</div>
+
+<!-- ================= Vérifiez à l’extérieur de la plage================= -->
+<div class="exercise">
+    <h2>Vérifiez à l’extérieur de la plage</h2>
+
+    <p>
+        Vérifier que l’âge n’est <strong>PAS</strong> compris entre 14 et 90 ans inclus,
+        avec deux variantes.
+    </p>
+
+    <div class="capture-box">
+        <img src="images/ex18-exterieur-plage.png" alt="Capture exercice extérieur de la plage">
+    </div>
+
+    <p class="caption">
+        Les deux variantes affichent que l’âge est compris entre 14 et 90 ans inclus.
+    </p>
+
+    <button class="btn" onclick="runOutsideRange()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code18')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code18" class="code">
+let age = 25;
+
+/* Variante 1 */
+if (!(age >= 14 && age <= 90)) {
+    alert("Variante I : L'âge n'est pas compris entre 14 et 90 ans inclus.");
+} else {
+    alert("Variante I : L'âge est compris entre 14 et 90 ans inclus.");
+}
+
+/* Variante 2 */
+if (age < 14 || age > 90) {
+    alert("Variante II : L'âge n'est pas compris entre 14 et 90 ans inclus.");
+} else {
+    alert("Variante II : L'âge est compris entre 14 et 90 ans inclus.");
+}
+    </pre>
+</div>
+
+
+<!-- ================= Une question à propos de if ================= -->
+<div class="exercise">
+    <h2>Une question à propos de if</h2>
+
+    <p>Lesquelles de ces alertes vont s’exécuter ?</p>
+
+    <div class="capture-box">
+        <img src="first.png" alt="Capture exercice question if">
+    </div>
+
+    <p class="caption">
+        Les alertes qui s’exécutent sont <strong>first</strong> et <strong>third</strong>.
+    </p>
+
+    <button class="btn" onclick="runIfQuestion()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code19')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code19" class="code">
+if (-1 || 0) alert("first");
+if (-1 && 0) alert("second");
+if (null || -1 && 1) alert("third");
+    </pre>
+</div>
+
+<!-- =================Check the login================= -->
+<div class="exercise">
+    <h2>Check the login</h2>
+
+    <p>
+        Le programme demande un nom d’utilisateur puis un mot de passe
+        et affiche un message selon la saisie.
+    </p>
+
+    <div class="capture-box">
+        <img src="who.png" alt="Capture exercice check the login">
+    </div>
+
+    <p class="caption">
+        Le programme affiche <em>Welcome!</em>, <em>Wrong password</em>,
+        <em>I don't know you</em> ou <em>Canceled</em> selon la saisie.
+    </p>
+
+    <button class="btn" onclick="runCheckLogin()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code20')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code20" class="code">
+let userName = prompt("Who's there?");
+
+if (userName === "Admin") {
+
+    let password = prompt("Password?");
+
+    if (password === "TheMaster") {
+        alert("Welcome!");
+    } else if (password === "" || password === null) {
+        alert("Canceled");
+    } else {
+        alert("Wrong password");
+    }
+
+} else if (userName === "" || userName === null) {
+    alert("Canceled");
+} else {
+    alert("I don't know you");
+}
+    </pre>
+</div>
+
+<!-- ================= Dernière valeur de boucle ================= -->
+<div class="exercise">
+    <h2>Dernière valeur de boucle</h2>
+
+    <p>Quelle est la dernière valeur affichée par ce code ? Pourquoi ?</p>
+
+    <div class="capture-box">
+        <img src="boucle.png" alt="Capture exercice dernière valeur boucle">
+    </div>
+
+    <p class="caption">
+        La dernière valeur affichée est <strong>1</strong>.
+    </p>
+
+    <button class="btn" onclick="runLastLoopValue()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code21')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code21" class="code">
+let i = 3;
+
+while (i) {
+    alert(i--);
+}
+    </pre>
+</div>
+
+<!-- ================= Quelles valeurs affiche la boucle while ?================= -->
+<div class="exercise">
+    <h2>Quelles valeurs affiche la boucle while ?</h2>
+
+    <p>
+        Comparaison entre l’incrémentation préfixe et postfixe dans une boucle
+        <code>while</code>.
+    </p>
+
+    <div class="capture-box">
+        <img src="while.png" alt="Capture exercice while préfixe postfixe">
+    </div>
+
+    <p class="caption">
+        Avec <code>++i</code>, la boucle affiche <strong>1, 2, 3 et 4</strong>.
+        Avec <code>i++</code>, elle affiche également <strong>1, 2, 3 et 4</strong>,
+        mais le comportement interne diffère.
+    </p>
+
+    <button class="btn" onclick="runWhileComparison()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code22')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code22" class="code">
+/* Préfixe */
+let i = 0;
+while (++i < 5) alert(i);
+
+/* Postfixe */
+i = 0;
+while (i++ < 5) alert(i);
+    </pre>
+</div>
+
+<!-- ================= Quelles valeurs sont affichées par la boucle for ? ================= -->
+<div class="exercise">
+    <h2>Quelles valeurs sont affichées par la boucle for ?</h2>
+
+    <p>
+        Pour chaque boucle, noter les valeurs affichées, puis comparer les résultats.
+    </p>
+
+    <div class="capture-box">
+        <img src="prefixe.png" alt="Capture exercice boucle for">
+    </div>
+
+    <p class="caption">
+        Les deux boucles affichent les mêmes valeurs :
+        <strong>0, 1, 2, 3 et 4</strong>.
+    </p>
+
+    <button class="btn" onclick="runForLoopValues()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code23')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code23" class="code">
+/* Forme postfixe */
+for (let i = 0; i < 5; i++) alert(i);
+
+/* Forme préfixe */
+for (let i = 0; i < 5; ++i) alert(i);
+    </pre>
+</div>
+
+<!-- ================= Extraire les nombres pairs dans la boucle ================= -->
+<div class="exercise">
+    <h2>Extraire les nombres pairs dans la boucle</h2>
+
+    <p>
+        Utiliser la boucle <code>for</code> pour afficher les nombres pairs de
+        <strong>2</strong> à <strong>10</strong>.
+    </p>
+
+    <div class="capture-box">
+        <img src="pairs.png" alt="Capture exercice nombres pairs">
+    </div>
+
+    <p class="caption">
+        La boucle affiche successivement les nombres pairs :
+        <strong>2, 4, 6, 8 et 10</strong>.
+    </p>
+
+    <button class="btn" onclick="runEvenNumbers()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code24')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code24" class="code">
+for (let i = 2; i <= 10; i++) {
+    if (i % 2 === 0) {
+        alert(i);
+    }
+}
+    </pre>
+</div>
+
+<!-- ================= Remplacer "for" par "while"================= -->
+<div class="exercise">
+    <h2>Remplacer "for" par "while"</h2>
+
+    <p>
+        Réécrire la boucle <code>for</code> en <code>while</code> sans modifier
+        son comportement.
+    </p>
+
+    <div class="capture-box">
+        <img src="number.png" alt="Capture exercice for vers while">
+    </div>
+
+    <p class="caption">
+        La boucle <code>while</code> se comporte exactement comme la boucle
+        <code>for</code>.
+    </p>
+
+    <button class="btn" onclick="runForToWhile()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code25')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code25" class="code">
+let i = 0;
+
+while (i < 3) {
+    alert(`number ${i}`);
+    i++;
+}
+    </pre>
+</div>
+
+<!-- ================= Répéter jusqu’à ce que l’entrée soit correcte================= -->
+<div class="exercise">
+    <h2>Répéter jusqu’à ce que l’entrée soit correcte</h2>
+
+    <p>
+        Demander un nombre supérieur à <strong>100</strong>. Répéter tant que
+        l’entrée n’est pas valide.
+    </p>
+
+    <div class="capture-box">
+        <img src="nombre100.png" alt="Capture exercice entrée correcte">
+    </div>
+
+    <button class="btn" onclick="runRepeatUntilValid()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code26')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code26" class="code">
+let number;
+
+do {
+    number = prompt("Saisissez un nombre supérieur à 100 :");
+} while (number !== null && number <= 100);
+
+if (number !== null) {
+    alert("Merci ! Vous avez saisi " + number + ".");
+}
+    </pre>
+</div>
+
+<!-- ================= Extraire des nombres premiers================= -->
+<div class="exercise">
+    <h2>Extraire des nombres premiers</h2>
+
+    <p>
+        Afficher les nombres premiers dans l’intervalle de <strong>2</strong> à <code>n</code>.
+    </p>
+
+    <div class="capture-box">
+        <img src="nombresuperieur.png" alt="Capture exercice nombres premiers">
+    </div>
+
+    <button class="btn" onclick="runPrimeNumbers()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code27')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code27" class="code">
+let n = Number(prompt("Entrez un nombre supérieur ou égal à 2 :"));
+let result = "";
+
+for (let i = 2; i <= n; i++) {
+    let isPrime = true;
+
+    for (let j = 2; j < i; j++) {
+        if (i % j === 0) {
+            isPrime = false;
+            break;
+        }
+    }
+
+    if (isPrime) {
+        result += i + " ";
+    }
+}
+
+alert("Nombres premiers jusqu'à " + n + " : " + result);
+    </pre>
+</div>
+
+<!-- ================= Réécrire le "switch" dans un "if" ================= -->
+<div class="exercise">
+    <h2>Réécrire le "switch" dans un "if"</h2>
+
+    <p>
+        Réécrire le code en utilisant <code>if...else</code> correspondant
+        au <code>switch</code> donné.
+    </p>
+
+    <div class="capture-box">
+        <img src="navigateur.png" alt="Capture exercice switch vers if">
+    </div>
+
+    <button class="btn" onclick="runSwitchToIf()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code28')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code28" class="code">
+let browser = prompt("Quel navigateur utilisez-vous ?");
+
+if (browser === "Edge") {
+    alert("You've got the Edge!");
+} else if (
+    browser === "Chrome" ||
+    browser === "Firefox" ||
+    browser === "Safari" ||
+    browser === "Opera"
+) {
+    alert("Okay we support these browsers too");
+} else {
+    alert("We hope that this page looks ok!");
+}
+    </pre>
+</div>
+
+<!-- ================= Réécrire le "if" dans un "switch" ================= -->
+<div class="exercise">
+    <h2>Réécrire le "if" dans un "switch"</h2>
+
+    <p>
+        Réécrire le code en utilisant une seule instruction
+        <code>switch</code>.
+    </p>
+
+    <div class="capture-box">
+        <img src="if.png" alt="Capture exercice if vers switch">
+    </div>
+
+    <button class="btn" onclick="runIfToSwitch()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code29')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code29" class="code">
+let a = +prompt("a ?", "");
+
+switch (a) {
+    case 0:
+        alert(0);
+        break;
+    case 1:
+        alert(1);
+        break;
+    case 2:
+    case 3:
+        alert("2,3");
+        break;
+    default:
+        alert("Valeur non prévue");
+}
+    </pre>
+</div>
+
+<!-- ================= Est-ce que "else" est requis ?================= -->
+<div class="exercise">
+    <h2>Est-ce que "else" est requis ?</h2>
+
+    <p>
+        Vérifier si la suppression de <code>else</code> modifie le comportement
+        de la fonction <code>checkAge</code>.
+    </p>
+
+    <div class="capture-box">
+        <img src="else.png" alt="Capture exercice else requis">
+    </div>
+
+    <button class="btn" onclick="runCheckAgeWithoutElse()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code30')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code30" class="code">
+function checkAge(age) {
+    if (age > 18) {
+        return true;
+    }
+    return confirm("Did parents allow you?");
+}
+
+let age = +prompt("Quel est votre âge ?", "");
+alert(checkAge(age) ? "Accès autorisé" : "Accès refusé");
+    </pre>
+</div>
+
+<!-- ================Réécrire la fonction en utilisant "?" ou "||"================= -->
+<div class="exercise">
+    <h2>Réécrire la fonction en utilisant "?" ou "||"</h2>
+
+    <p>
+        Réécrire la fonction <code>checkAge</code> en une seule ligne,
+        sans utiliser <code>if</code>.
+    </p>
+
+    <div class="capture-box">
+        <img src="checkage.png" alt="Capture exercice opérateurs conditionnels">
+    </div>
+
+    <button class="btn" onclick="runCheckAgeShort()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code31')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code31" class="code">
+/* Variante avec ? */
+function checkAge(age) {
+    return (age > 18) ? true : confirm("Did parents allow you?");
+}
+
+/* Variante avec || */
+function checkAgeOr(age) {
+    return (age > 18) || confirm("Did parents allow you?");
+}
+
+let age = +prompt("Quel est votre âge ?", "");
+alert(checkAge(age) ? "Accès autorisé" : "Accès refusé");
+    </pre>
+</div>
+
+<!-- =================Fonction min(a, b)================= -->
+<div class="exercise">
+    <h2>Fonction min(a, b)</h2>
+
+    <p>
+        Écrire une fonction <code>min(a, b)</code> qui renvoie le plus petit
+        des deux nombres.
+    </p>
+
+    <div class="capture-box">
+        <img src="fonction.png" alt="Capture exercice fonction min">
+    </div>
+
+    <button class="btn" onclick="runMinFunction()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code32')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code32" class="code">
+function min(a, b) {
+    return (a < b) ? a : b;
+}
+
+alert(`min(2, 5) = ${min(2, 5)}`);
+alert(`min(3, -1) = ${min(3, -1)}`);
+alert(`min(1, 1) = ${min(1, 1)}`);
+    </pre>
+</div>
+
+<!-- ================= Fonction pow(x, n)================= -->
+<div class="exercise">
+    <h2>Fonction pow(x, n)</h2>
+
+    <p>
+        Écrire une fonction <code>pow(x, n)</code> qui calcule <code>x</code>
+        à la puissance <code>n</code>.
+    </p>
+
+    <div class="capture-box">
+        <img src="base.png" alt="Capture exercice fonction pow">
+    </div>
+
+    <button class="btn" onclick="runPowFunction()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code33')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code33" class="code">
+function pow(x, n) {
+    let result = 1;
+
+    for (let i = 0; i < n; i++) {
+        result *= x;
+    }
+
+    return result;
+}
+
+let x = +prompt("Entrez la base x :");
+let n = +prompt("Entrez l'exposant n (entier naturel ≥ 0) :");
+
+if (n < 0 || !Number.isInteger(n)) {
+    alert("L'exposant doit être un entier naturel supérieur ou égal à 0.");
+} else {
+    alert(`${x}^${n} = ${pow(x, n)}`);
+}
+    </pre>
+</div>
+
+<div class="exercise">
+    <h3>Réécrire avec les fonctions fléchées</h3>
+    <p>
+        Cet exercice consiste à réécrire des fonctions classiques en utilisant
+        des fonctions fléchées, sans modifier le comportement du programme.
+    </p>
+
+    <div class="capture-box">
+        <!-- Place ici ta capture d’écran -->
+        <img src="agree.png" alt="Capture fonctions fléchées">
+    </div>
+
+    <button class="btn" onclick="runArrowFunction()">Exécuter la solution</button>
+    <button class="btn secondary" onclick="toggleCode('code-arrow')">Voir le code</button>
+
+    <pre class="code" id="code-arrow">
+function ask(question, yes, no) {
+    if (confirm(question)) {
+        yes();
+    } else {
+        no();
+    }
+}
+
+ask(
+    "Do you agree?",
+    () => alert("You agreed."),
+    () => alert("You canceled the execution.")
+);
+    </pre>
+</div>
+
+<!-- exo -->
+
+<div class="exercise">
+    <h3>Compter les descendants</h3>
+    <p>Quel affiche le script suivant ?</p>
+
+    <div class="capture-box">
+        <!-- Capture d’écran à placer ici -->
+        <img src="script.png" alt="Capture compter les descendants">
+    </div>
+
+    <button class="btn" onclick="runDescendants()">Exécuter la solution</button>
+    <button class="btn secondary" onclick="toggleCode('code-descendants')">Voir le code</button>
+
+    <pre class="code" id="code-descendants">
+alert(document.body.lastChild.nodeType);
+    </pre>
+</div>
+
+<div class="exercise">
+    <h3>Balise dans le commentaire</h3>
+    <p>Que va afficher ce code ?</p>
+
+    <div class="capture-box">
+        <!-- Capture d’écran à placer ici -->
+        <img src="body.png" alt="Capture balise commentaire">
+    </div>
+
+    <button class="btn" onclick="runCommentTag()">Exécuter la solution</button>
+    <button class="btn secondary" onclick="toggleCode('code-comment')">Voir le code</button>
+
+    <pre class="code" id="code-comment">
+let body = document.body;
+body.innerHTML = "&lt;!--" + body.tagName + "--&gt;";
+alert(body.firstChild.data);
+    </pre>
+</div>
+
+<!-- ================= Obtenez l’attribut================= -->
+<div class="exercise">
+    <h2>Obtenez l’attribut</h2>
+
+    <p>
+        Écrire le code pour sélectionner l’élément possédant l’attribut
+        <code>data-widget-name</code> et afficher la valeur de cet attribut.
+    </p>
+
+    <div class="capture-box">
+        <img src="menu.png" alt="Capture exercice data-widget-name">
+    </div>
+
+    <!-- Élément utilisé pour l'exercice -->
+    <div data-widget-name="menu">Choose the genre</div>
+
+    <button class="btn" onclick="runGetAttribute()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code34')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code34" class="code">
+let element = document.querySelector('[data-widget-name]');
+let value = element.getAttribute('data-widget-name');
+
+alert(value);
+    </pre>
+</div>
+
+<!-- =================Rendre les liens externes orange================= -->
+<div class="exercise">
+    <h2>Rendre les liens externes orange</h2>
+
+    <p>
+        Mettre tous les liens externes en orange.
+        Un lien est externe si son <code>href</code> contient <code>://</code>
+        mais ne commence pas par <code>http://internal.com</code>.
+    </p>
+
+    <div class="capture-box">
+        <img src="list.png" alt="Capture liens externes orange">
+    </div>
+
+    <button class="btn" onclick="openExternalLinksPage()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code35')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code35" class="code">
+let links = document.querySelectorAll("a");
+
+for (let link of links) {
+    let href = link.getAttribute("href");
+
+    if (href && href.includes("://") && !href.startsWith("http://internal.com")) {
+        link.style.color = "orange";
+    }
+}
+    </pre>
+</div>
+
+
+
+<!-- ================= Créer une liste================= -->
+<div class="exercise">
+    <h2>Créer une liste</h2>
+
+    <p>
+        Créer une liste à partir des entrées utilisateur.  
+        L’utilisateur saisit un texte via <code>prompt</code>.  
+        Chaque entrée crée un élément <code>&lt;li&gt;</code> ajouté à la liste.  
+        L’entrée s’arrête si l’utilisateur annule ou saisit une chaîne vide.
+    </p>
+
+    <div class="capture-box">
+        <img src="list2.png" alt="Capture exercice créer une liste">
+    </div>
+
+    <ul id="list"></ul>
+
+    <button class="btn" onclick="runCreateList()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code37')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code37" class="code">
+let ul = document.getElementById("list");
+
+while (true) {
+    let text = prompt("Entrez un élément de la liste :");
+
+    if (text === null || text === "") {
+        break;
+    }
+
+    let li = document.createElement("li");
+    li.textContent = text;
+    ul.append(li);
+}
+    </pre>
+</div>
+
+<!-- ================= Créer un arbre à partir d’un objet ================= -->
+<div class="exercise">
+    <h2>Créer un arbre à partir d’un objet</h2>
+
+    <p>
+        Créer dynamiquement une arborescence <code>ul / li</code> à partir
+        d’un objet JavaScript imbriqué.
+    </p>
+
+    <button class="btn" onclick="location.href='html2.html'">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code36')">
+        👁 Voir le code source
+    </button>
+
+<pre id="code36" class="code">
+// ================= EXERCICE 36 =================
+
+const data = {
+    Fish: {
+        trout: {},
+        salmon: {}
+    },
+    Tree: {
+        Huge: {
+            sequoia: {},
+            oak: {}
+        },
+        Flowering: {
+            "apple tree": {},
+            magnolia: {}
+        }
+    }
+};
+
+function createTree(container, obj) {
+    const ul = document.createElement("ul");
+
+    for (let key in obj) {
+        const li = document.createElement("li");
+        li.textContent = key;
+
+        if (Object.keys(obj[key]).length > 0) {
+            createTree(li, obj[key]);
+        }
+
+        ul.append(li);
+    }
+
+    container.append(ul);
+}
+</pre>
+</div>
+
+<!-- ================= Afficher les descendants dans un arbre ================= -->
+<div class="exercise">
+    <h2>Afficher les descendants dans un arbre</h2>
+
+    <p>
+        Ajouter à chaque <code>&lt;li&gt;</code> le nombre de ses descendants
+        (enfants, petits-enfants, etc.).<br>
+        Les feuilles (nœuds sans enfants) doivent être ignorées.
+    </p>
+
+    <div class="capture-box">
+        <img src="arbre2.png" alt="Capture arbre avec descendants">
+    </div>
+
+    <!-- Bouton d'exécution -->
+    <a href="html3.html" target="_blank" class="btn">
+        ▶ Exécuter la solution
+    </a>
+
+    <!-- Bouton voir le code -->
+    <button class="btn secondary" onclick="toggleCode('code42')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code42" class="code">
+/* EXERCICE 42 – Afficher les descendants dans un arbre */
+
+function countDescendants(li) {
+    const descendants = li.querySelectorAll("li").length;
+
+    if (descendants > 0) {
+        li.firstChild.textContent += " [" + descendants + "]";
+    }
+}
+
+const items = document.querySelectorAll("#tree li");
+items.forEach(li => countDescendants(li));
+    </pre>
+</div>
+
+<!-- ================= Créer un calendrier ================= -->
+<div class="exercise">
+    <h2>Créer un calendrier</h2>
+
+    <p>
+        Générer dynamiquement un calendrier mensuel à l’aide de JavaScript.
+        Le calendrier est créé sous forme de tableau HTML.
+    </p>
+
+    <button class="btn" onclick="window.location.href='html7.html'">
+        ▶ Exécuter
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code40')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code40" class="code">
+function createCalendar(elem, year, month) {
+    let table = document.createElement("table");
+
+    let days = ["MO", "TU", "WE", "TH", "FR", "SA", "SU"];
+    let tr = document.createElement("tr");
+
+    for (let day of days) {
+        let th = document.createElement("th");
+        th.textContent = day;
+        tr.append(th);
+    }
+    table.append(tr);
+
+    let date = new Date(year, month - 1, 1);
+    let startDay = (date.getDay() + 6) % 7;
+
+    tr = document.createElement("tr");
+    for (let i = 0; i < startDay; i++) {
+        tr.append(document.createElement("td"));
+    }
+
+    while (date.getMonth() === month - 1) {
+        let td = document.createElement("td");
+        td.textContent = date.getDate();
+        tr.append(td);
+
+        if ((date.getDay() + 6) % 7 === 6) {
+            table.append(tr);
+            tr = document.createElement("tr");
+        }
+
+        date.setDate(date.getDate() + 1);
+    }
+
+    if (tr.children.length > 0) {
+        table.append(tr);
+    }
+
+    elem.append(table);
+}
+    </pre>
+</div>
+
+<!-- ================= Horloge colorée avec setInterval ================= -->
+<div class="exercise">
+    <h2>Horloge colorée avec setInterval</h2>
+
+    <p>
+        Créez une horloge colorée comme ci-dessous.
+    </p>
+
+    <p>
+        Utilisez HTML/CSS pour le style,
+        JavaScript ne met à jour que le temps dans les éléments.
+    </p>
+
+    <!-- Bouton de redirection vers la page de l’horloge -->
+    <button class="btn" onclick="location.href='html7.html'">
+        ▶ Exécuter la solution
+    </button>
+
+    <!-- Bouton pour afficher le code source -->
+    <button class="btn secondary" onclick="toggleCode('code45')">
+        👁 Voir le code source
+    </button>
+
+    <!-- Code affiché (identique au JS) -->
+    <pre id="code45" class="code">
+/* ================= EXERCICE 45 ================= */
+/* Horloge colorée avec setInterval */
+
+/* Variable qui stocke l’identifiant du timer */
+let timerId;
+
+/* Fonction qui met à jour l’heure */
+function updateClock() {
+    let now = new Date();
+
+    let h = String(now.getHours()).padStart(2, "0");
+    let m = String(now.getMinutes()).padStart(2, "0");
+    let s = String(now.getSeconds()).padStart(2, "0");
+
+    document.querySelector(".hours").textContent = h;
+    document.querySelector(".minutes").textContent = m;
+    document.querySelector(".seconds").textContent = s;
+}
+
+/* Fonction pour démarrer l’horloge */
+function startClock() {
+    if (!timerId) {
+        updateClock();
+        timerId = setInterval(updateClock, 1000);
+    }
+}
+
+/* Fonction pour arrêter l’horloge */
+function stopClock() {
+    clearInterval(timerId);
+    timerId = null;
+}
+    </pre>
+</div>
+
+
+<script src="script.js"></script>
+
+
+<!-- =================  Créer une notification qui s’affiche temporairement
+        en haut à droite de la page================= -->
+
+
+<style>
+.notification {
+    position: fixed;
+    padding: 10px 15px;
+    background: darkred;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    z-index: 1000;
+}
+
+.notification.welcome {
+    background: darkred;
+}
+</style>
+
+<div class="exercise">
+    <h2>Create a notification</h2>
+
+    <p>
+        Créer une notification qui s’affiche temporairement
+        en haut à droite de la page.
+    </p>
+
+    <button class="btn" onclick="runNotification()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code46')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code46" class="code">
+/* ================= EXERCICE 46 ================= */
+/* Create a notification */
+
+function showNotification(options) {
+
+    // Création de l’élément
+    let div = document.createElement("div");
+    div.className = "notification";
+
+    // Classe supplémentaire (optionnelle)
+    if (options.className) {
+        div.classList.add(options.className);
+    }
+
+    // Contenu HTML
+    div.innerHTML = options.html;
+
+    // Positionnement
+    div.style.top = (options.top || 0) + "px";
+    div.style.right = (options.right || 0) + "px";
+
+    // Ajout au document
+    document.body.append(div);
+
+    // Suppression automatique après 1.5 seconde
+    setTimeout(() => {
+        div.remove();
+    }, 1500);
+}
+
+function runNotification() {
+    showNotification({
+        top: 10,
+        right: 10,
+        html: "Hello!",
+        className: "welcome"
+    });
+}
+    </pre>
+</div>
+
+
+<!-- ================= Quel est le défilement à partir du bas ?================= -->
+<div class="exercise">
+    <h2>Quel est le défilement à partir du bas ?</h2>
+
+    <p>
+        Calculer la distance de défilement restante depuis le bas
+        d’un élément.
+    </p>
+
+    <textarea id="box" rows="6" style="width:200px;">
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+    </textarea>
+
+    <br><br>
+
+    <button class="btn" onclick="runScrollBottom()">
+        ▶ Vérifier scrollBottom
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code47')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code47" class="code">
+/* ================= EXERCICE 47 ================= */
+/* Quel est le défilement à partir du bas ? */
+
+function getScrollBottom(elem) {
+    return Math.max(
+        0,
+        elem.scrollHeight - elem.scrollTop - elem.clientHeight
+    );
+}
+    </pre>
+</div>
+
+<!-- ================= Placer la balle au centre du terrain================= -->
+<div class="exercise">
+    <h2>Placer la balle au centre du terrain</h2>
+
+    <p>
+        Calculer le centre du terrain et placer la balle exactement au milieu
+        en utilisant JavaScript.
+    </p>
+
+    <!-- ===== Terrain ===== -->
+    <div id="field">
+        <img
+            src="https://en.js.cx/clipart/ball.svg"
+            id="ball"
+            alt="Balle"
+        >
+    </div>
+
+   
+
+    <p class="caption">
+        Résultat : la balle est positionnée exactement au centre du terrain.
+    </p>
+
+    <button class="btn" onclick="runCenterBall()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code48')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code48" class="code">
+/* ================= EXERCICE 48 ================= */
+/* Placer la balle au centre du terrain */
+
+let field = document.getElementById("field");
+let ball = document.getElementById("ball");
+
+ball.onload = function () {
+    let left = (field.clientWidth - ball.offsetWidth) / 2;
+    let top = (field.clientHeight - ball.offsetHeight) / 2;
+
+    ball.style.left = left + "px";
+    ball.style.top = top + "px";
+};
+    </pre>
+</div>
+
+<!-- ================= Trouver les coordonnées de la fenêtre du champ================= -->
+<div class="exercise">
+    <h2>Trouver les coordonnées de la fenêtre du champ</h2>
+
+    <p>
+        Trouver les coordonnées des coins extérieur et intérieur
+        d’un élément en utilisant le DOM.
+    </p>
+
+    <!-- Affichage des coordonnées du clic -->
+    <p id="coords">Cliquez n’importe où pour afficher les coordonnées</p>
+
+    <!-- Champ -->
+    <div id="field-coords"></div>
+
+
+    <p class="caption">
+        Coordonnées calculées identiques à celles obtenues par clic souris.
+    </p>
+
+    <button class="btn" onclick="runFieldCoords()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code49')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code49" class="code">
+/* ================= EXERCICE 49 ================= */
+/* Trouver les coordonnées de la fenêtre du champ */
+
+let field = document.getElementById("field-coords");
+
+let rect = field.getBoundingClientRect();
+
+// Coins extérieurs
+let outerTopLeft = {
+    x: rect.left,
+    y: rect.top
+};
+
+let outerBottomRight = {
+    x: rect.right,
+    y: rect.bottom
+};
+
+// Coins intérieurs
+let innerTopLeft = {
+    x: rect.left + field.clientLeft,
+    y: rect.top + field.clientTop
+};
+
+let innerBottomRight = {
+    x: innerTopLeft.x + field.clientWidth,
+    y: innerTopLeft.y + field.clientHeight
+};
+
+console.log("Extérieur haut gauche :", outerTopLeft);
+console.log("Extérieur bas droite :", outerBottomRight);
+console.log("Intérieur haut gauche :", innerTopLeft);
+console.log("Intérieur bas droite :", innerBottomRight);
+    </pre>
+</div>
+
+<!-- =================Cacher sur clic================= -->
+<div class="exercise">
+    <h2>Cacher sur clic</h2>
+
+    <p>
+        Ajouter JavaScript à un bouton pour faire disparaître
+        un élément <code>div</code> lorsqu’on clique dessus.
+    </p>
+
+    <!-- Bouton -->
+    <button class="btn" id="btn-hide" onclick="runHideText()">
+        Clique ici
+    </button>
+
+    <br><br>
+
+    <!-- Texte à cacher -->
+    <div id="text-to-hide" class="hide-box">
+        Ce texte va disparaître quand on clique sur le bouton.
+    </div>
+
+    
+
+    <p class="caption">
+        Résultat : le texte disparaît après un clic sur le bouton.
+    </p>
+
+    <button class="btn secondary" onclick="toggleCode('code50')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code50" class="code">
+/* ================= EXERCICE 50 ================= */
+/* Cacher sur clic */
+
+let button = document.getElementById("btn-hide");
+let text = document.getElementById("text-to-hide");
+
+button.addEventListener("click", function () {
+    text.style.display = "none";
+});
+    </pre>
+</div>
+
+<!-- ================= Se cacher ================= -->
+<div class="exercise">
+    <h2>Se cacher</h2>
+
+    <p>
+        Créer un bouton qui se cache tout seul lorsqu’on clique dessus.
+    </p>
+
+    <!-- Bouton -->
+    <button class="btn" id="btn-self-hide" onclick="runSelfHide(this)">
+        Clique pour me cacher
+    </button>
+
+    
+    <p class="caption">
+        Résultat : le bouton disparaît après le clic.
+    </p>
+
+    <button class="btn secondary" onclick="toggleCode('code51')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code51" class="code">
+/* ================= EXERCICE 51 ================= */
+/* Se cacher */
+
+function runSelfHide(button) {
+    button.style.display = "none";
+}
+    </pre>
+</div>
+
+
+<!-- ================= Déplacez le ballon à travers le terrain ================= -->
+<div class="exercise">
+    <h2>Déplacez le ballon à travers le terrain</h2>
+
+    <p>Cliquez dans le terrain pour déplacer le ballon.</p>
+
+    <!-- Terrain -->
+    <div id="field52" class="field">
+    <img
+        src="https://en.js.cx/clipart/ball.svg"
+        id="ball52"
+        alt="ballon">
+</div>
+
+   
+
+    <button class="btn" onclick="initBallMove()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code52')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code52" class="code">
+/* ================= EXERCICE 52 ================= */
+/* Déplacer le ballon à travers le terrain */
+
+function initBallMove() {
+    const field = document.getElementById("field");
+    const ball = document.getElementById("ball");
+
+    field.onclick = function (event) {
+
+        const rect = field.getBoundingClientRect();
+
+        let x = event.clientX - rect.left - ball.offsetWidth / 2;
+        let y = event.clientY - rect.top - ball.offsetHeight / 2;
+
+        x = Math.max(0, Math.min(x, field.clientWidth - ball.offsetWidth));
+        y = Math.max(0, Math.min(y, field.clientHeight - ball.offsetHeight));
+
+        ball.style.left = x + "px";
+        ball.style.top = y + "px";
+    };
+}
+    </pre>
+</div>
+
+<!-- ================= Créer un menu glissant================= -->
+<div class="exercise">
+    <h2>Créer un menu glissant</h2>
+
+    <p>Créer un menu qui s’ouvre et se replie au clic.</p>
+
+    <!-- Menu -->
+    <div class="menu" id="menu53">
+        <div class="menu-title">Sweeties (click me!)</div>
+        <ul class="menu-list">
+            <li>Cake</li>
+            <li>Donut</li>
+            <li>Honey</li>
+        </ul>
+    </div>
+
+  
+
+    <button class="btn" onclick="runMenu()">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code53')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code53" class="code">
+/* ================= EXERCICE 53 ================= */
+/* Créer un menu glissant */
+
+let menu = document.getElementById("menu53");
+let title = menu.querySelector(".menu-title");
+
+title.addEventListener("click", function () {
+    menu.classList.toggle("open");
+});
+    </pre>
+</div>
+
+<!-- ================= Ajouter un bouton de fermeture ================= -->
+<div class="exercise">
+    <h2>Ajouter un bouton de fermeture</h2>
+
+    <p>
+        Ajouter dynamiquement un bouton de fermeture dans le coin supérieur droit
+        de chaque message.
+    </p>
+
+    <!-- Capture d’écran -->
+    <div class="capture-box">
+        <img src="images/ex54-fermeture.png" alt="Capture bouton de fermeture">
+    </div>
+
+    <p class="caption">
+        Résultat : chaque message possède un bouton [x] permettant de le fermer.
+    </p>
+
+    <!-- Bouton : ouverture dans une NOUVELLE PAGE -->
+    <a href="fermeture.html" target="_blank" class="btn">
+        ▶ Exécuter la solution
+    </a>
+
+    <button class="btn secondary" onclick="toggleCode('code54')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code54" class="code">
+/* ================= EXERCICE 54 ================= */
+/* Ajouter un bouton de fermeture */
+
+const panes = document.querySelectorAll(".pane");
+
+panes.forEach(pane => {
+    const button = document.createElement("button");
+    button.className = "remove-button";
+    button.textContent = "[x]";
+
+    button.addEventListener("click", () => {
+        pane.remove();
+    });
+
+    pane.append(button);
+});
+    </pre>
+</div>
+
+<!-- ================= Carousel================= -->
+<div class="exercise">
+    <h2>Carousel</h2>
+
+    <p>
+        Créer un <strong>carousel</strong> (ruban d’images) permettant
+        de faire défiler les images à l’aide de flèches.
+    </p>
+
+    <!-- Capture d’écran -->
+    <div class="capture-box">
+        <img src="carousel.png" alt="Capture exercice carousel">
+    </div>
+
+    <p class="caption">
+        Résultat : un carousel avec défilement horizontal contrôlé par des flèches.
+    </p>
+
+    <!-- Bouton exécuter -->
+    <button class="btn" onclick="location.href='carousel.html'">
+        ▶ Exécuter la solution
+    </button>
+
+    <!-- Bouton voir le code -->
+    <button class="btn secondary" onclick="toggleCode('code-carousel')">
+        👁 Voir le code source
+    </button>
+
+    <!-- Code source affiché -->
+    <pre id="code-carousel" class="code">
+/* ================= EXERCICE ================= */
+/* Carousel */
+
+const list = document.getElementById("list");
+const images = list.querySelectorAll("li").length;
+
+const imageWidth = 130;
+const visibleImages = 3;
+
+let position = 0;
+
+document.querySelector(".prev").addEventListener("click", () => {
+    position += imageWidth;
+    position = Math.min(position, 0);
+    list.style.marginLeft = position + "px";
+});
+
+document.querySelector(".next").addEventListener("click", () => {
+    position -= imageWidth;
+    const maxPosition = -imageWidth * (images - visibleImages);
+    position = Math.max(position, maxPosition);
+    list.style.marginLeft = position + "px";
+});
+    </pre>
+</div>
+
+<!-- ================= Liste sélectionnable================= -->
+<div class="exercise">
+    <h2>Liste sélectionnable</h2>
+
+    <p>
+        Créer une liste dont les éléments sont sélectionnables,
+        comme dans les gestionnaires de fichiers.
+    </p>
+
+    <ul>
+        <li>Un clic sélectionne uniquement l’élément</li>
+        <li>Ctrl (ou Cmd sur Mac) inverse la sélection</li>
+    </ul>
+
+    <!-- Capture -->
+    <div class="capture-box">
+        <img src="listeselection.png" alt="Capture liste sélectionnable">
+    </div>
+
+    <!-- Bouton exécution -->
+    <button class="btn" onclick="location.href='liste.html'">
+        ▶ Exécuter la solution
+    </button>
+
+    <!-- Voir le code -->
+    <button class="btn secondary" onclick="toggleCode('codeXX')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="codeXX" class="code">
+/* Liste sélectionnable
+- clic simple : sélection unique
+- Ctrl/Cmd : sélection multiple
+*/
+    </pre>
+</div>
+
+<!-- ================= Info-bulle avec data-tooltip================= -->
+<div class="exercise">
+    <h2>Info-bulle avec data-tooltip</h2>
+
+    <p>
+        Afficher une info-bulle au survol d’un élément possédant
+        l’attribut <code>data-tooltip</code>.
+        L’info-bulle la plus imbriquée est prioritaire.
+    </p>
+
+    <div class="capture-box">
+        <img src="infobulle.png" alt="Capture info-bulle data-tooltip">
+    </div>
+
+    <button class="btn" onclick="location.href='tooltip.html'">
+        ▶ Exécuter la solution
+    </button>
+
+    <button class="btn secondary" onclick="toggleCode('code47')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code47" class="code">
+/* ================= EXERCICE 47 ================= */
+/* Info-bulle avec data-tooltip */
+
+let tooltip;
+
+document.addEventListener("mouseover", function (event) {
+    let target = event.target.closest("[data-tooltip]");
+    if (!target) return;
+
+    tooltip = document.createElement("div");
+    tooltip.className = "tooltip";
+    tooltip.textContent = target.dataset.tooltip;
+
+    document.body.append(tooltip);
+
+    let rect = target.getBoundingClientRect();
+    tooltip.style.left = rect.left + "px";
+    tooltip.style.top = rect.top - tooltip.offsetHeight - 5 + "px";
+});
+
+document.addEventListener("mouseout", function () {
+    if (tooltip) {
+        tooltip.remove();
+        tooltip = null;
+    }
+});
+    </pre>
+</div>
+
+<!-- ================= Raccourcis clavier étendus ================= -->
+<div class="exercise">
+    <h2>Raccourcis clavier étendus</h2>
+
+    <p>
+        Appuyez simultanément sur <strong>Q</strong> et <strong>W</strong>.
+    </p>
+
+    <button class="btn secondary" onclick="toggleCode('code-shortcuts')">
+        👁 Voir le code source
+    </button>
+
+    <pre id="code-shortcuts" class="code">
+document.addEventListener("keydown", ...);
+document.addEventListener("keyup", ...);
+    </pre>
+</div>
+
+
+</body>
+</html>
+
