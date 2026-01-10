@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Afficher les descendants dans un arbre</title>
+</head>
+<body>
+
+<ul id="tree">
+    <li>Animals
+        <ul>
+            <li>Mammals
+                <ul>
+                    <li>Cows</li>
+                    <li>Donkeys</li>
+                    <li>Dogs</li>
+                    <li>Tigers</li>
+                </ul>
+            </li>
+            <li>Other
+                <ul>
+                    <li>Snakes</li>
+                    <li>Birds</li>
+                    <li>Lizards</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Fishes
+        <ul>
+            <li>Aquarium
+                <ul>
+                    <li>Guppy</li>
+                    <li>Angelfish</li>
+                </ul>
+            </li>
+            <li>Sea
+                <ul>
+                    <li>Sea trout</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<script>
+function countDescendants(li) {
+    let descendants = li.querySelectorAll("li").length;
+
+    if (descendants > 0) {
+        li.firstChild.textContent += " [" + descendants + "]";
+    }
+}
+
+let allLi = document.querySelectorAll("#tree li");
+allLi.forEach(li => countDescendants(li));
+</script>
+
+</body>
+</html>
