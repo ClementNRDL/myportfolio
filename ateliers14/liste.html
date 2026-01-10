@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste sélectionnable</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        ul {
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        li {
+            padding: 5px;
+            cursor: pointer;
+            user-select: none; /* empêche la sélection de texte */
+        }
+
+        li.selected {
+            background-color: #cce5ff;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Liste sélectionnable</h2>
+<p>Cliquez sur un élément pour le sélectionner.</p>
+
+<ul id="list">
+    <li>Christopher Robin</li>
+    <li>Winnie-the-Pooh</li>
+    <li>Tigger</li>
+    <li>Kanga</li>
+    <li>Rabbit. Just rabbit.</li>
+</ul>
+
+<script>
+    const list = document.getElementById("list");
+
+    list.addEventListener("click", function (event) {
+        if (event.target.tagName !== "LI") return;
+
+        // Si Ctrl (Windows/Linux) ou Cmd (Mac) n’est PAS pressé
+        if (!event.ctrlKey && !event.metaKey) {
+            const items = list.querySelectorAll("li");
+            items.forEach(li => li.classList.remove("selected"));
+        }
+
+        // Inverse la sélection de l’élément cliqué
+        event.target.classList.toggle("selected");
+    });
+</script>
+
+</body>
+</html>
