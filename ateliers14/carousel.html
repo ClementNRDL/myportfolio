@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Carousel</title>
+
+<style>
+/* ================= EXERCICE ================= */
+/* Carousel */
+
+/* Conteneur principal */
+.carousel {
+    width: 420px;
+    margin: 30px auto;
+    padding: 10px;
+    background: #eee;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Zone visible */
+.gallery {
+    width: 390px;
+    overflow: hidden;
+}
+
+/* Liste des images */
+.gallery ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    transition: margin-left 0.3s ease;
+}
+
+/* Images */
+.gallery li {
+    flex-shrink: 0;
+}
+
+.gallery img {
+    width: 130px;
+    height: 130px;
+    display: block;
+}
+
+/* Flèches */
+.arrow {
+    background: #ddd;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.arrow:hover {
+    background: #ccc;
+}
+</style>
+</head>
+
+<body>
+
+<h2 style="text-align:center">Carousel</h2>
+<p style="text-align:center">Cliquez sur les flèches pour faire défiler les images.</p>
+
+<div class="carousel">
+    <button class="arrow prev">‹</button>
+
+    <div class="gallery">
+        <ul id="list">
+            <li><img src="https://en.js.cx/carousel/1.png"></li>
+            <li><img src="https://en.js.cx/carousel/2.png"></li>
+            <li><img src="https://en.js.cx/carousel/3.png"></li>
+            <li><img src="https://en.js.cx/carousel/4.png"></li>
+            <li><img src="https://en.js.cx/carousel/5.png"></li>
+            <li><img src="https://en.js.cx/carousel/6.png"></li>
+            <li><img src="https://en.js.cx/carousel/7.png"></li>
+            <li><img src="https://en.js.cx/carousel/8.png"></li>
+            <li><img src="https://en.js.cx/carousel/9.png"></li>
+            <li><img src="https://en.js.cx/carousel/10.png"></li>
+        </ul>
+    </div>
+
+    <button class="arrow next">›</button>
+</div>
+
+<script>
+/* ================= EXERCICE ================= */
+/* Carousel */
+
+const list = document.getElementById("list");
+const images = list.querySelectorAll("li").length;
+
+const imageWidth = 130;
+const visibleImages = 3;
+
+let position = 0;
+
+document.querySelector(".prev").addEventListener("click", () => {
+    position += imageWidth;
+    position = Math.min(position, 0);
+    list.style.marginLeft = position + "px";
+});
+
+document.querySelector(".next").addEventListener("click", () => {
+    position -= imageWidth;
+    const maxPosition = -imageWidth * (images - visibleImages);
+    position = Math.max(position, maxPosition);
+    list.style.marginLeft = position + "px";
+});
+</script>
+
+</body>
+</html>
