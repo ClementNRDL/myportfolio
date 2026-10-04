@@ -373,79 +373,140 @@
 <!-- PROJETS -->
 <section id="projets" class="mb-20 reveal">
   <div class="flex items-center justify-between gap-4 mb-6">
-    <h2 class="title-anim text-2xl sm:text-3xl font-semibold text-emerald-300">
-      Projets réalisés
-    </h2>
-    <span class="badge-pill border-fuchsia-400/70 text-fuchsia-300 text-[0.65rem]">
-      Portfolio
-    </span>
+    <h2 class="title-anim text-2xl sm:text-3xl font-semibold text-emerald-300">Projets réalisés</h2>
   </div>
 
   <p class="text-slate-300 text-sm sm:text-base max-w-2xl mb-8">
-    Voici une sélection de projets conçus durant mon BTS SIO.
+    Voici une sélection de projets conçus durant mon BTS SIO. Survole une carte pour voir le détail.
   </p>
 
-  <!-- GRID -->
   <div class="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
 
-    <!-- PROJET 1 -->
-    <article class="panel-soft card-hover overflow-hidden">
-      <div class="relative">
-        <img src="portfolio.png" alt="Portfolio"
-             class="w-full h-48 object-cover opacity-90 hover:opacity-100 transition">
-        <div class="absolute inset-0 bg-gradient-to-tr from-emerald-300/20 to-transparent"></div>
+    <!-- ========== PROJET 1 : Portfolio ========== -->
+    <article class="group relative overflow-visible rounded-2xl border border-slate-700 bg-slate-950/80
+                    transition-colors duration-300 hover:border-emerald-400/70">
+
+      <!-- Carte compacte -->
+      <div class="transition-transform duration-300 group-hover:-translate-y-1">
+        <div class="relative overflow-hidden rounded-t-2xl">
+          <img src="portfolio.png" alt="Portfolio" class="w-full h-48 object-cover">
+          <div class="absolute inset-0 bg-gradient-to-tr from-emerald-300/20 to-transparent"></div>
+        </div>
+        <div class="p-5 space-y-3">
+          <h3 class="text-lg font-semibold text-emerald-300">Portfolio</h3>
+          <p class="text-sm text-slate-300">Création d’un portfolio.</p>
+          <span class="text-[0.7rem] text-emerald-300">HTML/CSS</span>
+          <p class="text-[0.7rem] text-slate-500">Survoler pour voir le détail.</p>
+        </div>
       </div>
 
-      <div class="p-5 space-y-3">
-        <h3 class="text-lg font-semibold text-emerald-300">Portfolio</h3>
-        <p class="text-sm text-slate-300">
-          Création d’un portfolio.
-        </p>
-
-        <div class="flex flex-wrap gap-2 text-[0.7rem]">
-          <span class="badge-pill border-emerald-400/70 text-emerald-300">HTML/CSS</span>
+      <!-- Panneau flottant centré -->
+      <div class="pointer-events-none group-hover:pointer-events-auto
+                  fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+                  w-[40rem] max-w-[95vw] max-h-[80vh]
+                  rounded-2xl bg-slate-950/95 backdrop-blur-xl
+                  border border-emerald-400/70 shadow-[0_0_60px_rgba(34,242,184,0.45)]
+                  opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100
+                  transition-all duration-300 ease-out z-[100]">
+        <div class="p-6 space-y-4 text-[0.85rem] text-slate-200 max-h-[80vh] overflow-y-auto">
+          <h4 class="font-semibold text-emerald-300 text-lg">Portfolio</h4>
+          <p>
+            Création de mon portfolio personnel pour présenter mon parcours,
+            mes compétences et mes projets réalisés pendant le BTS SIO.
+          </p>
+          <div class="rounded-lg overflow-hidden border border-slate-700 shadow-xl">
+            <img src="portfolio.png" alt="Capture du portfolio" class="w-full object-cover">
+          </div>
+          <ul class="list-disc list-inside space-y-1">
+            <li><span class="font-semibold text-slate-100">Technos :</span> HTML, CSS, Tailwind, JavaScript.</li>
+            <li><span class="font-semibold text-slate-100">Points clés :</span> design responsive, animations au scroll.</li>
+          </ul>
         </div>
       </div>
     </article>
 
-    <!-- PROJET 2 -->
-    <article class="panel-soft card-hover overflow-hidden">
-      <div class="relative">
-        <img src="expobox.png" alt="Site web marchand"
-             class="w-full h-48 object-cover opacity-90 hover:opacity-100 transition">
-        <div class="absolute inset-0 bg-gradient-to-tr from-sky-300/20 to-transparent"></div>
+    <!-- ========== PROJET 2 : Expobox ========== -->
+    <article class="group relative overflow-visible rounded-2xl border border-slate-700 bg-slate-950/80
+                    transition-colors duration-300 hover:border-sky-400/70">
+
+      <div class="transition-transform duration-300 group-hover:-translate-y-1">
+        <div class="relative overflow-hidden rounded-t-2xl">
+          <img src="expobox.png" alt="Site web marchand" class="w-full h-48 object-cover">
+          <div class="absolute inset-0 bg-gradient-to-tr from-sky-300/20 to-transparent"></div>
+        </div>
+        <div class="p-5 space-y-3">
+          <h3 class="text-lg font-semibold text-emerald-300">Site web marchand</h3>
+          <p class="text-sm text-slate-300">
+            Création d’un site web marchand Expobox permettant de présenter et gérer des produits, réalisé avec PHP et SQL.
+          </p>
+          <div class="flex gap-2 text-[0.7rem] text-emerald-300"><span>PHP</span><span>MYSQL</span></div>
+          <p class="text-[0.7rem] text-slate-500">Survoler pour voir le détail.</p>
+        </div>
       </div>
 
-      <div class="p-5 space-y-3">
-        <h3 class="text-lg font-semibold text-emerald-300">Site web marchand</h3>
-        <p class="text-sm text-slate-300">
-          Création d’un site web marchand Expobox permettant de présenter
-          et gérer des produits, réalisé avec PHP et SQL.
-        </p>
-
-        <div class="flex flex-wrap gap-2 text-[0.7rem]">
-          <span class="badge-pill border-emerald-400/70 text-emerald-300">PHP</span>
-          <span class="badge-pill border-emerald-400/70 text-emerald-300">MYSQL</span>
+      <div class="pointer-events-none group-hover:pointer-events-auto
+                  fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+                  w-[40rem] max-w-[95vw] max-h-[80vh]
+                  rounded-2xl bg-slate-950/95 backdrop-blur-xl
+                  border border-sky-400/70 shadow-[0_0_60px_rgba(56,189,248,0.45)]
+                  opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100
+                  transition-all duration-300 ease-out z-[100]">
+        <div class="p-6 space-y-4 text-[0.85rem] text-slate-200 max-h-[80vh] overflow-y-auto">
+          <h4 class="font-semibold text-sky-300 text-lg">Expobox – Site web marchand</h4>
+          <p>
+            Site e-commerce permettant de présenter des produits, de les gérer
+            (ajout, modification, suppression) et de stocker les données en base.
+          </p>
+          <div class="rounded-lg overflow-hidden border border-slate-700 shadow-xl">
+            <img src="expobox.png" alt="Capture Expobox" class="w-full max-h-60 object-contain bg-white/5">
+          </div>
+          <ul class="list-disc list-inside space-y-1">
+            <li><span class="font-semibold text-slate-100">Back-end :</span> PHP.</li>
+            <li><span class="font-semibold text-slate-100">Base de données :</span> MySQL.</li>
+            <li><span class="font-semibold text-slate-100">Fonctionnalités :</span> catalogue, gestion des produits.</li>
+          </ul>
         </div>
       </div>
     </article>
 
-    <!-- PROJET 3 -->
-    <article class="panel-soft card-hover overflow-hidden">
-      <div class="relative">
-        <img src="Activedirect.jpg" alt="Active Directory"
-             class="w-full h-48 object-cover opacity-90 hover:opacity-100 transition">
-        <div class="absolute inset-0 bg-gradient-to-tr from-fuchsia-300/15 to-transparent"></div>
+    <!-- ========== PROJET 3 : Active Directory ========== -->
+    <article class="group relative overflow-visible rounded-2xl border border-slate-700 bg-slate-950/80
+                    transition-colors duration-300 hover:border-fuchsia-400/70">
+
+      <div class="transition-transform duration-300 group-hover:-translate-y-1">
+        <div class="relative overflow-hidden rounded-t-2xl">
+          <img src="Activedirect.jpg" alt="Active Directory" class="w-full h-48 object-cover">
+          <div class="absolute inset-0 bg-gradient-to-tr from-fuchsia-300/15 to-transparent"></div>
+        </div>
+        <div class="p-5 space-y-3">
+          <h3 class="text-lg font-semibold text-emerald-300">Active Directory</h3>
+          <p class="text-sm text-slate-300">
+            Mise en place et administration d’un environnement Active Directory sous Windows Server.
+          </p>
+          <p class="text-[0.7rem] text-slate-500">Survoler pour voir le détail.</p>
+        </div>
       </div>
 
-      <div class="p-5 space-y-3">
-        <h3 class="text-lg font-semibold text-emerald-300">Active Directory</h3>
-        <p class="text-sm text-slate-300">
-          Mise en place et administration d’un environnement Active Directory
-          sous Windows Server
-        </p>
-
-        <div class="flex flex-wrap gap-2 text-[0.7rem]">
+      <div class="pointer-events-none group-hover:pointer-events-auto
+                  fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+                  w-[40rem] max-w-[95vw] max-h-[80vh]
+                  rounded-2xl bg-slate-950/95 backdrop-blur-xl
+                  border border-fuchsia-400/70 shadow-[0_0_60px_rgba(232,121,249,0.45)]
+                  opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100
+                  transition-all duration-300 ease-out z-[100]">
+        <div class="p-6 space-y-4 text-[0.85rem] text-slate-200 max-h-[80vh] overflow-y-auto">
+          <h4 class="font-semibold text-fuchsia-300 text-lg">Active Directory – Windows Server</h4>
+          <p>
+            Installation d’un contrôleur de domaine, création des utilisateurs,
+            groupes et unités d’organisation, puis application de stratégies de groupe (GPO).
+          </p>
+          <div class="rounded-lg overflow-hidden border border-slate-700 shadow-xl">
+            <img src="Activedirect.jpg" alt="Capture Active Directory" class="w-full max-h-60 object-contain bg-white/5">
+          </div>
+          <ul class="list-disc list-inside space-y-1">
+            <li><span class="font-semibold text-slate-100">Services :</span> AD DS, DNS, DHCP.</li>
+            <li><span class="font-semibold text-slate-100">Administration :</span> utilisateurs, groupes, GPO.</li>
+          </ul>
         </div>
       </div>
     </article>
