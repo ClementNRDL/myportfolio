@@ -128,6 +128,13 @@
       transform: translateY(0);
       filter: blur(0);
     }
+
+        /* Les titres restent toujours derrière les panneaux de projets */
+    h1, h2, h3 {
+      position: relative;
+      z-index: 1;
+    }
+   
   </style>
 </head>
 
@@ -371,7 +378,7 @@
     </div>
   </section>
 <!-- PROJETS -->
-<section id="projets" class="mb-20 reveal">
+<section id="projets" class="mb-20 reveal relative z-[60]">
   <div class="flex items-center justify-between gap-4 mb-6">
     <h2 class="title-anim text-2xl sm:text-3xl font-semibold text-emerald-300">Projets réalisés</h2>
   </div>
