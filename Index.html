@@ -597,10 +597,12 @@
   </div>
 </article>
 
+ 
     <!-- ========== PROJET 3 : Active Directory ========== -->
     <article class="group relative overflow-visible rounded-2xl border border-slate-700 bg-slate-950/80
                     transition-colors duration-300 hover:border-fuchsia-400/70">
 
+      <!-- Carte compacte -->
       <div class="transition-transform duration-300 group-hover:-translate-y-1">
         <div class="relative overflow-hidden rounded-t-2xl">
           <img src="Activedirect.jpg" alt="Active Directory" class="w-full h-48 object-cover">
@@ -611,10 +613,14 @@
           <p class="text-sm text-slate-300">
             Mise en place et administration d’un environnement Active Directory sous Windows Server.
           </p>
+          <div class="flex flex-wrap gap-2 text-[0.7rem] text-emerald-300">
+            <span>Windows Server</span><span>AD DS</span><span>GPO</span>
+          </div>
           <p class="text-[0.7rem] text-slate-500">Survoler pour voir le détail.</p>
         </div>
       </div>
 
+      <!-- Panneau flottant -->
       <div class="pointer-events-none group-hover:pointer-events-auto
                   fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
                   w-[40rem] max-w-[95vw] max-h-[80vh]
@@ -622,22 +628,84 @@
                   border border-fuchsia-400/70 shadow-[0_0_60px_rgba(232,121,249,0.45)]
                   opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100
                   transition-all duration-300 ease-out z-[100]">
-        <div class="p-6 space-y-4 text-[0.85rem] text-slate-200 max-h-[80vh] overflow-y-auto">
+        <div class="p-6 space-y-5 text-[0.85rem] text-slate-200 max-h-[80vh] overflow-y-auto">
+
+          <!-- Titre + description -->
           <h4 class="font-semibold text-fuchsia-300 text-lg">Active Directory – Windows Server</h4>
           <p>
-            Installation d’un contrôleur de domaine, création des utilisateurs,
-            groupes et unités d’organisation, puis application de stratégies de groupe (GPO).
+            Mise en place d’un domaine <strong>altea.local</strong> sur Windows Server 2022 :
+            installation du contrôleur de domaine, organisation des utilisateurs et sécurisation
+            de l’environnement grâce aux stratégies de groupe (GPO).
           </p>
+
+          <!-- Section 1 : Installation -->
+          <hr class="border-slate-700/70">
+
+          <h5 class="font-semibold text-fuchsia-300 text-base">Installation du domaine</h5>
+          <p>
+            Depuis le <strong>Gestionnaire de serveur</strong>, j’ai installé le rôle
+            <strong>AD DS</strong>, puis promu le serveur en <strong>contrôleur de domaine</strong>
+            en créant une nouvelle forêt nommée <code class="text-fuchsia-300">altea.local</code>.
+          </p>
+
           <div class="rounded-lg overflow-hidden border border-slate-700 shadow-xl">
-            <img src="Activedirect.jpg" alt="Capture Active Directory" class="w-full max-h-60 object-contain bg-white/5">
+            <img src="ad-gestionnaire.png" alt="Gestionnaire de serveur Windows Server" class="w-full max-h-60 object-contain bg-white/5">
           </div>
+          <p class="text-[0.75rem] text-slate-400 -mt-2">
+            Gestionnaire de serveur avec les rôles AD DS et DNS installés.
+          </p>
+
+          <!-- Section 2 : Organisation -->
+          <hr class="border-slate-700/70">
+
+          <h5 class="font-semibold text-fuchsia-300 text-base">Organisation : unités d’organisation, utilisateurs et groupes</h5>
+          <p>
+            J’ai créé une <strong>unité d’organisation</strong> par service (RH, IT et Commerce),
+            avec un utilisateur et un groupe de sécurité pour chacun. Les groupes servent ensuite
+            à attribuer les droits d’accès aux dossiers partagés.
+          </p>
+
+          <div class="rounded-lg overflow-hidden border border-slate-700 shadow-xl">
+            <img src="ad-ou.png" alt="Création d'une unité d'organisation" class="w-full max-h-60 object-contain bg-white/5">
+          </div>
+          <p class="text-[0.75rem] text-slate-400 -mt-2">
+            Création de l’unité d’organisation RH dans « Utilisateurs et ordinateurs Active Directory ».
+          </p>
+
           <ul class="list-disc list-inside space-y-1">
-            <li><span class="font-semibold text-slate-100">Services :</span> AD DS, DNS, DHCP.</li>
-            <li><span class="font-semibold text-slate-100">Administration :</span> utilisateurs, groupes, GPO.</li>
+            <li><span class="font-semibold text-slate-100">Utilisateurs :</span> RH1, IT1 et Com1.</li>
+            <li><span class="font-semibold text-slate-100">Groupes :</span> GRP_RH, GRP_IT et GRP_Commerce, placés ensuite dans une OU dédiée.</li>
+            <li><span class="font-semibold text-slate-100">Partages :</span> un dossier par service, avec permissions NTFS et héritage désactivé.</li>
           </ul>
+
+          <!-- Section 3 : GPO -->
+          <hr class="border-slate-700/70">
+
+          <h5 class="font-semibold text-fuchsia-300 text-base">Stratégies de groupe (GPO)</h5>
+          <p>
+            Avec la <strong>gestion des stratégies de groupe</strong>, j’ai appliqué une politique
+            de sécurité à l’ensemble du domaine et testé son bon fonctionnement.
+          </p>
+
+          <div class="rounded-lg overflow-hidden border border-slate-700 shadow-xl">
+            <img src="ad-gpo.png" alt="Éditeur de gestion des stratégies de groupe" class="w-full max-h-60 object-contain bg-white/5">
+          </div>
+          <p class="text-[0.75rem] text-slate-400 -mt-2">
+            Éditeur de gestion des stratégies de groupe : stratégies de mot de passe et de verrouillage du compte.
+          </p>
+
+          <ul class="list-disc list-inside space-y-1">
+            <li><span class="font-semibold text-slate-100">Mots de passe :</span> 12 caractères minimum, durée de vie de 90 jours.</li>
+            <li><span class="font-semibold text-slate-100">Verrouillage :</span> compte bloqué après 5 tentatives, session verrouillée après 10 minutes d’inactivité.</li>
+            <li><span class="font-semibold text-slate-100">Support :</span> lecteur réseau Z: mappé automatiquement pour le service Commerce.</li>
+            <li><span class="font-semibold text-slate-100">Restriction :</span> accès au panneau de configuration bloqué pour les utilisateurs.</li>
+          </ul>
+
         </div>
       </div>
     </article>
+
+    <!-- ⬆️ FIN DU BLOC ACTIVE DIRECTORY ⬆️ -->
 
   </div>
 </section>
