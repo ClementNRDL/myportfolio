@@ -382,7 +382,7 @@
 
   <div class="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
 
-    <!-- ========== PROJET 1 : Portfolio ========== -->
+   <!-- ========== PROJET 1 : Portfolio ========== -->
     <article class="group relative overflow-visible rounded-2xl border border-slate-700 bg-slate-950/80
                     transition-colors duration-300 hover:border-emerald-400/70">
 
@@ -394,8 +394,12 @@
         </div>
         <div class="p-5 space-y-3">
           <h3 class="text-lg font-semibold text-emerald-300">Portfolio</h3>
-          <p class="text-sm text-slate-300">Création d’un portfolio.</p>
-          <span class="text-[0.7rem] text-emerald-300">HTML/CSS</span>
+          <p class="text-sm text-slate-300">
+            Création et mise en ligne de mon portfolio avec HTML/CSS, GitHub et Netlify.
+          </p>
+          <div class="flex flex-wrap gap-2 text-[0.7rem] text-emerald-300">
+            <span>HTML/CSS</span><span>GitHub</span><span>Netlify</span>
+          </div>
           <p class="text-[0.7rem] text-slate-500">Survoler pour voir le détail.</p>
         </div>
       </div>
@@ -408,18 +412,87 @@
                   border border-emerald-400/70 shadow-[0_0_60px_rgba(34,242,184,0.45)]
                   opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100
                   transition-all duration-300 ease-out z-[100]">
-        <div class="p-6 space-y-4 text-[0.85rem] text-slate-200 max-h-[80vh] overflow-y-auto">
-          <h4 class="font-semibold text-emerald-300 text-lg">Portfolio</h4>
+        <div class="p-6 space-y-5 text-[0.85rem] text-slate-200 max-h-[80vh] overflow-y-auto">
+
+          <!-- Titre + description -->
+          <h4 class="font-semibold text-emerald-300 text-lg">Portfolio personnel</h4>
           <p>
             Création de mon portfolio personnel pour présenter mon parcours,
             mes compétences et mes projets réalisés pendant le BTS SIO.
           </p>
+
           <div class="rounded-lg overflow-hidden border border-slate-700 shadow-xl">
             <img src="portfolio.png" alt="Capture du portfolio" class="w-full object-cover">
           </div>
+
+          <!-- Séparateur -->
+          <hr class="border-slate-700/70">
+
+          <!-- Section 1 : Création du code -->
+          <h5 class="font-semibold text-emerald-300 text-base">Création du code (Visual Studio Code)</h5>
+          <p>
+            Le site a été développé dans <strong>Visual Studio Code</strong> en
+            <strong>HTML</strong> et <strong>CSS</strong>, avec le framework
+            <strong>Tailwind CSS</strong> pour la mise en forme et un peu de
+            <strong>JavaScript</strong> pour les animations (apparition au défilement,
+            navigation, formulaire de contact).
+          </p>
+
+          <div class="rounded-lg overflow-hidden border border-slate-700 shadow-xl">
+            <img src="portfoliovscode.png" alt="Code du portfolio dans Visual Studio Code" class="w-full object-contain bg-white/5">
+          </div>
+          <p class="text-[0.75rem] text-slate-400 -mt-2">
+            Code source du portfolio dans Visual Studio Code.
+          </p>
+
           <ul class="list-disc list-inside space-y-1">
-      
+            <li><span class="font-semibold text-slate-100">Structure :</span> page HTML organisée en sections (accueil, à propos, compétences, projets, contact).</li>
+            <li><span class="font-semibold text-slate-100">Style :</span> CSS personnalisé et Tailwind, thème sombre avec fond animé.</li>
+            <li><span class="font-semibold text-slate-100">Interactivité :</span> JavaScript pour les effets et le formulaire.</li>
           </ul>
+
+          <!-- Séparateur -->
+          <hr class="border-slate-700/70">
+
+          <!-- Section 2 : GitHub -->
+          <h5 class="font-semibold text-emerald-300 text-base">Dépôt du code sur GitHub</h5>
+          <p>
+            Le code est hébergé dans un dépôt public <strong>GitHub</strong> nommé
+            <code class="text-emerald-300">myportfolio</code>. Cela me permet de sauvegarder
+            mon travail, de suivre les modifications et de le publier facilement.
+          </p>
+
+          <div class="rounded-lg overflow-hidden border border-slate-700 shadow-xl">
+            <img src="portfoliogithub.png" alt="Dépôt GitHub du portfolio" class="w-full object-contain bg-white/5">
+          </div>
+          <p class="text-[0.75rem] text-slate-400 -mt-2">
+            Dépôt « myportfolio » sur mon compte GitHub.
+          </p>
+
+          <!-- Séparateur -->
+          <hr class="border-slate-700/70">
+
+          <!-- Section 3 : Netlify -->
+          <h5 class="font-semibold text-emerald-300 text-base">Mise en ligne avec Netlify</h5>
+          <p>
+            Le dépôt GitHub est relié à <strong>Netlify</strong>, qui héberge le site et le met
+            en ligne. À chaque modification envoyée sur GitHub, le site est redéployé
+            automatiquement.
+          </p>
+
+          <div class="rounded-lg overflow-hidden border border-slate-700 shadow-xl">
+            <img src="portfolionetlify.png" alt="Plateforme Netlify" class="w-full object-contain bg-white/5">
+          </div>
+          <p class="text-[0.75rem] text-slate-400 -mt-2">
+            Plateforme Netlify utilisée pour l'hébergement et le déploiement.
+          </p>
+
+          <ul class="list-disc list-inside space-y-1">
+            <li><span class="font-semibold text-slate-100">Versioning :</span> Git / GitHub.</li>
+            <li><span class="font-semibold text-slate-100">Hébergement :</span> Netlify, relié au dépôt GitHub.</li>
+            <li><span class="font-semibold text-slate-100">Déploiement :</span> automatique à chaque mise à jour du code.</li>
+          </ul>
+
         </div>
       </div>
     </article>
@@ -455,7 +528,7 @@
     <div class="p-6 space-y-5 text-[0.85rem] text-slate-200 max-h-[80vh] overflow-y-auto">
 
       <!-- Titre + description -->
-      <h4 class="font-semibold text-sky-300 text-lg">Expobox – Site web marchand</h4>
+      <h4 class="font-semibold text-sky-300 text-lg">Expobox Bloc 1 - C3</h4>
       <p>
         Création d’un site e-commerce permettant de présenter des produits,
         de les gérer et de stocker les données dans une base.
