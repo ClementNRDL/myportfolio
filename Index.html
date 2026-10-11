@@ -999,24 +999,32 @@ revealElements.forEach(el => revealObserver.observe(el));
 /* ===============================
    ACTIVE NAVIGATION (highlight)
 ================================ */
-const navSections = document.querySelectorAll("section[id]");
 const navItems = document.querySelectorAll("nav a.nav-link");
 
+// On associe chaque lien du menu à sa section (on ignore "Veille Technologique")
+const navTargets = [...navItems]
+  .filter(link => link.getAttribute("href").startsWith("#"))
+  .map(link => ({ link, target: document.querySelector(link.getAttribute("href")) }))
+  .filter(item => item.target);
+
 function updateActiveNav() {
-  let currentId = "accueil";
-  navSections.forEach(section => {
-    if (section.getBoundingClientRect().top <= 140) {
-      currentId = section.id;
+  // Ligne de repère : 40 % de la hauteur de l'écran
+  const marker = window.innerHeight * 0.4;
+  let current = navTargets[0];
+
+  navTargets.forEach(item => {
+    if (item.target.getBoundingClientRect().top <= marker) {
+      current = item;
     }
   });
 
-  // En bas de page, on active Contact
+  // En bas de page, on active le dernier lien (Contact)
   if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 5) {
-    currentId = "contact";
+    current = navTargets[navTargets.length - 1];
   }
 
-  navItems.forEach(link => {
-    link.classList.toggle("nav-active", link.getAttribute("href") === "#" + currentId);
+  navTargets.forEach(item => {
+    item.link.classList.toggle("nav-active", item === current);
   });
 }
 
@@ -1036,19 +1044,6 @@ document.querySelectorAll(".card, .panel, .panel-soft, .panel-deep").forEach(box
     box.style.setProperty("--mouse-x", `${x}px`);
     box.style.setProperty("--mouse-y", `${y}px`);
   });
-});
-
-/* ===============================
-   HEADER SHRINK ON SCROLL
-================================ */
-const header = document.querySelector("nav.navbar");
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 50) {
-    header.classList.add("navbar-scrolled");
-  } else {
-    header.classList.remove("navbar-scrolled");
-  }
 });
 
 /* ===============================
