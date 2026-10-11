@@ -999,21 +999,30 @@ revealElements.forEach(el => revealObserver.observe(el));
 /* ===============================
    ACTIVE NAVIGATION (highlight)
 ================================ */
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+const navSections = document.querySelectorAll("section[id]");
+const navItems = document.querySelectorAll("nav a.nav-link");
 
-const navObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const id = entry.target.getAttribute("id");
-      navLinks.forEach(link => {
-        link.classList.toggle("text-emerald-300", link.getAttribute("href") === "#" + id);
-      });
+function updateActiveNav() {
+  let currentId = "accueil";
+  navSections.forEach(section => {
+    if (section.getBoundingClientRect().top <= 140) {
+      currentId = section.id;
     }
   });
-}, { threshold: 0.4 });
 
-sections.forEach(section => navObserver.observe(section));
+  // En bas de page, on active Contact
+  if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 5) {
+    currentId = "contact";
+  }
+
+  navItems.forEach(link => {
+    link.classList.toggle("nav-active", link.getAttribute("href") === "#" + currentId);
+  });
+}
+
+window.addEventListener("scroll", updateActiveNav);
+window.addEventListener("load", updateActiveNav);
+updateActiveNav();
 
 /* ===============================
    GLOW ON HOVER (cards / blocs)
