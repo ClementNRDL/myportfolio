@@ -494,6 +494,32 @@
         <li><span class="font-semibold text-slate-100">Contact :</span> formulaire de contact intégré.</li>
       </ul>
 
+       <!-- Séparateur -->
+      <hr class="border-slate-700/70">
+
+      <!-- Section Base de données -->
+      <h5 class="font-semibold text-sky-300 text-base">Base de données (phpMyAdmin)</h5>
+      <p>
+        WordPress stocke toutes ses données dans une base <strong>MySQL</strong>, que j'ai consultée
+        avec <strong>phpMyAdmin</strong>. Les tables sont préfixées par <code class="text-sky-300">wp_</code>
+        et regroupent le contenu du site, les utilisateurs, les réglages et les données de la boutique.
+      </p>
+
+      <div class="rounded-lg overflow-hidden border border-slate-700 shadow-xl">
+        <img src="expoboxsql.png" alt="Tables de la base de données Expobox dans phpMyAdmin" class="w-full object-contain bg-white/5">
+      </div>
+      <p class="text-[0.75rem] text-slate-400 -mt-2">
+        Liste des tables de la base de données du site dans phpMyAdmin.
+      </p>
+
+      <ul class="list-disc list-inside space-y-1">
+        <li><span class="font-semibold text-slate-100">Contenu :</span> <code class="text-sky-300">wp_posts</code> et <code class="text-sky-300">wp_postmeta</code> (pages, produits, médias).</li>
+        <li><span class="font-semibold text-slate-100">Utilisateurs :</span> <code class="text-sky-300">wp_users</code> et <code class="text-sky-300">wp_usermeta</code>.</li>
+        <li><span class="font-semibold text-slate-100">Configuration :</span> <code class="text-sky-300">wp_options</code> (réglages du site et des extensions).</li>
+        <li><span class="font-semibold text-slate-100">Boutique :</span> tables <code class="text-sky-300">wp_wc_*</code> (WooCommerce) pour les commandes et les clients.</li>
+        <li><span class="font-semibold text-slate-100">Formulaires :</span> tables <code class="text-sky-300">wp_srfm_*</code> pour les entrées et paiements.</li>
+      </ul>
+
     </div>
   </div>
 </article>
