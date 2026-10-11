@@ -295,13 +295,14 @@
       <!-- Nav desktop -->
       <nav class="hidden md:flex items-center text-xs font-medium tracking-[0.2em] uppercase text-slate-300 w-full justify-between">
 
-  <!-- Groupe des liens principaux -->
-  <div class="flex items-center gap-6">
+    <!-- Groupe des liens principaux -->
+  <div class="flex items-center gap-5">
     <a href="#hero" class="nav-link">Accueil</a>
     <a href="#contexte" class="nav-link">Contexte</a>
     <a href="#usecases" class="nav-link">Cas d’usage</a>
     <a href="#risques" class="nav-link">Risques</a>
-    <a href="#articles" class="nav-link">Tableau</a>
+    <a href="#domains-right" class="nav-link">Objectif</a>
+    <a href="#articles" class="nav-link">Articles</a>
     <a href="#methodologie" class="nav-link">Outils</a>
     <a href="#faq" class="nav-link">FAQ</a>
   </div>
@@ -313,15 +314,14 @@
 
 </nav>
 
-      <!-- Nav mobile simple -->
-      <div class="md:hidden">
-        <select id="mobile-nav" class="bg-slate-950/80 border border-slate-700 text-[0.7rem] px-2 py-1 rounded-full">
+       <select id="mobile-nav" class="bg-slate-950/80 border border-slate-700 text-[0.7rem] px-2 py-1 rounded-full">
           <option value="#hero">Accueil</option>
           <option value="#contexte">Contexte</option>
           <option value="#usecases">Cas d’usage</option>
-           <option value="#risques">Risques</option>
-          <option value="#tableau-veille">Tableau</option>
-         <option value="#methodologie">Outils</option>
+          <option value="#risques">Risques</option>
+          <option value="#domains-right">Objectif</option>
+          <option value="#articles">Articles</option>
+          <option value="#methodologie">Outils</option>
           <option value="#faq">FAQ</option>
         </select>
       </div>
@@ -1612,27 +1612,39 @@
       });
     }
 
-    // --- NAV ACTIVE STATE (desktop) ---
-    const sections = document.querySelectorAll("section[id]");
-    const navLinks = document.querySelectorAll("nav a.nav-link");
+     // --- NAV ACTIVE STATE (desktop) ---
+    const navItems = document.querySelectorAll("nav a.nav-link");
 
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute("id");
-          navLinks.forEach(link => {
-            const href = link.getAttribute("href").replace("#", "");
-            if (href === id) {
-              link.classList.add("nav-active");
-            } else {
-              link.classList.remove("nav-active");
-            }
-          });
+    // On associe chaque lien du menu à sa cible (on ignore "Retour à l'accueil")
+    const navTargets = [...navItems]
+      .filter(link => link.getAttribute("href").startsWith("#"))
+      .map(link => ({ link, target: document.querySelector(link.getAttribute("href")) }))
+      .filter(item => item.target);
+
+    function updateActiveNav() {
+      // Ligne de repère : 40 % de la hauteur de l'écran
+      const marker = window.innerHeight * 0.4;
+      let current = navTargets[0];
+
+      navTargets.forEach(item => {
+        if (item.target.getBoundingClientRect().top <= marker) {
+          current = item;
         }
       });
-    }, { threshold: 0.4 });
 
-    sections.forEach(sec => sectionObserver.observe(sec));
+      // En bas de page, on active le dernier lien (FAQ)
+      if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 5) {
+        current = navTargets[navTargets.length - 1];
+      }
+
+      navTargets.forEach(item => {
+        item.link.classList.toggle("nav-active", item === current);
+      });
+    }
+
+    window.addEventListener("scroll", updateActiveNav);
+    window.addEventListener("load", updateActiveNav);
+    updateActiveNav();
 
     // --- HEADER SCROLL STYLE ---
     const header = document.querySelector(".app-header");
