@@ -438,10 +438,9 @@
           <!-- Section 1 : Création du code -->
           <h5 class="font-semibold text-emerald-300 text-base">Création du code (Visual Studio Code)</h5>
           <p>
-            Le site a été développé dans <strong>Visual Studio Code</strong> en
-            <strong>HTML</strong> et <strong>CSS</strong>, avec le framework
-            <strong>Tailwind CSS</strong> pour la mise en forme et un peu de
-            <strong>JavaScript</strong> pour les animations (apparition au défilement,
+            Le site a été développé avec Visual Studio Code en
+            HTML et CSS et un peu de
+            JavaScript pour les animations (apparition au défilement,
             navigation, formulaire de contact).
           </p>
 
@@ -464,16 +463,15 @@
           <!-- Section 2 : GitHub -->
           <h5 class="font-semibold text-emerald-300 text-base">Dépôt du code sur GitHub</h5>
           <p>
-            Le code est hébergé dans un dépôt public <strong>GitHub</strong> nommé
-            <code class="text-emerald-300">myportfolio</code>. Cela me permet de sauvegarder
-            mon travail, de suivre les modifications et de le publier facilement.
+            Le code est hébergé dans un dépôt public <strong>GitHub</strong>. Cela me permet de sauvegarder
+            mon travail, de suivre les modifications et de le publier.
           </p>
 
           <div class="rounded-lg overflow-hidden border border-slate-700 shadow-xl">
             <img src="portfoliogithub.png" alt="Dépôt GitHub du portfolio" class="w-full object-contain bg-white/5">
           </div>
           <p class="text-[0.75rem] text-slate-400 -mt-2">
-            Dépôt « myportfolio » sur mon compte GitHub.
+            Dépôt sur mon compte GitHub.
           </p>
 
           <!-- Séparateur -->
@@ -494,12 +492,7 @@
             Plateforme Netlify utilisée pour l'hébergement et le déploiement.
           </p>
 
-          <ul class="list-disc list-inside space-y-1">
-            <li><span class="font-semibold text-slate-100">Versioning :</span> Git / GitHub.</li>
-            <li><span class="font-semibold text-slate-100">Hébergement :</span> Netlify, relié au dépôt GitHub.</li>
-            <li><span class="font-semibold text-slate-100">Déploiement :</span> automatique à chaque mise à jour du code.</li>
-          </ul>
-
+    
         </div>
       </div>
     </article>
@@ -519,7 +512,7 @@
       <p class="text-sm text-slate-300">
         Création d’un site web marchand Expobox permettant de présenter et gérer des produits, réalisé avec WordPress.
       </p>
-      <div class="flex gap-2 text-[0.7rem] text-emerald-300"><span>WordPress</span></div>
+      <div class="flex gap-2 text-[0.7rem] text-emerald-300"><span>WordPress</span><span>SQL</span><span>PHP</span></div> 
       <p class="text-[0.7rem] text-slate-500">Survoler pour voir le détail.</p>
     </div>
   </div>
@@ -557,15 +550,14 @@
       <h5 class="font-semibold text-sky-300 text-base">Utilisation de WordPress</h5>
       <p>
         Le site a été construit avec <strong>WordPress</strong> et son éditeur de blocs (Gutenberg).
-        Chaque page est organisée en sections (About, Services, Features, Contact Form)
-        composées de conteneurs, de colonnes, de textes et d’images.
+        Chaque page est organisée en sections et composées de conteneurs, de colonnes, de textes et d’images.
       </p>
 
       <div class="rounded-lg overflow-hidden border border-slate-700 shadow-xl">
         <img src="expoboxwp.png" alt="Édition du site Expobox dans WordPress" class="w-full object-contain bg-white/5">
       </div>
       <p class="text-[0.75rem] text-slate-400 -mt-2">
-        Édition de la section « Pourquoi nous choisir ? » dans l’éditeur WordPress.
+        Édition dans l’éditeur WordPress.
       </p>
 
       <ul class="list-disc list-inside space-y-1">
@@ -581,7 +573,7 @@
       <h5 class="font-semibold text-sky-300 text-base">Base de données (phpMyAdmin)</h5>
       <p>
         WordPress stocke toutes ses données dans une base <strong>MySQL</strong>, que j'ai consultée
-        avec <strong>phpMyAdmin</strong>. Les tables sont préfixées par <code class="text-sky-300">wp_</code>
+        avec <strong>phpMyAdmin</strong>. Les tables sont préfixées 
         et regroupent le contenu du site, les utilisateurs, les réglages et les données de la boutique.
       </p>
 
@@ -592,13 +584,6 @@
         Liste des tables de la base de données du site dans phpMyAdmin.
       </p>
 
-      <ul class="list-disc list-inside space-y-1">
-        <li><span class="font-semibold text-slate-100">Contenu :</span> <code class="text-sky-300">wp_posts</code> et <code class="text-sky-300">wp_postmeta</code> (pages, produits, médias).</li>
-        <li><span class="font-semibold text-slate-100">Utilisateurs :</span> <code class="text-sky-300">wp_users</code> et <code class="text-sky-300">wp_usermeta</code>.</li>
-        <li><span class="font-semibold text-slate-100">Configuration :</span> <code class="text-sky-300">wp_options</code> (réglages du site et des extensions).</li>
-        <li><span class="font-semibold text-slate-100">Boutique :</span> tables <code class="text-sky-300">wp_wc_*</code> (WooCommerce) pour les commandes et les clients.</li>
-        <li><span class="font-semibold text-slate-100">Formulaires :</span> tables <code class="text-sky-300">wp_srfm_*</code> pour les entrées et paiements.</li>
-      </ul>
 
     </div>
   </div>
@@ -640,7 +625,7 @@
           <!-- Titre + description -->
           <h4 class="font-semibold text-fuchsia-300 text-lg">Active Directory – Windows Server</h4>
           <p>
-            Mise en place d’un domaine <strong>altea.local</strong> sur Windows Server 2022 :
+            Mise en place d’un domaine sur Windows Server :
             installation du contrôleur de domaine, organisation des utilisateurs et sécurisation
             de l’environnement grâce aux stratégies de groupe (GPO).
           </p>
@@ -650,9 +635,8 @@
 
           <h5 class="font-semibold text-fuchsia-300 text-base">Installation du domaine</h5>
           <p>
-            Depuis le <strong>Gestionnaire de serveur</strong>, j’ai installé le rôle
-            <strong>AD DS</strong>, puis promu le serveur en <strong>contrôleur de domaine</strong>
-            en créant une nouvelle forêt nommée <code class="text-fuchsia-300">altea.local</code>.
+            Depuis le <strong>Gestionnaire de serveur</strong>, Configuration et mis en place de rôle
+         
           </p>
 
           <div class="rounded-lg overflow-hidden border border-slate-700 shadow-xl">
@@ -667,8 +651,8 @@
 
           <h5 class="font-semibold text-fuchsia-300 text-base">Organisation : unités d’organisation, utilisateurs et groupes</h5>
           <p>
-            J’ai créé une <strong>unité d’organisation</strong> par service (RH, IT et Commerce),
-            avec un utilisateur et un groupe de sécurité pour chacun. Les groupes servent ensuite
+            Création d'unité d’organisation  par service (RH, IT et Commerce),
+            avec un utilisateur et un groupe  pour chacun. Les groupes servent ensuite
             à attribuer les droits d’accès aux dossiers partagés.
           </p>
 
@@ -676,14 +660,10 @@
             <img src="ad-ou.png" alt="Création d'une unité d'organisation" class="w-full max-h-60 object-contain bg-white/5">
           </div>
           <p class="text-[0.75rem] text-slate-400 -mt-2">
-            Création de l’unité d’organisation RH dans « Utilisateurs et ordinateurs Active Directory ».
+            Exemple : Création de l’unité d’organisation RH.
           </p>
 
-          <ul class="list-disc list-inside space-y-1">
-            <li><span class="font-semibold text-slate-100">Utilisateurs :</span> RH1, IT1 et Com1.</li>
-            <li><span class="font-semibold text-slate-100">Groupes :</span> GRP_RH, GRP_IT et GRP_Commerce, placés ensuite dans une OU dédiée.</li>
-            <li><span class="font-semibold text-slate-100">Partages :</span> un dossier par service, avec permissions NTFS et héritage désactivé.</li>
-          </ul>
+      
 
           <!-- Section 3 : GPO -->
           <hr class="border-slate-700/70">
